@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Atata.KendoUI</id>
+    <title>Atata Kendo UI</title>
+    <version>0.3.0</version>
+    <authors>Yevgeniy Shunevych</authors>
+    <owners>Yevgeniy Shunevych</owners>
+    <licenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/atata-framework/atata-kendoui</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/atata-framework/atata/master/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>A set of Atata components for Kendo UI HTML Framework.</summary>
+    <description>A set of Atata components for Kendo UI HTML Framework.</description>
+    <releaseNotes>
+0.3.0 - Initial release.
+    </releaseNotes>
+    <copyright>Copyright © Yevgeniy Shunevych 2016</copyright>
+    <tags>atata automation testing test selenium webdriver browser kendo</tags>
+    <dependencies>
+      <dependency id="Selenium.WebDriver" version="3.0.1" />
+      <dependency id="Selenium.Support" version="3.0.1" />
+      <dependency id="Atata.WebDriverExtras" version="0.11.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\LICENSE" />
+    <file src="Atata.KendoUI\bin\Release\Atata.KendoUI.dll" target="lib\net40" />
+    <file src="Atata.KendoUI\bin\Release\Atata.KendoUI.xml" target="lib\net40" />
+  </files>
+</package>
