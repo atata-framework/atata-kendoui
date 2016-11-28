@@ -27,6 +27,6 @@
   <files>
     <file src="..\LICENSE" />
     <file src="Atata.KendoUI\bin\Release\Atata.KendoUI.dll" target="lib\net40" />
-    <!--<file src="Atata.KendoUI\bin\Release\Atata.KendoUI.xml" target="lib\net40" />-->
+    <file src="Atata.KendoUI\bin\Release\Atata.KendoUI.xml" target="lib\net40" />
   </files>
 </package>

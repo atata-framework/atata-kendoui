@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\Atata.KendoUI.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Atata.KendoUI.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Atata, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
