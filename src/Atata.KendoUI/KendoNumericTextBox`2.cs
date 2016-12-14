@@ -9,15 +9,19 @@ namespace Atata.KendoUI
     {
         protected override T GetValue()
         {
-            string valueAsString = Scope.Get(By.CssSelector("input.k-input[data-role='numerictextbox']").Input().OfAnyVisibility()).GetValue();
+            string valueAsString = Scope.Get(By.CssSelector("input[data-role='numerictextbox']").Input().OfAnyVisibility()).GetValue();
             return ConvertStringToValue(valueAsString);
         }
 
         protected override void SetValue(T value)
         {
-            Scope.Get(By.CssSelector("input.k-formatted-value.k-input").Input()).Click();
+            IWebElement formattedValueInput = Scope.Get(By.CssSelector("input.k-formatted-value").Input().OfAnyVisibility().AtOnce());
 
-            Scope.Get(By.CssSelector("input.k-input")).FillInWith(value.ToString());
+            if (formattedValueInput.Displayed)
+                formattedValueInput.Click();
+
+            string valueAsString = ConvertValueToString(value);
+            Scope.Get(By.CssSelector("input")).FillInWith(valueAsString);
         }
     }
 }
