@@ -13,12 +13,12 @@ namespace Atata.KendoUI
 
         protected string ValueXPath
         {
-            get { return Metadata.GetFirstOrDefaultDeclaringOrComponentAttribute<ValueXPathAttribute>()?.XPath; }
+            get { return Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
         }
 
         protected string ItemValueXPath
         {
-            get { return Metadata.GetFirstOrDefaultDeclaringOrComponentAttribute<ItemValueXPathAttribute>()?.XPath; }
+            get { return Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
         }
 
         public TOwner Add(string value)
