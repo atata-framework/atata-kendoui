@@ -21,7 +21,7 @@ namespace Atata.KendoUI
                 formattedValueInput.Click();
 
             string valueAsString = ConvertValueToString(value);
-            Scope.Get(By.CssSelector("input")).FillInWith(valueAsString);
+            Scope.Get(By.TagName("input").Input()).FillInWith(valueAsString);
         }
     }
 }
