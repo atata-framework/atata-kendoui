@@ -7,8 +7,8 @@ namespace Atata.KendoUI
     public class KendoComboBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        [FindByAttribute("data-role", "combobox", Visibility = Visibility.Hidden)]
-        private TextInput<TOwner> DataInput { get; set; }
+        [FindByAttribute("data-role", "combobox", Visibility = Visibility.Any)]
+        private Control<TOwner> DataControl { get; set; }
 
         protected override T GetValue()
         {
@@ -24,12 +24,12 @@ namespace Atata.KendoUI
 
         protected override bool GetIsReadOnly()
         {
-            return DataInput.IsReadOnly;
+            return DataControl.Attributes.GetValue("readonly") != null;
         }
 
         protected override bool GetIsEnabled()
         {
-            return DataInput.IsEnabled;
+            return DataControl.IsEnabled;
         }
     }
 }

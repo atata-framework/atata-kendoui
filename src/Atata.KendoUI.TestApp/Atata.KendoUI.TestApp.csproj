@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NumericTextBox.html" />
+    <Content Include="ComboBox.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
     <None Include="Web.Debug.config">
