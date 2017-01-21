@@ -1,0 +1,7 @@
+{
+  "name": "Atata.KendoUI.TestApp",
+  "version": "1.0.0",
+  "devDependencies": {
+    "jquery": "^3.1.1"
+  }
+}

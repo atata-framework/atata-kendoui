@@ -7,9 +7,12 @@ namespace Atata.KendoUI
     public class KendoNumericTextBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
+        [FindByAttribute("data-role", "numerictextbox", Visibility = Visibility.Any)]
+        private TextInput<TOwner> DataInput { get; set; }
+
         protected override T GetValue()
         {
-            string valueAsString = Scope.Get(By.CssSelector("input[data-role='numerictextbox']").Input().OfAnyVisibility()).GetValue();
+            string valueAsString = DataInput.Get();
             return ConvertStringToValue(valueAsString);
         }
 
@@ -22,6 +25,16 @@ namespace Atata.KendoUI
 
             string valueAsString = ConvertValueToString(value);
             Scope.Get(By.TagName("input").Input()).FillInWith(valueAsString);
+        }
+
+        protected override bool GetIsReadOnly()
+        {
+            return DataInput.IsReadOnly;
+        }
+
+        protected override bool GetIsEnabled()
+        {
+            return DataInput.IsEnabled;
         }
     }
 }
