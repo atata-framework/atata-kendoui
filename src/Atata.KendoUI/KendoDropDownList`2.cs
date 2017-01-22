@@ -7,6 +7,9 @@ namespace Atata.KendoUI
     public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
+        [FindByAttribute("data-role", "dropdownlist", Visibility = Visibility.Any)]
+        private Control<TOwner> DataControl { get; set; }
+
         [FindByClass("k-select")]
         [Name("Drop-Down")]
         [Wait(0.5)]
@@ -48,6 +51,16 @@ namespace Atata.KendoUI
         {
             return GetDropDownList().
                Get(By.XPath(".//li{0}[normalize-space(.)='{1}']").FormatWith(ItemValueXPath, value).DropDownOption(value).With(searchOptions));
+        }
+
+        protected override bool GetIsReadOnly()
+        {
+            return DataControl.Attributes.GetValue("readonly") != null;
+        }
+
+        protected override bool GetIsEnabled()
+        {
+            return DataControl.IsEnabled;
         }
     }
 }

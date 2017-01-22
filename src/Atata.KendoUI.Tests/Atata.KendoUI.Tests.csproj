@@ -68,9 +68,11 @@
     </Compile>
     <Compile Include="AtataSettings.cs" />
     <Compile Include="AutoTest.cs" />
+    <Compile Include="Components\DropDownListPage.cs" />
     <Compile Include="Components\ComboBoxPage.cs" />
     <Compile Include="Components\NumericTextBoxPage.cs" />
     <Compile Include="KendoComboBoxTest.cs" />
+    <Compile Include="KendoDropDownListTest.cs" />
     <Compile Include="KendoNumericTextBoxTest.cs" />
     <Compile Include="NUnitSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
