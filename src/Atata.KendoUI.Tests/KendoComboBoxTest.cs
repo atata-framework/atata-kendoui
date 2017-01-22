@@ -14,41 +14,38 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoComboBox()
         {
-            page.Do(_ => _.Regular, x =>
-            {
-                x.Should.BeEnabled();
-                x.Should.Not.BeReadOnly();
-                x.Set("Some value");
-                x.Should.Equal("Some value");
+            var control = page.Regular;
 
-                string randomValue;
-                x.SetRandom(out randomValue);
-                x.Should.Equal(randomValue);
-                x.Set(null);
-                x.Should.BeNull();
-            });
+            control.Should.BeEnabled();
+            control.Should.Not.BeReadOnly();
+            control.Set("Some value");
+            control.Should.Equal("Some value");
+
+            string randomValue;
+            control.SetRandom(out randomValue);
+            control.Should.Equal(randomValue);
+            control.Set(null);
+            control.Should.BeNull();
         }
 
         [Test]
         public void KendoComboBox_Disabled()
         {
-            page.Do(_ => _.Disabled, x =>
-            {
-                x.Should.BeDisabled();
-                x.Should.Not.BeReadOnly();
-                x.Should.Equal("Item 1");
-            });
+            var control = page.Disabled;
+
+            control.Should.BeDisabled();
+            control.Should.Not.BeReadOnly();
+            control.Should.Equal("Item 1");
         }
 
         [Test]
         public void KendoComboBox_ReadOnly()
         {
-            page.Do(_ => _.ReadOnly, x =>
-            {
-                x.Should.BeEnabled();
-                x.Should.BeReadOnly();
-                x.Should.Equal(ComboBoxPage.ItemValue.Item2);
-            });
+            var control = page.ReadOnly;
+
+            control.Should.BeEnabled();
+            control.Should.BeReadOnly();
+            control.Should.Equal(ComboBoxPage.ItemValue.Item2);
         }
     }
 }

@@ -14,35 +14,32 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoNumericTextBox()
         {
-            page.Do(_ => _.Regular, x =>
-            {
-                x.Should.BeEnabled();
-                x.Should.Not.BeReadOnly();
-                x.Set(125);
-                x.Should.Equal(125);
-            });
+            var control = page.Regular;
+
+            control.Should.BeEnabled();
+            control.Should.Not.BeReadOnly();
+            control.Set(125);
+            control.Should.Equal(125);
         }
 
         [Test]
         public void KendoNumericTextBox_Disabled()
         {
-            page.Do(_ => _.Disabled, x =>
-            {
-                x.Should.BeDisabled();
-                x.Should.Not.BeReadOnly();
-                x.Should.Equal(25.75m);
-            });
+            var control = page.Disabled;
+
+            control.Should.BeDisabled();
+            control.Should.Not.BeReadOnly();
+            control.Should.Equal(25.75m);
         }
 
         [Test]
         public void KendoNumericTextBox_ReadOnly()
         {
-            page.Do(_ => _.ReadOnly, x =>
-            {
-                x.Should.BeEnabled();
-                x.Should.BeReadOnly();
-                x.Should.Equal(0.15m);
-            });
+            var control = page.ReadOnly;
+
+            control.Should.BeEnabled();
+            control.Should.BeReadOnly();
+            control.Should.Equal(0.15m);
         }
     }
 }
