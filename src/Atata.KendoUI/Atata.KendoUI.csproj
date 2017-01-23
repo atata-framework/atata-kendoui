@@ -79,6 +79,7 @@
     <Compile Include="KendoMultiSelect`1.cs" />
     <Compile Include="KendoNumericTextBox`1.cs" />
     <Compile Include="KendoNumericTextBox`2.cs" />
+    <Compile Include="KendoTimePicker`1.cs" />
     <Compile Include="KendoWindow`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
