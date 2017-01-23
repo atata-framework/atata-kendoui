@@ -3,7 +3,7 @@
   <metadata>
     <id>Atata.KendoUI</id>
     <title>Atata.KendoUI</title>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
     <authors>Yevgeniy Shunevych</authors>
     <owners>Yevgeniy Shunevych</owners>
     <licenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</licenseUrl>
@@ -13,12 +13,13 @@
     <summary>A set of Atata components for Kendo UI HTML Framework.</summary>
     <description>A set of Atata components for Kendo UI HTML Framework.</description>
     <releaseNotes>
-0.3.0 - Initial release.
+      0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
+      0.3.0 - Initial release.
     </releaseNotes>
     <copyright>Copyright © Yevgeniy Shunevych 2016</copyright>
     <tags>atata automation testing test selenium webdriver browser kendo</tags>
     <dependencies>
-      <dependency id="Atata" version="0.11.0" />
+      <dependency id="Atata" version="0.11.1" />
       <dependency id="Atata.WebDriverExtras" version="0.11.0" />
       <dependency id="Selenium.WebDriver" version="3.0.1" />
       <dependency id="Selenium.Support" version="3.0.1" />
