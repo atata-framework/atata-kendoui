@@ -16,7 +16,7 @@
       0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
       0.3.0 - Initial release.
     </releaseNotes>
-    <copyright>Copyright © Yevgeniy Shunevych 2016</copyright>
+    <copyright>Copyright © Yevgeniy Shunevych 2017</copyright>
     <tags>atata automation testing test selenium webdriver browser kendo</tags>
     <dependencies>
       <dependency id="Atata" version="0.11.1" />
