@@ -9,7 +9,7 @@ namespace Atata.KendoUI
     {
         protected override bool GetIsEnabled()
         {
-            return Attributes.Class.Value.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).All(x => x != "k-state-disabled");
+            return !Attributes.Class.Value.Contains("k-state-disabled");
         }
     }
 }
