@@ -56,5 +56,16 @@ namespace Atata.KendoUI.Tests
                 Disabled.Should.Equal("Grey").
                 ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
         }
+
+        [Test]
+        public void KendoDropDownList_SlowClosing()
+        {
+            page.
+                EnableAll().
+                SlowClosing.Set("Item 5").
+                Disabled.Set("Grey").
+                SlowClosing.Should.Equal("Item 5").
+                Disabled.Should.Equal("Grey");
+        }
     }
 }
