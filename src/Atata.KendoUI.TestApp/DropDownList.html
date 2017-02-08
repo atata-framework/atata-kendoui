@@ -6,41 +6,56 @@
     <link href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.default.min.css" rel="stylesheet" />
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+
+    <style>
+        body>div {
+            margin-bottom: 4px;
+        }
+    </style>
 </head>
 <body>
-    <label for="regular">Regular</label>
-    <select id="regular">
-        <option>Item 1</option>
-        <option>Item 2</option>
-        <option>Item 3</option>
-        <option>Item 4</option>
-        <option>Item 5</option>
-        <option>Item 6</option>
-        <option>Item 7</option>
-        <option>Item 8</option>
-        <option>Item 9</option>
-        <option>Item 10</option>
-        <option>Item 11</option>
-        <option>Item 12</option>
-        <option>Item 13</option>
-        <option>Item 14</option>
-        <option>Item 15</option>
-        <option>Item 16</option>
-        <option>Item 17</option>
-        <option>Item 18</option>
-        <option>Item 19</option>
-        <option>Item 20</option>
-        <option>Item 21</option>
-        <option>Item 22</option>
-    </select>
-    <label>
-        Disabled
-        <input id="disabled" value="Item 1" />
-    </label>
-    <label>
-        Read Only
-        <input id="readonly" value="Item 2" />
-    </label>
+    <div>
+        <label for="regular">Regular</label>
+        <select id="regular">
+            <option>Item 1</option>
+            <option>Item 2</option>
+            <option>Item 3</option>
+            <option>Item 4</option>
+            <option>Item 5</option>
+            <option>Item 6</option>
+            <option>Item 7</option>
+            <option>Item 8</option>
+            <option>Item 9</option>
+            <option>Item 10</option>
+            <option>Item 11</option>
+            <option>Item 12</option>
+            <option>Item 13</option>
+            <option>Item 14</option>
+            <option>Item 15</option>
+            <option>Item 16</option>
+            <option>Item 17</option>
+            <option>Item 18</option>
+            <option>Item 19</option>
+            <option>Item 20</option>
+            <option>Item 21</option>
+            <option>Item 22</option>
+        </select>
+    </div>
+    <div>
+        <label>
+            Disabled
+            <input id="disabled" value="Item 1" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Read Only
+            <input id="readonly" value="Item 2" />
+        </label>
+    </div>
+    <div>
+        <button id="enable-all" class="k-button">Enable All</button>
+    </div>
     <script>
         $(function () {
             var data = [
@@ -64,6 +79,12 @@
                 dataSource: data,
                 index: 1
             }).data('kendoDropDownList').readonly();
+
+            $('#enable-all').click(function () {
+                $('[data-role="dropdownlist"]').each(function () {
+                    $(this).data('kendoDropDownList').enable();
+                });
+            });
         });
     </script>
 </body>

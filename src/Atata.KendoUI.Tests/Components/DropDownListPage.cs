@@ -19,5 +19,7 @@ namespace Atata.KendoUI.Tests
 
         [Term(TermMatch.StartsWith)]
         public KendoDropDownList<ItemValue, _> ReadOnly { get; private set; }
+
+        public ButtonDelegate<_> EnableAll { get; private set; }
     }
 }

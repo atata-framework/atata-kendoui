@@ -43,5 +43,18 @@ namespace Atata.KendoUI.Tests
             control.Should.BeReadOnly();
             control.Should.Equal(DropDownListPage.ItemValue.Orange);
         }
+
+        [Test]
+        public void KendoDropDownList_Multiple()
+        {
+            page.
+                EnableAll().
+                Regular.Set("Item 19").
+                Disabled.Set("Grey").
+                ReadOnly.Set(DropDownListPage.ItemValue.Black).
+                Regular.Should.Equal("Item 19").
+                Disabled.Should.Equal("Grey").
+                ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
+        }
     }
 }
