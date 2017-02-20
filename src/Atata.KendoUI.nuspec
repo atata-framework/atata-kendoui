@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/atata-framework/atata-kendoui</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/atata-framework/atata/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A set of Atata components for Kendo UI HTML Framework.</summary>
-    <description>A set of Atata components for Kendo UI HTML Framework.</description>
+    <summary>.NET package containing a set of Atata components for the automation testing integration with Kendo UI HTML Framework.</summary>
+    <description>.NET package containing a set of Atata components for the automation testing integration with Kendo UI HTML Framework.</description>
     <releaseNotes>
 0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
 0.3.0 - Initial release.
@@ -19,10 +19,10 @@
     <copyright>Copyright © Yevgeniy Shunevych 2017</copyright>
     <tags>atata automation testing test selenium webdriver browser kendo</tags>
     <dependencies>
-      <dependency id="Atata" version="0.11.1" />
+      <dependency id="Atata" version="0.11.4" />
       <dependency id="Atata.WebDriverExtras" version="0.11.0" />
-      <dependency id="Selenium.WebDriver" version="3.0.1" />
-      <dependency id="Selenium.Support" version="3.0.1" />
+      <dependency id="Selenium.WebDriver" version="3.1.0" />
+      <dependency id="Selenium.Support" version="3.1.0" />
     </dependencies>
   </metadata>
   <files>
