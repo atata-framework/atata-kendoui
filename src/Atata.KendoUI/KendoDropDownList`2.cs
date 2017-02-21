@@ -7,13 +7,18 @@ namespace Atata.KendoUI
     public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
+        private static readonly string DropDownListItemXPath =
+            ".//div[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
+            "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
+            "/li";
+
         [FindByAttribute("data-role", "dropdownlist", Visibility = Visibility.Any)]
         private Control<TOwner> DataControl { get; set; }
 
         [FindByClass("k-select")]
         [Name("Drop-Down")]
         [Wait(0.5)]
-        protected virtual ClickableDelegate<TOwner> DropDownButton { get; set; }
+        protected virtual Clickable<TOwner> DropDownButton { get; set; }
 
         protected string ValueXPath
         {
@@ -41,16 +46,12 @@ namespace Atata.KendoUI
                 Click();
         }
 
-        protected virtual IWebElement GetDropDownList()
-        {
-            return Driver.
-                Get(By.CssSelector(".k-animation-container .k-list-container.k-popup").DropDownList());
-        }
-
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
         {
-            return GetDropDownList().
-               Get(By.XPath(".//li{0}[normalize-space(.)='{1}']").FormatWith(ItemValueXPath, value).DropDownOption(value).With(searchOptions));
+            return Driver.Get(
+                By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
+                DropDownOption(value).
+                With(searchOptions));
         }
 
         protected override bool GetIsReadOnly()
