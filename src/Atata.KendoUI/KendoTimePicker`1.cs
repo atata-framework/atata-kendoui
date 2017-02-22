@@ -26,7 +26,7 @@ namespace Atata.KendoUI
 
         protected override bool GetIsReadOnly()
         {
-            return DataControl.Attributes.GetValue("readonly") != null;
+            return DataControl.Attributes.ReadOnly;
         }
 
         protected override bool GetIsEnabled()
