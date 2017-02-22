@@ -8,6 +8,11 @@ namespace Atata.KendoUI
     public class KendoMultiSelect<TOwner> : Control<TOwner>
         where TOwner : PageObject<TOwner>
     {
+        private static readonly string DropDownListItemXPath =
+            ".//div[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
+            "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
+            "/li";
+
         [FindByClass("k-input")]
         protected virtual TextInput<TOwner> Input { get; set; }
 
@@ -42,19 +47,15 @@ namespace Atata.KendoUI
 
             Driver.Perform(x => x.SendKeys(Keys.Enter));
 
-            Scope.Get(By.XPath(".//ul/li{0}[normalize-space(.)='{1}']").FormatWith(ValueXPath, value).OfKind("added item element", value));
-        }
-
-        protected virtual IWebElement GetDropDownList()
-        {
-            return Driver.
-                Get(By.CssSelector(".k-animation-container .k-list-container.k-popup").DropDownList());
+            ////Scope.Get(By.XPath(".//ul/li{0}[normalize-space(.)='{1}']").FormatWith(ValueXPath, value).OfKind("added item element", value));
         }
 
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
         {
-            return GetDropDownList().
-               Get(By.XPath(".//li{0}[normalize-space(.)='{1}']").FormatWith(ItemValueXPath, value).DropDownOption(value).With(searchOptions));
+            return Driver.Get(
+                By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
+                DropDownOption(value).
+                With(searchOptions));
         }
     }
 }
