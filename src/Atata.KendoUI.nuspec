@@ -3,7 +3,7 @@
   <metadata>
     <id>Atata.KendoUI</id>
     <title>Atata.KendoUI</title>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
     <authors>Yevgeniy Shunevych</authors>
     <owners>Yevgeniy Shunevych</owners>
     <licenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</licenseUrl>
@@ -13,6 +13,7 @@
     <summary>.NET package containing a set of Atata components for the automation testing integration with Kendo UI HTML Framework.</summary>
     <description>.NET package containing a set of Atata components for the automation testing integration with Kendo UI HTML Framework.</description>
     <releaseNotes>
+0.4.1 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.1
 0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
 0.3.0 - Initial release.
     </releaseNotes>
