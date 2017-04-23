@@ -71,8 +71,13 @@
     <Content Include="DropDownList.html" />
     <Content Include="NumericTextBox.html" />
     <Content Include="ComboBox.html" />
-    <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="packages.config" />
+    <Content Include="WindowIFrameContent.html" />
+    <Content Include="WindowIFrame.html" />
+    <Content Include="WindowAjax.html" />
+    <Content Include="WindowAjaxContent.html" />
+    <Content Include="Window.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -73,7 +73,11 @@
     <Compile Include="Components\DropDownListPage.cs" />
     <Compile Include="Components\ComboBoxPage.cs" />
     <Compile Include="Components\NumericTextBoxPage.cs" />
+    <Compile Include="Components\WindowIFramePage.cs" />
+    <Compile Include="Components\WindowAjaxPage.cs" />
+    <Compile Include="Components\WindowPage.cs" />
     <Compile Include="KendoMultiSelectTest.cs" />
+    <Compile Include="KendoWindowTest.cs" />
     <Compile Include="KendoTimePickerTest.cs" />
     <Compile Include="KendoComboBoxTest.cs" />
     <Compile Include="KendoDropDownListTest.cs" />
@@ -86,17 +90,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.27.0.0\content\chromedriver.exe">
-      <Link>chromedriver.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Atata.KendoUI\Atata.KendoUI.csproj">
       <Project>{c9d19f68-b8ca-4eb0-872d-7a331e6a959d}</Project>
       <Name>Atata.KendoUI</Name>
@@ -104,6 +97,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.27.0.0\content\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

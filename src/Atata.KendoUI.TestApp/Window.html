@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.default.mobile.min.css" />
+
+    <script src="http://kendo.cdn.telerik.com/2017.1.118/js/jquery.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+</head>
+<body>
+
+    <div id="example">
+        <div id="window">
+            <span id="text">bla bla</span>
+        </div>
+
+        <span id="undo" style="display:none" class="k-button hide-on-narrow">Click here to open the window.</span>
+
+        <div class="responsive-message"></div>
+
+        <script>
+                $(document).ready(function() {
+                    var myWindow = $("#window"),
+                        undo = $("#undo");
+
+                    undo.click(function() {
+                        myWindow.data("kendoWindow").open();
+                        undo.fadeOut();
+                    });
+
+                    function onClose() {
+                        undo.fadeIn();
+                    }
+
+                    myWindow.kendoWindow({
+                        width: "600px",
+                        title: "About Alvar Aalto",
+                        visible: false,
+                        actions: [
+                            "Pin",
+                            "Minimize",
+                            "Maximize",
+                            "Close"
+                        ],
+                        close: onClose
+                    }).data("kendoWindow").center();
+                    undo.fadeIn();
+                });
+        </script>
+
+        <style>
+            #example {
+                min-height: 500px;
+            }
+
+            #undo {
+                text-align: center;
+                position: absolute;
+                white-space: nowrap;
+                padding: 1em;
+                cursor: pointer;
+            }
+
+            .armchair {
+                float: left;
+                margin: 30px 30px 120px 30px;
+                text-align: center;
+            }
+
+                .armchair img {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+            @media screen and (max-width: 1023px) {
+                div.k-window {
+                    display: none !important;
+                }
+            }
+        </style>
+    </div>
+
+
+</body>
+</html>
