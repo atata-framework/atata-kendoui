@@ -20,15 +20,11 @@ namespace Atata.KendoUI
         [Wait(0.5)]
         protected virtual Clickable<TOwner> DropDownButton { get; set; }
 
-        protected string ValueXPath
-        {
-            get { return Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
-        }
+        protected string ValueXPath =>
+            Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
 
-        protected string ItemValueXPath
-        {
-            get { return Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
-        }
+        protected string ItemValueXPath =>
+            Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
 
         protected override T GetValue()
         {

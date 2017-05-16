@@ -16,15 +16,11 @@ namespace Atata.KendoUI
         [FindByClass("k-input")]
         protected virtual TextInput<TOwner> Input { get; set; }
 
-        protected string ValueXPath
-        {
-            get { return Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
-        }
+        protected string ValueXPath =>
+            Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
 
-        protected string ItemValueXPath
-        {
-            get { return Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath; }
-        }
+        protected string ItemValueXPath =>
+            Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
 
         public TOwner Add(string value)
         {
