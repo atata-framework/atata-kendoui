@@ -15,6 +15,7 @@ namespace Atata.KendoUI
             "/li";
 
         [FindByClass("k-input")]
+        [TraceLog]
         protected virtual TextInput<TOwner> Input { get; set; }
 
         protected string ValueXPath =>

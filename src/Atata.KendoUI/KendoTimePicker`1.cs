@@ -11,6 +11,7 @@ namespace Atata.KendoUI
         where TOwner : PageObject<TOwner>
     {
         [FindFirst]
+        [TraceLog]
         private TextInput<TOwner> DataControl { get; set; }
 
         protected override TimeSpan? GetValue()

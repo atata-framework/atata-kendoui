@@ -9,6 +9,7 @@ namespace Atata.KendoUI
         where TOwner : PageObject<TOwner>
     {
         [FindByAttribute("data-role", "combobox", Visibility = Visibility.Any)]
+        [TraceLog]
         private Control<TOwner> DataControl { get; set; }
 
         protected override T GetValue()

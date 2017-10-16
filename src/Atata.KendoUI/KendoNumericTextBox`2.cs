@@ -9,6 +9,7 @@ namespace Atata.KendoUI
         where TOwner : PageObject<TOwner>
     {
         [FindByAttribute("data-role", "numerictextbox", Visibility = Visibility.Any)]
+        [TraceLog]
         private TextInput<TOwner> DataInput { get; set; }
 
         protected override T GetValue()

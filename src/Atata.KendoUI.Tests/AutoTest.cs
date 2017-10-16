@@ -17,7 +17,6 @@ namespace Atata.KendoUI.Tests
                 UseBaseUrl(baseUrl).
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
-                    WithMinLevel(LogLevel.Info).
                 LogNUnitError().
                 Build();
 

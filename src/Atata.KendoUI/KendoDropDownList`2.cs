@@ -14,10 +14,12 @@ namespace Atata.KendoUI
             "/li";
 
         [FindByAttribute("data-role", "dropdownlist", Visibility = Visibility.Any)]
+        [TraceLog]
         private Control<TOwner> DataControl { get; set; }
 
         [FindByClass("k-select")]
         [Name("Drop-Down")]
+        [TraceLog]
         [Wait(0.5)]
         protected virtual Clickable<TOwner> DropDownButton { get; set; }
 
