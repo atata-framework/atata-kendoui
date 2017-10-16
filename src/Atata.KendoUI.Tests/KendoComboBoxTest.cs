@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    public class KendoComboBoxTest : AutoTest
+    public class KendoComboBoxTest : UITestFixture
     {
         private ComboBoxPage page;
 

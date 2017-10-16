@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Atata.KendoUI.Tests
 {
-    public class KendoTimePickerTest : AutoTest
+    public class KendoTimePickerTest : UITestFixture
     {
         private TimePickerPage page;
 

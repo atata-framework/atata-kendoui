@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests
 {
-    public class KendoMultiSelectTest : AutoTest
+    public class KendoMultiSelectTest : UITestFixture
     {
         private MultiSelectPage page;
 

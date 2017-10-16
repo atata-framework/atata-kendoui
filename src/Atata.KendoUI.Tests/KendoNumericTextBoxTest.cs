@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    public class KendoNumericTextBoxTest : AutoTest
+    public class KendoNumericTextBoxTest : UITestFixture
     {
         private NumericTextBoxPage page;
 

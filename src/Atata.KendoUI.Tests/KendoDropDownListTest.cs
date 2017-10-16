@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    public class KendoDropDownListTest : AutoTest
+    public class KendoDropDownListTest : UITestFixture
     {
         private DropDownListPage page;
 
