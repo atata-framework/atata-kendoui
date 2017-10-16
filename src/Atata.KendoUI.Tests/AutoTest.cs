@@ -11,7 +11,7 @@ namespace Atata.KendoUI.Tests
         {
             string baseUrl = ConfigurationManager.AppSettings["TestAppUrl"];
 
-            AtataContext.Build().
+            AtataContext.Configure().
                 UseChrome().
                     WithArguments("disable-extensions", "no-sandbox", "start-maximized").
                 UseBaseUrl(baseUrl).
@@ -19,7 +19,7 @@ namespace Atata.KendoUI.Tests
                 AddNUnitTestContextLogging().
                     WithMinLevel(LogLevel.Info).
                 LogNUnitError().
-                SetUp();
+                Build();
 
             OnSetUp();
         }

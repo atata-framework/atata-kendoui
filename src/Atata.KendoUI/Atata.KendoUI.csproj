@@ -1,104 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Atata.KendoUI</RootNamespace>
-    <AssemblyName>Atata.KendoUI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <Version>0.5.0</Version>
+    <Authors>Yevgeniy Shunevych</Authors>
+    <Company>Yevgeniy Shunevych</Company>
+    <Product>Atata Framework</Product>
+    <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.</Description>
+    <Copyright>© Yevgeniy Shunevych 2017</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/atata-framework/atata-kendoui</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/atata-framework/atata/master/logo.png?v2</PackageIconUrl>
+    <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
+    <PackageTags>atata automation testing test selenium webdriver browser kendo kendoui</PackageTags>
+    <PackageReleaseNotes>0.4.1 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.1
+0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
+0.3.0 - Initial release.</PackageReleaseNotes>
     <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\Atata.KendoUI.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Release\Atata.KendoUI.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Atata, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.0.12.0\lib\net40\Atata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Atata.WebDriverExtras, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.WebDriverExtras.0.11.0\lib\net40\Atata.WebDriverExtras.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <PackageReference Include="Atata" Version="0.15.0" />
+    <PackageReference Include="Atata.WebDriverExtras" Version="0.13.0" />
+    <PackageReference Include="Selenium.Support" Version="3.6.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.6.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\CommonAssemblyInfo.cs">
-      <Link>Properties\CommonAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="KendoComboBox`1.cs" />
-    <Compile Include="KendoComboBox`2.cs" />
-    <Compile Include="KendoDropDownList`1.cs" />
-    <Compile Include="KendoDropDownList`2.cs" />
-    <Compile Include="KendoGridFindByColumnHeaderStrategy.cs" />
-    <Compile Include="KendoGridRow`1.cs" />
-    <Compile Include="KendoGrid`1.cs" />
-    <Compile Include="KendoGrid`2.cs" />
-    <Compile Include="KendoGrid`3.cs" />
-    <Compile Include="KendoLink`1.cs" />
-    <Compile Include="KendoLink`2.cs" />
-    <Compile Include="KendoMultiSelect`1.cs" />
-    <Compile Include="KendoNumericTextBox`1.cs" />
-    <Compile Include="KendoNumericTextBox`2.cs" />
-    <Compile Include="KendoTimePicker`1.cs" />
-    <Compile Include="KendoWindow`1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+   <ItemGroup Condition="'$(TargetFramework)' == 'net40' Or '$(TargetFramework)' == 'net45'"> 
+     <Reference Include="Microsoft.CSharp" /> 
+   </ItemGroup> 
+
 </Project>
