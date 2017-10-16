@@ -21,8 +21,7 @@ namespace Atata.KendoUI.Tests
             control.Set("Some value");
             control.Should.Equal("Some value");
 
-            string randomValue;
-            control.SetRandom(out randomValue);
+            control.SetRandom(out string randomValue);
             control.Should.Equal(randomValue);
             control.Set(null);
             control.Should.BeNull();
