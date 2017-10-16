@@ -30,8 +30,8 @@
     </PackageReference>
   </ItemGroup>
 
-   <ItemGroup Condition="'$(TargetFramework)' == 'net40' Or '$(TargetFramework)' == 'net45'"> 
-     <Reference Include="Microsoft.CSharp" /> 
-   </ItemGroup> 
+   <ItemGroup Condition="'$(TargetFramework)' == 'net40' Or '$(TargetFramework)' == 'net45'">
+     <Reference Include="Microsoft.CSharp" />
+   </ItemGroup>
 
 </Project>
