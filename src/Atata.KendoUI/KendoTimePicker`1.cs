@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 namespace Atata.KendoUI
 {
     [ControlDefinition("span", ContainingClass = "k-timepicker", ComponentTypeName = "time picker")]
+    [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("t")]
     public class KendoTimePicker<TOwner> : EditableField<TimeSpan?, TOwner>

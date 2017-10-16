@@ -3,6 +3,7 @@
 namespace Atata.KendoUI
 {
     [ControlDefinition("span", ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
+    [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[span/input[2][@id='{0}']]")]
     public class KendoNumericTextBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>

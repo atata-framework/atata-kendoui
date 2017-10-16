@@ -3,6 +3,7 @@
 namespace Atata.KendoUI
 {
     [ControlDefinition("span", ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
+    [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[.//input[@aria-owns='{0}_listbox']]")]
     public class KendoComboBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>

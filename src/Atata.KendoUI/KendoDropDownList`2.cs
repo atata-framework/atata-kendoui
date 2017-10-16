@@ -3,6 +3,7 @@
 namespace Atata.KendoUI
 {
     [ControlDefinition("span", ContainingClass = "k-dropdown", ComponentTypeName = "drop-down list")]
+    [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("@aria-owns='{0}_listbox'")]
     public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
