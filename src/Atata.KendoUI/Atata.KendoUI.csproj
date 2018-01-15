@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata" Version="0.15.0" />
+    <PackageReference Include="Atata" Version="0.16.0" />
     <PackageReference Include="Atata.WebDriverExtras" Version="0.14.0" />
     <PackageReference Include="Selenium.Support" Version="3.8.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.8.0" />
