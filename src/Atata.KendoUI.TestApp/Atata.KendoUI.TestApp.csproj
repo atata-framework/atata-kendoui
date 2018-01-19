@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MultiSelect.html" />
+    <Content Include="Switch.html" />
     <Content Include="TimePicker.html" />
     <Content Include="DropDownList.html" />
     <Content Include="NumericTextBox.html" />

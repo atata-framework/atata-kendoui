@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch</title>
+    <link href="http://kendo.cdn.telerik.com/2018.1.117/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://kendo.cdn.telerik.com/2018.1.117/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="http://kendo.cdn.telerik.com/2018.1.117/styles/kendo.default.mobile.min.css" rel="stylesheet" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.1.117/js/kendo.all.min.js"></script>
+</head>
+<body>
+    <label for="regular">Regular</label>
+    <input type="checkbox" id="regular" />
+    <label>
+        Disabled
+        <input type="checkbox" id="disabled" checked />
+    </label>
+    <label for="finds-by-label">Finds by Label</label>
+    <input type="checkbox" id="finds-by-label" />
+    <script>
+        $(function () {
+            $('#regular').kendoMobileSwitch();
+
+            $('#disabled').kendoMobileSwitch().data('kendoMobileSwitch').enable(false);
+
+            $('#finds-by-label').kendoMobileSwitch();
+        });
+    </script>
+</body>
+</html>
