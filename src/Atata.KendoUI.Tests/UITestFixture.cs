@@ -13,7 +13,7 @@ namespace Atata.KendoUI.Tests
 
             AtataContext.Configure().
                 UseChrome().
-                    WithArguments("disable-extensions", "no-sandbox", "start-maximized").
+                    WithArguments("start-maximized", "disable-infobars", "disable-extensions").
                 UseBaseUrl(baseUrl).
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
