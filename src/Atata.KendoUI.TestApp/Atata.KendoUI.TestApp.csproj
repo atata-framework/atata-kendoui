@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CheckBox.html" />
     <Content Include="MultiSelect.html" />
     <Content Include="Switch.html" />
     <Content Include="TimePicker.html" />
