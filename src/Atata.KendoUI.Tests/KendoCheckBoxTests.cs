@@ -28,7 +28,7 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        public void KendoComboBox_Disabled()
+        public void KendoCheckBox_Disabled()
         {
             var control = page.DisabledChecked;
 

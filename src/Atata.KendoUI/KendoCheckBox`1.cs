@@ -6,12 +6,12 @@
     {
         [FindFirst(OuterXPath = "following-sibling::")]
         [TraceLog]
-        private Label<TOwner> LabelControl { get; set; }
+        private Label<TOwner> AssociatedLabel { get; set; }
 
         protected override void SetValue(bool value)
         {
             if (Scope.Selected != value)
-                LabelControl.Click();
+                AssociatedLabel.Click();
         }
     }
 }
