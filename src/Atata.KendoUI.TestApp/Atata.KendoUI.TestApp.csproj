@@ -71,6 +71,7 @@
     <Content Include="CheckBox.html" />
     <Content Include="MultiSelect.html" />
     <Content Include="Switch.html" />
+    <Content Include="DateTimePicker.html" />
     <Content Include="TimePicker.html" />
     <Content Include="DropDownList.html" />
     <Content Include="NumericTextBox.html" />
