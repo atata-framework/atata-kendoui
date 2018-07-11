@@ -1,5 +1,4 @@
 ﻿using System;
-using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
@@ -12,28 +11,29 @@ namespace Atata.KendoUI
     {
         [FindFirst]
         [TraceLog]
-        private TextInput<TOwner> DataControl { get; set; }
+        [Name("Associated")]
+        private TextInput<TOwner> AssociatedInput { get; set; }
 
         protected override TimeSpan? GetValue()
         {
-            string valueAsString = DataControl.Value;
+            string valueAsString = AssociatedInput.Value;
             return ConvertStringToValue(valueAsString);
         }
 
         protected override void SetValue(TimeSpan? value)
         {
             string valueAsString = ConvertValueToString(value);
-            Scope.Get(By.TagName("input").Input()).FillInWith(valueAsString);
+            AssociatedInput.Set(valueAsString);
         }
 
         protected override bool GetIsReadOnly()
         {
-            return DataControl.Attributes.ReadOnly;
+            return AssociatedInput.Attributes.ReadOnly;
         }
 
         protected override bool GetIsEnabled()
         {
-            return DataControl.IsEnabled;
+            return AssociatedInput.IsEnabled;
         }
     }
 }
