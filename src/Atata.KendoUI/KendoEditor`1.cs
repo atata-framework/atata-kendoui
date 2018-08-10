@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI
 {
-    [ControlDefinition(ContainingClass = "k-editor", ComponentTypeName = "editor")]
+    [ControlDefinition(ContainingClass = "k-editor-widget", ComponentTypeName = "editor")]
     [ControlFinding(typeof(FindFirstAttribute))]
     public class KendoEditor<TOwner> : EditableField<string, TOwner>
         where TOwner : PageObject<TOwner>
