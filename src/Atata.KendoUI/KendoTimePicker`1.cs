@@ -12,6 +12,7 @@ namespace Atata.KendoUI
         [FindFirst]
         [TraceLog]
         [Name("Associated")]
+        [Format(null)]
         private TextInput<TOwner> AssociatedInput { get; set; }
 
         protected override TimeSpan? GetValue()
