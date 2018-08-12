@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace Atata.KendoUI.Tests
 {
@@ -19,6 +20,8 @@ namespace Atata.KendoUI.Tests
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
             control.Set(125);
+            control.Should.Equal(125);
+            page.Press(Keys.Tab);
             control.Should.Equal(125);
         }
 
