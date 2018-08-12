@@ -79,11 +79,11 @@
     <Compile Include="Components\DropDownListPage.cs" />
     <Compile Include="Components\ComboBoxPage.cs" />
     <Compile Include="Components\NumericTextBoxPage.cs" />
-    <Compile Include="KendoMultiSelectTest.cs" />
-    <Compile Include="KendoTimePickerTest.cs" />
-    <Compile Include="KendoComboBoxTest.cs" />
-    <Compile Include="KendoDropDownListTest.cs" />
-    <Compile Include="KendoNumericTextBoxTest.cs" />
+    <Compile Include="KendoMultiSelectTests.cs" />
+    <Compile Include="KendoTimePickerTests.cs" />
+    <Compile Include="KendoComboBoxTests.cs" />
+    <Compile Include="KendoDropDownListTests.cs" />
+    <Compile Include="KendoNumericTextBoxTests.cs" />
     <Compile Include="NUnitSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
