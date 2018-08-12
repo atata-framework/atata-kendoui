@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
-    <Version>0.6.0</Version>
+    <Version>0.7.0</Version>
     <Authors>Yevgeniy Shunevych</Authors>
     <Company>Yevgeniy Shunevych</Company>
     <Product>Atata Framework</Product>
@@ -18,7 +18,8 @@ Atata Framework documentation: https://atata-framework.github.io</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/atata-framework/atata/master/logo.png?v2</PackageIconUrl>
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
     <PackageTags>atata automation testing test selenium webdriver browser kendo kendoui</PackageTags>
-    <PackageReleaseNotes>0.6.0 - https://atata-framework.github.io/blog/2018/01/19/atata.kendoui-0.6.0-released/
+    <PackageReleaseNotes>0.7.0 - https://atata-framework.github.io/blog/2018/08/13/atata.kendoui-0.7.0-released/
+0.6.0 - https://atata-framework.github.io/blog/2018/01/19/atata.kendoui-0.6.0-released/
 0.5.0 - https://atata-framework.github.io/blog/2017/10/18/atata.kendoui-0.5.0-released/
 0.4.1 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.1
 0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
