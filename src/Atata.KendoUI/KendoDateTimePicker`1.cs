@@ -29,7 +29,7 @@ namespace Atata.KendoUI
 
         protected override bool GetIsReadOnly()
         {
-            return AssociatedInput.Attributes.ReadOnly;
+            return AssociatedInput.IsReadOnly;
         }
 
         protected override bool GetIsEnabled()

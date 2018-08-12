@@ -1,42 +1,48 @@
-﻿using OpenQA.Selenium;
+﻿using System.Linq;
+using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
-    [ControlDefinition("span", ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
+    [ControlDefinition(ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[span/input[2][@id='{0}']]")]
     public class KendoNumericTextBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        [FindByAttribute("data-role", "numerictextbox", Visibility = Visibility.Any)]
+        [FindFirst]
         [TraceLog]
-        private TextInput<TOwner> DataInput { get; set; }
+        [Name("Associated")]
+        [Format(null)]
+        protected Input<string, TOwner> AssociatedInput { get; private set; }
 
         protected override T GetValue()
         {
-            string valueAsString = DataInput.Get();
+            string valueAsString = AssociatedInput.Attributes.Class.Value.Contains(KendoClass.FormattedValue)
+                ? AssociatedInput.Attributes["aria-valuenow"]
+                : AssociatedInput.Value;
+
             return ConvertStringToValue(valueAsString);
         }
 
         protected override void SetValue(T value)
         {
-            IWebElement formattedValueInput = Scope.Get(By.CssSelector("input.k-formatted-value").Input().OfAnyVisibility().AtOnce());
+            IWebElement formattedValueInput = Scope.Get(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
 
-            if (formattedValueInput.Displayed)
+            if (formattedValueInput != null && formattedValueInput.Displayed)
                 formattedValueInput.Click();
 
             string valueAsString = ConvertValueToString(value);
-            Scope.Get(By.TagName("input").Input()).FillInWith(valueAsString);
+            AssociatedInput.Set(valueAsString);
         }
 
         protected override bool GetIsReadOnly()
         {
-            return DataInput.IsReadOnly;
+            return AssociatedInput.IsReadOnly;
         }
 
         protected override bool GetIsEnabled()
         {
-            return DataInput.IsEnabled;
+            return AssociatedInput.IsEnabled;
         }
     }
 }

@@ -1,37 +1,37 @@
-﻿using OpenQA.Selenium;
-
-namespace Atata.KendoUI
+﻿namespace Atata.KendoUI
 {
-    [ControlDefinition("span", ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
+    [ControlDefinition(ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[.//input[@aria-owns='{0}_listbox']]")]
     public class KendoComboBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        [FindByAttribute("data-role", "combobox", Visibility = Visibility.Any)]
+        [FindFirst]
         [TraceLog]
-        private Control<TOwner> DataControl { get; set; }
+        [Name("Associated")]
+        [Format(null)]
+        protected TextInput<TOwner> AssociatedInput { get; private set; }
 
         protected override T GetValue()
         {
-            string valueAsString = Scope.Get(By.TagName("input").Input()).GetValue();
+            string valueAsString = AssociatedInput.Value;
             return ConvertStringToValue(valueAsString);
         }
 
         protected override void SetValue(T value)
         {
             string valueAsString = ConvertValueToString(value);
-            Scope.Get(By.TagName("input").Input()).FillInWith(valueAsString);
+            AssociatedInput.Set(valueAsString);
         }
 
         protected override bool GetIsReadOnly()
         {
-            return DataControl.Attributes.ReadOnly;
+            return AssociatedInput.IsReadOnly;
         }
 
         protected override bool GetIsEnabled()
         {
-            return DataControl.IsEnabled;
+            return AssociatedInput.IsEnabled;
         }
     }
 }

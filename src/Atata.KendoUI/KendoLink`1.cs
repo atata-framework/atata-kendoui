@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Atata.KendoUI
 {
@@ -9,7 +8,7 @@ namespace Atata.KendoUI
     {
         protected override bool GetIsEnabled()
         {
-            return !Attributes.Class.Value.Contains("k-state-disabled");
+            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
         }
     }
 }

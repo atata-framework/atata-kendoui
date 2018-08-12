@@ -1,6 +1,8 @@
-﻿namespace Atata.KendoUI
+﻿using System.Linq;
+
+namespace Atata.KendoUI
 {
-    [ControlDefinition("span", ContainingClass = "k-switch", ComponentTypeName = "switch")]
+    [ControlDefinition(ContainingClass = "k-switch", ComponentTypeName = "switch")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[input[@id='{0}']]")]
     public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwner>
@@ -17,13 +19,9 @@
         public new FieldVerificationProvider<bool, KendoSwitch<TOwner>, TOwner> Should =>
             new FieldVerificationProvider<bool, KendoSwitch<TOwner>, TOwner>(this);
 
-        [FindFirst(Visibility = Visibility.Any)]
-        [TraceLog]
-        private CheckBox<TOwner> DataControl { get; set; }
-
         protected override bool GetValue()
         {
-            return DataControl.Value;
+            return Attributes.Class.Value.Contains("k-switch-on");
         }
 
         protected override void SetValue(bool value)
@@ -33,7 +31,8 @@
         }
 
         /// <summary>
-        /// Checks the control. Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
+        /// Checks the control.
+        /// Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
         /// </summary>
         /// <returns>The owner page object.</returns>
         public TOwner Check()
@@ -42,7 +41,8 @@
         }
 
         /// <summary>
-        /// Unchecks the control. Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
+        /// Unchecks the control.
+        /// Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
         /// </summary>
         /// <returns>The owner page object.</returns>
         public TOwner Uncheck()
@@ -50,9 +50,14 @@
             return Set(false);
         }
 
+        protected override bool GetIsReadOnly()
+        {
+            return Attributes.GetValue<bool?>("aria-readonly") == true;
+        }
+
         protected override bool GetIsEnabled()
         {
-            return DataControl.IsEnabled;
+            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
         }
     }
 }

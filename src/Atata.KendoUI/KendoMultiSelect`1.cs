@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI
 {
-    [ControlDefinition("div", ContainingClass = "k-multiselect", ComponentTypeName = "multi-select")]
+    [ControlDefinition(ContainingClass = "k-multiselect", ComponentTypeName = "multi-select")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[ul[id='{0}_taglist']]")]
     [ValueXPath("span[1]")]
@@ -10,13 +10,15 @@ namespace Atata.KendoUI
         where TOwner : PageObject<TOwner>
     {
         private static readonly string DropDownListItemXPath =
-            ".//div[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
+            ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
             "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
             "/li";
 
-        [FindByClass("k-input")]
+        [FindFirst]
         [TraceLog]
-        protected virtual TextInput<TOwner> Input { get; set; }
+        [Name("Associated")]
+        [Format(null)]
+        protected TextInput<TOwner> AssociatedInput { get; private set; }
 
         protected string ValueXPath =>
             Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
@@ -39,13 +41,11 @@ namespace Atata.KendoUI
 
         protected virtual void OnAdd(string value)
         {
-            Input.Set(value);
+            AssociatedInput.Set(value);
 
             GetDropDownOption(value);
 
             Driver.Perform(x => x.SendKeys(Keys.Enter));
-
-            ////Scope.Get(By.XPath(".//ul/li{0}[normalize-space(.)='{1}']").FormatWith(ValueXPath, value).OfKind("added item element", value));
         }
 
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)

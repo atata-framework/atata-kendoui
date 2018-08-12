@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI
 {
-    [ControlDefinition("span", ContainingClass = "k-timepicker", ComponentTypeName = "time picker")]
+    [ControlDefinition(ContainingClass = "k-timepicker", ComponentTypeName = "time picker")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("t")]
@@ -13,7 +13,7 @@ namespace Atata.KendoUI
         [TraceLog]
         [Name("Associated")]
         [Format(null)]
-        private TextInput<TOwner> AssociatedInput { get; set; }
+        protected TextInput<TOwner> AssociatedInput { get; private set; }
 
         protected override TimeSpan? GetValue()
         {
@@ -29,7 +29,7 @@ namespace Atata.KendoUI
 
         protected override bool GetIsReadOnly()
         {
-            return AssociatedInput.Attributes.ReadOnly;
+            return AssociatedInput.IsReadOnly;
         }
 
         protected override bool GetIsEnabled()
