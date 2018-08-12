@@ -6,7 +6,12 @@
     <Authors>Yevgeniy Shunevych</Authors>
     <Company>Yevgeniy Shunevych</Company>
     <Product>Atata Framework</Product>
-    <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.</Description>
+    <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
+
+Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
+
+Atata.KendoUI on GitHub: https://github.com/atata-framework/atata-kendoui
+Atata Framework documentation: https://atata-framework.github.io</Description>
     <Copyright>© Yevgeniy Shunevych 2018</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/atata-framework/atata-kendoui</PackageProjectUrl>
