@@ -8,7 +8,9 @@
 
 C#/.NET package containing a set of [Atata](https://github.com/atata-framework/atata) components for automated web testing integration with [Kendo UI HTML Framework](http://www.telerik.com/kendo-ui).
 
-Supports .NET Framework 4.0+ and .NET Core/Standard 2.0.
+Works with Kendo UI components for jQuery, Angular, React and Vue.
+
+Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
 
 Namespace is `Atata.KendoUI`.
 
@@ -21,9 +23,14 @@ Namespace is `Atata.KendoUI`.
 - `KendoMultiSelect`
 - `KendoNumericTextBox`
 - `KendoTimePicker`
+- `KendoDateTimePicker`
 - `KendoLink`
 - `KendoSwitch`
+- `KendoCheckBox`
+- `KendoRadioButton`
+- `KendoEditor`
 
 ## License
 
-Atata is an open source software, licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+Atata is an open source software, licensed under the Apache License 2.0.
+See [LICENSE](LICENSE) for details.
