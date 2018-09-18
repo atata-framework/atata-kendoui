@@ -1,7 +1,8 @@
 # Atata.KendoUI
 
 [![NuGet](http://img.shields.io/nuget/v/Atata.KendoUI.svg)](https://www.nuget.org/packages/Atata.KendoUI/)
-[![GitHub release](https://img.shields.io/github/release/atata-framework/atata-kendoui.svg)](https://github.com/atata-framework/atata-kendoui/releases)
+[![GitHub Release](https://img.shields.io/github/release/atata-framework/atata-kendoui.svg)](https://github.com/atata-framework/atata-kendoui/releases)
+[![Build Status](https://dev.azure.com/atata-framework/atata-kendoui/_apis/build/status/atata-kendoui-ci)](https://dev.azure.com/atata-framework/atata-kendoui/_build/latest?definitionId=16)
 [![Gitter](https://badges.gitter.im/atata-framework/atata-kendoui.svg)](https://gitter.im/atata-framework/atata-kendoui)
 [![Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata-framework.github.io/)
 [![Twitter](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://twitter.com/AtataFramework)
