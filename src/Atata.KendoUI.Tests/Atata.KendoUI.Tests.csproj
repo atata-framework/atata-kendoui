@@ -68,11 +68,13 @@
     <Compile Include="Components\CheckBoxPage.cs" />
     <Compile Include="Components\SwitchPage.cs" />
     <Compile Include="Components\DateTimePickerPage.cs" />
+    <Compile Include="Components\TreeViewPage.cs" />
     <Compile Include="KendoEditorTests.cs" />
     <Compile Include="KendoRadioButtonTests.cs" />
     <Compile Include="KendoCheckBoxTests.cs" />
     <Compile Include="KendoSwitchTests.cs" />
     <Compile Include="KendoDateTimePickerTests.cs" />
+    <Compile Include="KendoTreeViewTests.cs" />
     <Compile Include="UITestFixture.cs" />
     <Compile Include="Components\MultiSelectPage.cs" />
     <Compile Include="Components\TimePickerPage.cs" />

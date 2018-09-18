@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\images\coloricons-sprite.png" />
+    <Content Include="TreeView.html" />
     <Content Include="Editor.html" />
     <Content Include="RadioButton.html" />
     <Content Include="CheckBox.html" />
