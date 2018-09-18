@@ -12,62 +12,70 @@
     <div class="k-content">
         <h1>TreeView</h1>
 
-        <h2>Regular</h2>
+        <div class="treeview-container">
+            <h2>Regular</h2>
 
-        <ul id="regular">
-            <li data-expanded="true">
-                <span class="k-sprite folder"></span>
-                My Web Site
-                <ul>
-                    <li data-expanded="true">
-                        <span class="k-sprite folder"></span>images
-                        <ul>
-                            <li><span class="k-sprite image"></span>logo.png</li>
-                            <li><span class="k-sprite image"></span>body-back.png</li>
-                            <li><span class="k-sprite image"></span>my-photo.jpg</li>
-                        </ul>
-                    </li>
-                    <li data-expanded="true">
-                        <span class="k-sprite folder"></span>resources
-                        <ul>
-                            <li data-expanded="true">
-                                <span class="k-sprite folder"></span>pdf
-                                <ul>
-                                    <li><span class="k-sprite pdf"></span>brochure.pdf</li>
-                                    <li><span class="k-sprite pdf"></span>prices.pdf</li>
-                                </ul>
-                            </li>
-                            <li><span class="k-sprite folder"></span>zip</li>
-                        </ul>
-                    </li>
-                    <li><span class="k-sprite html"></span>about.html</li>
-                    <li><span class="k-sprite html"></span>contacts.html</li>
-                    <li><span class="k-sprite html"></span>index.html</li>
-                    <li><span class="k-sprite html"></span>portfolio.html</li>
-                </ul>
-            </li>
-        </ul>
+            <ul id="regular">
+                <li data-expanded="true">
+                    <span class="k-sprite folder"></span>
+                    My Web Site
+                    <ul>
+                        <li data-expanded="true">
+                            <span class="k-sprite folder"></span>images
+                            <ul>
+                                <li><span class="k-sprite image"></span>logo.png</li>
+                                <li><span class="k-sprite image"></span>body-back.png</li>
+                                <li><span class="k-sprite image"></span>my-photo.jpg</li>
+                            </ul>
+                        </li>
+                        <li data-expanded="true">
+                            <span class="k-sprite folder"></span>resources
+                            <ul>
+                                <li data-expanded="true">
+                                    <span class="k-sprite folder"></span>pdf
+                                    <ul>
+                                        <li><span class="k-sprite pdf"></span>brochure.pdf</li>
+                                        <li><span class="k-sprite pdf"></span>prices.pdf</li>
+                                    </ul>
+                                </li>
+                                <li><span class="k-sprite folder"></span>zip</li>
+                            </ul>
+                        </li>
+                        <li><span class="k-sprite html"></span>about.html</li>
+                        <li><span class="k-sprite html"></span>contacts.html</li>
+                        <li><span class="k-sprite html"></span>index.html</li>
+                        <li><span class="k-sprite html"></span>portfolio.html</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-        <h2 id="slow-animating-heading">Slow Animating</h2>
+        <div class="treeview-container">
+            <h2 id="slow-animating-heading">Slow Animating</h2>
+        </div>
 
-        <h2>Checkboxes</h2>
+        <div class="treeview-container">
+            <h2>Checkboxes</h2>
 
-        <div id="with-checkboxes"></div>
+            <div id="with-checkboxes"></div>
+        </div>
 
-        <h2>Custom Template</h2>
+        <div class="treeview-container">
+            <h2>Custom Template</h2>
 
-        <script id="treeview-custom-template" type="text/kendo-ui-template">
-            <span style="display:none">Hidden Text</span>
-            <span>
-                <span>#: item.id #</span>
-                <strong>&nbsp;#: item.text #&nbsp;!</strong>
-                # if (!item.items) { #
-                <a class='k-icon k-i-close-outline' href='\#'></a>
-                # } #
-            </span>
-        </script>
+            <script id="treeview-custom-template" type="text/kendo-ui-template">
+                <span style="display:none">Hidden Text</span>
+                <span>
+                    <span>#: item.id #</span>
+                    <strong>&nbsp;#: item.text #&nbsp;!</strong>
+                    # if (!item.items) { #
+                    <a class='k-icon k-i-close-outline' href='\#'></a>
+                    # } #
+                </span>
+            </script>
 
-        <div id="with-custom-template"></div>
+            <div id="with-custom-template"></div>
+        </div>
 
         <script>
             $(document).ready(function () {
@@ -134,6 +142,17 @@
         </script>
 
         <style>
+            .treeview-container {
+                float: left;
+                width: 250px;
+            }
+
+                .treeview-container h2 {
+                    text-align: center;
+                    border-bottom: 1px solid grey;
+                    margin: 0 15px 15px 15px;
+                }
+
             .k-treeview .k-sprite {
                 background-image: url("./content/images/coloricons-sprite.png");
             }
