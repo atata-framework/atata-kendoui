@@ -105,5 +105,17 @@ namespace Atata.KendoUI.Tests
             foreach (var item in folderItem.Children)
                 item.IsChecked.Should.BeTrue();
         }
+
+        [Test]
+        public void KendoTreeView_CustomTemplate()
+        {
+            var control = page.WithCustomTemplate;
+
+            control[0].Text.Should.Equal("My Documents");
+
+            control.Descendants[x => x.Text == "index.html"].Should.BeVisible();
+            control.Descendants[x => x.Text == "index.html"].Remove.Click();
+            control.Descendants[x => x.Text == "index.html"].Should.Not.Exist();
+        }
     }
 }

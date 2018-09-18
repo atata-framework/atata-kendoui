@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
 
@@ -42,10 +43,17 @@ namespace Atata.KendoUI
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
         protected Control<TOwner> CheckBoxWrapper { get; private set; }
 
-        [FindByClass("k-in")]
+        /// <summary>
+        /// Gets the text control.
+        /// Finds control by "k-in" class.
+        /// More specific/deep path to find text element can be set via <see cref="ValueXPathAttribute"/> applied to custom class inherited from <see cref="KendoTreeViewItem{TItem, TOwner}"/>, for example:
+        /// <c>[ValueXPath("/span[1]/strong")]</c>.
+        /// Format can be applied using <c>[Format("CUSTOM{0}FORMAT", TargetName = nameof(Text))]</c> attribute applied to custom inherited class.
+        /// It is also possible to override <see cref="GetTextAttributes"/> method to add/replace specific attributes.
+        /// </summary>
         [ContentSource(ContentSource.TextContent)]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
-        public Text<TOwner> Text { get; protected set; }
+        public Text<TOwner> Text => Controls.Resolve<Text<TOwner>>(nameof(Text), GetTextAttributes);
 
         [FindByClass("k-icon")]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
@@ -65,6 +73,14 @@ namespace Atata.KendoUI
 
         public DataProvider<bool, TOwner> IsFocused =>
             GetOrCreateDataProvider("focused state", GetIsFocused);
+
+        protected string TextXPath =>
+            Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
+
+        protected virtual IEnumerable<Attribute> GetTextAttributes()
+        {
+            yield return new FindByXPathAttribute($"*[contains(concat(' ', normalize-space(@class), ' '), ' k-in ')]{TextXPath}");
+        }
 
         protected virtual bool GetIsExpanded()
         {
