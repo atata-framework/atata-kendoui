@@ -80,5 +80,30 @@ namespace Atata.KendoUI.Tests
             control.Descendants[x => x.Text == "pdf"].Children.Should.BeEmpty();
             control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf", "brochure.pdf");
         }
+
+        [Test]
+        public void KendoTreeView_CheckBoxes()
+        {
+            var control = page.WithCheckboxes;
+
+            control.Descendants[x => x.Text == "March.pdf"].Check();
+            control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeTrue();
+            control.Descendants[x => x.Text == "March.pdf"].Uncheck();
+            control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeFalse();
+
+            control[0].Collapse();
+
+            var folderItem = control[0][0];
+
+            foreach (var item in folderItem.Children)
+                item.IsChecked.Should.BeFalse();
+
+            folderItem.Check();
+            folderItem.IsChecked.Should.BeTrue();
+            folderItem.IsExpanded.Should.BeTrue();
+
+            foreach (var item in folderItem.Children)
+                item.IsChecked.Should.BeTrue();
+        }
     }
 }

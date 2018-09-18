@@ -10,5 +10,8 @@
 
         [FindByIndex(1)]
         public KendoTreeView<_> SlowAnimating { get; private set; }
+
+        [FindById]
+        public KendoTreeView<_> WithCheckboxes { get; private set; }
     }
 }

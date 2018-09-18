@@ -7,7 +7,7 @@ namespace Atata.KendoUI
     [ControlDefinition("li", ContainingClass = "k-item", ComponentTypeName = "item", Visibility = Visibility.Any)]
     [FindSettings(OuterXPath = "./ul/", TargetName = nameof(Children))]
     [FindSettings(OuterXPath = ".//", TargetName = nameof(Descendants))]
-    [FindSettings(OuterXPath = "./*[1]/", Visibility = Visibility.Any)]
+    [FindSettings(OuterXPath = "./*[1]//", Visibility = Visibility.Any)]
     public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
         where TItem : KendoTreeViewItem<TItem, TOwner>
         where TOwner : PageObject<TOwner>
@@ -35,6 +35,13 @@ namespace Atata.KendoUI
         /// </summary>
         protected RetryOptions CollapseAnimationWaitingOptions { get; set; } = DefaultAnimationWaitingOptions;
 
+        [FindFirst]
+        protected CheckBox<TOwner> CheckBox { get; private set; }
+
+        [FindByClass("k-checkbox-wrapper")]
+        [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
+        protected Control<TOwner> CheckBoxWrapper { get; private set; }
+
         [FindByClass("k-in")]
         [ContentSource(ContentSource.TextContent)]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
@@ -45,10 +52,13 @@ namespace Atata.KendoUI
         public Control<TOwner> ToggleIcon { get; protected set; }
 
         [FindByClass("k-group", OuterXPath = null)]
-        public Control<TOwner> ChildrenGroup { get; private set; }
+        protected Control<TOwner> ChildrenGroup { get; private set; }
 
         public DataProvider<bool, TOwner> IsExpanded =>
             GetOrCreateDataProvider("expanded state", GetIsExpanded);
+
+        public DataProvider<bool, TOwner> IsChecked =>
+            GetOrCreateDataProvider("checked state", GetIsChecked);
 
         public DataProvider<bool, TOwner> IsSelected =>
             GetOrCreateDataProvider("selected state", GetIsSelected);
@@ -59,6 +69,11 @@ namespace Atata.KendoUI
         protected virtual bool GetIsExpanded()
         {
             return ToggleIcon.Attributes.Class.Value.Contains(KendoClass.Icon.Collapse);
+        }
+
+        protected virtual bool GetIsChecked()
+        {
+            return CheckBox.IsChecked;
         }
 
         protected virtual bool GetIsSelected()
@@ -155,6 +170,22 @@ namespace Atata.KendoUI
             return transitionDuration == null
                 || !decimal.TryParse(transitionDuration.TrimEnd('m', 's'), out decimal transitionTime)
                 || transitionTime == 0;
+        }
+
+        public TOwner Check()
+        {
+            if (!IsChecked)
+                CheckBoxWrapper.Click();
+
+            return Owner;
+        }
+
+        public TOwner Uncheck()
+        {
+            if (IsChecked)
+                CheckBoxWrapper.Click();
+
+            return Owner;
         }
     }
 }
