@@ -34,12 +34,4 @@
     <ProjectReference Include="..\Atata.KendoUI\Atata.KendoUI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Configuration" />
-  </ItemGroup>
-
 </Project>

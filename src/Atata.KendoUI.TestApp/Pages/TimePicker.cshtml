@@ -1,0 +1,26 @@
+﻿@page
+@{
+    ViewBag.Title = "TimePicker";
+}
+<label for="regular">Regular</label>
+<input id="regular" />
+
+<label>
+    Disabled
+    <input id="disabled" value="10:45 AM" />
+</label>
+
+<label>
+    Read Only
+    <input id="readonly" value="5:15 PM" />
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoTimePicker();
+
+        $('#disabled').kendoTimePicker().data('kendoTimePicker').enable(false);
+
+        $('#readonly').kendoTimePicker().data('kendoTimePicker').readonly();
+    });
+</script>

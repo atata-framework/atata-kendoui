@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    [Url("TimePicker.html")]
+    [Url("timepicker")]
     public class TimePickerPage : Page<_>
     {
         public KendoTimePicker<_> Regular { get; private set; }

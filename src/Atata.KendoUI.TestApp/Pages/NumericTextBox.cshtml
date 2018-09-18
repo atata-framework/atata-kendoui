@@ -1,0 +1,28 @@
+﻿@page
+@{
+    ViewBag.Title = "NumericTextBox";
+}
+<label for="regular">Regular</label>
+<input id="regular" />
+<label>
+    Disabled
+    <input id="disabled" value="25.75" />
+</label>
+<label>
+    Read Only
+    <input id="readonly" value="0.15" />
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoNumericTextBox({
+            format: 'c2'
+        });
+
+        $('#disabled').kendoNumericTextBox().data('kendoNumericTextBox').enable(false);
+
+        $('#readonly').kendoNumericTextBox({
+            format: 'p0'
+        }).data('kendoNumericTextBox').readonly();
+    });
+</script>

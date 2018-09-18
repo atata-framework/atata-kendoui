@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    [Url("NumericTextBox.html")]
+    [Url("numerictextbox")]
     public class NumericTextBoxPage : Page<_>
     {
         public KendoNumericTextBox<_> Regular { get; private set; }

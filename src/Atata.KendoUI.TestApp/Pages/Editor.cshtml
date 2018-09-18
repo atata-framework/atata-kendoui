@@ -1,0 +1,16 @@
+﻿@page
+@{
+    ViewBag.Title = "Editor";
+}
+<textarea id="editor" rows="10" cols="30" style="height:440px" aria-label="editor"></textarea>
+
+<script>
+    $(function () {
+        $("#editor").kendoEditor({
+            resizable: {
+                content: true,
+                toolbar: true
+            }
+        });
+    });
+</script>

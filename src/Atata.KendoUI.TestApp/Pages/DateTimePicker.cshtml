@@ -1,0 +1,24 @@
+﻿@page
+@{
+    ViewBag.Title = "DateTimePicker";
+}
+<label for="regular">Regular</label>
+<input id="regular" />
+<label>
+    Disabled
+    <input id="disabled" value="10/10/2000 12:00 AM" />
+</label>
+<label>
+    Read Only
+    <input id="readonly" value="7/20/2005 5:45 PM" />
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoDateTimePicker();
+
+        $('#disabled').kendoDateTimePicker().data('kendoDateTimePicker').enable(false);
+
+        $('#readonly').kendoDateTimePicker().data('kendoDateTimePicker').readonly();
+    });
+</script>

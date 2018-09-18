@@ -1,0 +1,36 @@
+﻿@page
+@{
+    ViewBag.Title = "MultiSelect";
+}
+<label for="regular">Regular</label>
+<select id="regular" multiple>
+    <option>Item 1</option>
+    <option>Item 2</option>
+    <option>Item 3</option>
+    <option>Item 4</option>
+    <option>Item 5</option>
+</select>
+<label>
+    Disabled
+    <select id="disabled" multiple>
+        <option selected>Item 1</option>
+        <option>Item 2</option>
+    </select>
+</label>
+<label>
+    Read Only
+    <select id="readonly" multiple>
+        <option>Item 1</option>
+        <option selected>Item 2</option>
+    </select>
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoMultiSelect();
+
+        $('#disabled').kendoMultiSelect().data('kendoMultiSelect').enable(false);
+
+        $('#readonly').kendoMultiSelect().data('kendoMultiSelect').readonly();
+    });
+</script>

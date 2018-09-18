@@ -2,7 +2,7 @@
 {
     using _ = CheckBoxPage;
 
-    [Url("CheckBox.html")]
+    [Url("checkbox")]
     public class CheckBoxPage : Page<_>
     {
         [FindById]

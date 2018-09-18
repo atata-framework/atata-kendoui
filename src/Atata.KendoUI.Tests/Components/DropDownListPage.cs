@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    [Url("DropDownList.html")]
+    [Url("dropdownlist")]
     public class DropDownListPage : Page<_>
     {
         public enum ItemValue

@@ -2,7 +2,7 @@
 {
     using _ = SwitchPage;
 
-    [Url("Switch.html")]
+    [Url("switch")]
     public class SwitchPage : Page<_>
     {
         public KendoSwitch<_> Regular { get; private set; }

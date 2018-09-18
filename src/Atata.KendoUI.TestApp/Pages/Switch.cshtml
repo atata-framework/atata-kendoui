@@ -1,0 +1,24 @@
+﻿@page
+@{
+    ViewBag.Title = "Switch";
+}
+<label for="regular">Regular</label>
+<input type="checkbox" id="regular" />
+
+<label>
+    Disabled
+    <input type="checkbox" id="disabled" checked />
+</label>
+
+<label for="finds-by-label">Finds by Label</label>
+<input type="checkbox" id="finds-by-label" />
+
+<script>
+    $(function () {
+        $('#regular').kendoMobileSwitch();
+
+        $('#disabled').kendoMobileSwitch().data('kendoMobileSwitch').enable(false);
+
+        $('#finds-by-label').kendoMobileSwitch();
+    });
+</script>

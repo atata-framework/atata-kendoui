@@ -1,0 +1,27 @@
+﻿@page
+@{
+    ViewBag.Title = "ComboBox";
+}
+<label for="regular">Regular</label>
+<select id="regular">
+    <option>Item 1</option>
+    <option>Item 2</option>
+</select>
+<label>
+    Disabled
+    <input id="disabled" value="Item 1" />
+</label>
+<label>
+    Read Only
+    <input id="readonly" value="Item 2" />
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoComboBox();
+
+        $('#disabled').kendoComboBox().data('kendoComboBox').enable(false);
+
+        $('#readonly').kendoComboBox().data('kendoComboBox').readonly();
+    });
+</script>

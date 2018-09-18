@@ -2,7 +2,7 @@
 {
     using _ = EditorPage;
 
-    [Url("Editor.html")]
+    [Url("editor")]
     public class EditorPage : Page<_>
     {
         [FindFirst]

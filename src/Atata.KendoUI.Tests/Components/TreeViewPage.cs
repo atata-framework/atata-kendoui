@@ -2,7 +2,7 @@
 {
     using _ = TreeViewPage;
 
-    [Url("TreeView.html")]
+    [Url("treeview")]
     public class TreeViewPage : Page<_>
     {
         [FindByIndex(0)]

@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    [Url("ComboBox.html")]
+    [Url("combobox")]
     public class ComboBoxPage : Page<_>
     {
         public enum ItemValue

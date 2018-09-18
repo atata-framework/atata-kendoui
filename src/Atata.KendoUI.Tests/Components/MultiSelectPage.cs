@@ -2,7 +2,7 @@
 
 namespace Atata.KendoUI.Tests
 {
-    [Url("MultiSelect.html")]
+    [Url("multiselect")]
     public class MultiSelectPage : Page<_>
     {
         public KendoMultiSelect<_> Regular { get; private set; }

@@ -2,7 +2,7 @@
 {
     using _ = RadioButtonPage;
 
-    [Url("RadioButton.html")]
+    [Url("radiobutton")]
     public class RadioButtonPage : Page<_>
     {
         [FindById]
