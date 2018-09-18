@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
@@ -10,6 +12,29 @@ namespace Atata.KendoUI
         where TItem : KendoTreeViewItem<TItem, TOwner>
         where TOwner : PageObject<TOwner>
     {
+        /// <summary>
+        /// Gets the default animation waiting options.
+        /// Timeout is 5 seconds.
+        /// Interval is 0.1 seconds.
+        /// </summary>
+        public static RetryOptions DefaultAnimationWaitingOptions { get; } = new RetryOptions
+        {
+            Interval = TimeSpan.FromSeconds(.1),
+            Timeout = TimeSpan.FromSeconds(7)
+        };
+
+        /// <summary>
+        /// Gets or sets the waiting options of expand animation.
+        /// Uses <see cref="DefaultAnimationWaitingOptions"/> as default value.
+        /// </summary>
+        protected RetryOptions ExpandAnimationWaitingOptions { get; set; } = DefaultAnimationWaitingOptions;
+
+        /// <summary>
+        /// Gets or sets the waiting options of collapse animation.
+        /// Uses <see cref="DefaultAnimationWaitingOptions"/> as default value.
+        /// </summary>
+        protected RetryOptions CollapseAnimationWaitingOptions { get; set; } = DefaultAnimationWaitingOptions;
+
         [FindByClass("k-in")]
         [ContentSource(ContentSource.TextContent)]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
@@ -74,7 +99,7 @@ namespace Atata.KendoUI
         public TOwner Expand()
         {
             if (!IsExpanded)
-                Toggle();
+                OnToggle(true);
 
             return Owner;
         }
@@ -82,20 +107,54 @@ namespace Atata.KendoUI
         public TOwner Collapse()
         {
             if (IsExpanded)
-                Toggle();
+                OnToggle(false);
 
             return Owner;
         }
 
         public TOwner Toggle()
         {
-            return ToggleIcon.Click();
+            bool expand = !IsExpanded;
+
+            OnToggle(expand);
+
+            return Owner;
+        }
+
+        protected virtual void OnToggle(bool expand)
+        {
+            ToggleIcon.Click();
+
+            if (expand)
+                WaitForToggleAnimationEnd("expand", ExpandAnimationWaitingOptions);
+            else
+                WaitForToggleAnimationEnd("collapse", CollapseAnimationWaitingOptions);
         }
 
         protected void EnsureThatVisible()
         {
             if (!IsVisible)
                 Parent.Expand();
+        }
+
+        protected void WaitForToggleAnimationEnd(string animationName, RetryOptions waitingOptions)
+        {
+            Log.Start($"Wait for {animationName} animation completion", LogLevel.Trace);
+
+            ChildrenGroup.Scope.Try().Until(
+                IsNoTransition,
+                waitingOptions);
+
+            Log.EndSection();
+        }
+
+        private bool IsNoTransition(IWebElement element)
+        {
+            string transitionDuration = element.GetCssValue("transitionDuration");
+
+            return transitionDuration == null
+                || !decimal.TryParse(transitionDuration.TrimEnd('m', 's'), out decimal transitionTime)
+                || transitionTime == 0;
         }
     }
 }

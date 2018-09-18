@@ -39,6 +39,19 @@ namespace Atata.KendoUI.Tests
         {
             var control = page.Regular;
 
+            TestToggle(control);
+        }
+
+        [Test]
+        public void KendoTreeView_Toggle_SlowAnimation()
+        {
+            var control = page.SlowAnimating;
+
+            TestToggle(control);
+        }
+
+        private static void TestToggle(KendoTreeView<TreeViewPage> control)
+        {
             control[0][0].Collapse();
             control[0][1][0].Collapse();
             control[0][1].Collapse();

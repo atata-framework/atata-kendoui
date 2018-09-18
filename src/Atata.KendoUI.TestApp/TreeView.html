@@ -12,7 +12,7 @@
     <div class="k-content">
         <h1>Regular</h1>
 
-        <ul id="treeview">
+        <ul id="regular">
             <li data-expanded="true">
                 <span class="k-sprite folder"></span>
                 My Web Site
@@ -48,12 +48,25 @@
 
         <script>
             $(document).ready(function () {
-                $("#treeview").kendoTreeView();
+                $('#regular').clone().appendTo('.k-content').prop('id', 'slow-animating');
+
+                $('#regular').kendoTreeView();
+
+                $('#slow-animating').kendoTreeView({
+                    animation: {
+                        expand: {
+                            duration: 4000
+                        },
+                        collapse: {
+                            duration: 2000
+                        }
+                    }
+                });
             });
         </script>
 
         <style>
-            #treeview .k-sprite {
+            .k-treeview .k-sprite {
                 background-image: url("./content/images/coloricons-sprite.png");
             }
 
