@@ -64,5 +64,21 @@ namespace Atata.KendoUI.Tests
             control.Descendants[x => x.Text == "prices.pdf"].IsFocused.Should.BeTrue();
             control.Descendants[x => x.Text == "prices.pdf"].Parent.IsExpanded.Should.BeTrue();
         }
+
+        [Test]
+        public void KendoTreeView_DragAndDrop()
+        {
+            var control = page.Regular;
+
+            control.Descendants[x => x.Text == "prices.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
+
+            control.Descendants[x => x.Text == "pdf"].Children.SelectData(x => x.Text).Should.EqualSequence("brochure.pdf");
+            control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf");
+
+            control.Descendants[x => x.Text == "brochure.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
+
+            control.Descendants[x => x.Text == "pdf"].Children.Should.BeEmpty();
+            control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf", "brochure.pdf");
+        }
     }
 }

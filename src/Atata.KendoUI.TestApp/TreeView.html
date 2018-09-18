@@ -50,7 +50,9 @@
             $(document).ready(function () {
                 $('#regular').clone().appendTo('.k-content').prop('id', 'slow-animating');
 
-                $('#regular').kendoTreeView();
+                $('#regular').kendoTreeView({
+                    dragAndDrop: true
+                });
 
                 $('#slow-animating').kendoTreeView({
                     animation: {
