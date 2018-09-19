@@ -7,8 +7,10 @@ namespace Atata.KendoUI.Tests
     {
         public KendoMultiSelect<_> Regular { get; private set; }
 
+        [FindByIndex(1)]
         public KendoMultiSelect<_> Disabled { get; private set; }
 
+        [FindByIndex(2)]
         public KendoMultiSelect<_> ReadOnly { get; private set; }
     }
 }
