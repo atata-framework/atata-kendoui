@@ -14,7 +14,7 @@ namespace Atata.KendoUI.Tests
 
         public KendoDropDownList<_> Regular { get; private set; }
 
-        public KendoDropDownList<_> SlowClosing { get; private set; }
+        public KendoDropDownList<_> SlowAnimating { get; private set; }
 
         [Term(TermMatch.StartsWith)]
         public KendoDropDownList<_> Disabled { get; private set; }

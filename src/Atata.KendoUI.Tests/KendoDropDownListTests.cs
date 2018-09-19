@@ -58,13 +58,13 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        public void KendoDropDownList_SlowClosing()
+        public void KendoDropDownList_SlowAnimation()
         {
             page.
                 EnableAll().
-                SlowClosing.Set("Item 5").
+                SlowAnimating.Set("Item 5").
                 Disabled.Set("Grey").
-                SlowClosing.Should.Equal("Item 5").
+                SlowAnimating.Should.Equal("Item 5").
                 Disabled.Should.Equal("Grey");
         }
     }

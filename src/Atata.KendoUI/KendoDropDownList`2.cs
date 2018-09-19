@@ -14,6 +14,18 @@ namespace Atata.KendoUI
             "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
             "/li";
 
+        /// <summary>
+        /// Gets or sets the waiting options of open animation.
+        /// Uses <see cref="KendoPopup{TOwner}.DefaultAnimationWaitingOptions"/> as default value.
+        /// </summary>
+        protected RetryOptions OpenAnimationWaitingOptions { get; set; } = KendoPopup<TOwner>.DefaultAnimationWaitingOptions;
+
+        /// <summary>
+        /// Gets or sets the waiting options of close animation.
+        /// Uses <see cref="KendoPopup{TOwner}.DefaultAnimationWaitingOptions"/> as default value.
+        /// </summary>
+        protected RetryOptions CloseAnimationWaitingOptions { get; set; } = KendoPopup<TOwner>.DefaultAnimationWaitingOptions;
+
         [FindByClass("k-dropdown-wrap")]
         [TraceLog]
         protected Control<TOwner> WrapControl { get; private set; }
@@ -21,8 +33,12 @@ namespace Atata.KendoUI
         [FindByClass("k-select")]
         [Name("Drop-Down")]
         [TraceLog]
-        [Wait(0.5)]
         protected Control<TOwner> DropDownButton { get; private set; }
+
+        [FindFirst(ScopeSource = ScopeSource.Page)]
+        [Name("Drop-Down")]
+        [TraceLog]
+        protected KendoPopup<TOwner> Popup { get; private set; }
 
         protected string ValueXPath =>
             Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
@@ -42,8 +58,12 @@ namespace Atata.KendoUI
 
             DropDownButton.Click();
 
+            Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
+
             GetDropDownOption(valueAsString).
                 Click();
+
+            Popup.WaitUntilClosed(CloseAnimationWaitingOptions);
         }
 
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
