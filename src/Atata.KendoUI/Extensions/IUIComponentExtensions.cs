@@ -3,14 +3,14 @@ using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
-    internal static class UIComponentExtensions
+    internal static class IUIComponentExtensions
     {
-        internal static void WaitForCssTransitionEnd<TOwner>(this UIComponent<TOwner> component, string transitionName, RetryOptions waitingOptions)
+        internal static void WaitForCssTransitionEnd<TOwner>(this IUIComponent<TOwner> component, string transitionName, RetryOptions waitingOptions)
             where TOwner : PageObject<TOwner>
         {
             if (waitingOptions?.Timeout > TimeSpan.Zero)
             {
-                AtataContext.Current.Log.Start($"Wait for {transitionName} CSS transition completion", LogLevel.Trace);
+                AtataContext.Current.Log.Start($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace);
 
                 component.Scope.Try().Until(IsNoCssTransition, waitingOptions);
 
