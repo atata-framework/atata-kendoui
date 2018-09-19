@@ -20,7 +20,7 @@ namespace Atata.KendoUI
         public static RetryOptions DefaultAnimationWaitingOptions { get; } = new RetryOptions
         {
             Interval = TimeSpan.FromSeconds(.1),
-            Timeout = TimeSpan.FromSeconds(7)
+            Timeout = TimeSpan.FromSeconds(5)
         };
 
         /// <summary>
