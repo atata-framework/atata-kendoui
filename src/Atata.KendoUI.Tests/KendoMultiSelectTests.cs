@@ -39,5 +39,13 @@ namespace Atata.KendoUI.Tests
             control.Should.BeEnabled();
             control.IsReadOnly.Should.BeTrue();
         }
+
+        [Test]
+        public void KendoMultiSelect_SlowAnimation()
+        {
+            page.
+                SlowAnimating.Add("Item 5").
+                Regular.Add("Item 3");
+        }
     }
 }

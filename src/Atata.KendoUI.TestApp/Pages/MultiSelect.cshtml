@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = "MultiSelect";
 }
+<label for="slow-animating">Slow Animating</label>
+<select id="slow-animating" multiple>
+    <option>Item 1</option>
+    <option>Item 2</option>
+    <option>Item 3</option>
+    <option>Item 4</option>
+    <option>Item 5</option>
+</select>
 <label for="regular">Regular</label>
 <select id="regular" multiple>
     <option>Item 1</option>
@@ -27,6 +35,17 @@
 
 <script>
     $(function () {
+        $('#slow-animating').kendoMultiSelect({
+            animation: {
+                open: {
+                    duration: 3000
+                },
+                close: {
+                    duration: 3000
+                }
+            }
+        });
+
         $('#regular').kendoMultiSelect();
 
         $('#disabled').kendoMultiSelect().data('kendoMultiSelect').enable(false);
