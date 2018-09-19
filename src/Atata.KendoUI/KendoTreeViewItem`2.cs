@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
@@ -157,35 +156,15 @@ namespace Atata.KendoUI
             ToggleIcon.Click();
 
             if (expand)
-                WaitForToggleAnimationEnd("expand", ExpandAnimationWaitingOptions);
+                ChildrenGroup.WaitForCssTransitionEnd("expand", ExpandAnimationWaitingOptions);
             else
-                WaitForToggleAnimationEnd("collapse", CollapseAnimationWaitingOptions);
+                ChildrenGroup.WaitForCssTransitionEnd("collapse", CollapseAnimationWaitingOptions);
         }
 
         protected void EnsureThatVisible()
         {
             if (!IsVisible)
                 Parent.Expand();
-        }
-
-        protected void WaitForToggleAnimationEnd(string animationName, RetryOptions waitingOptions)
-        {
-            Log.Start($"Wait for {animationName} animation completion", LogLevel.Trace);
-
-            ChildrenGroup.Scope.Try().Until(
-                IsNoTransition,
-                waitingOptions);
-
-            Log.EndSection();
-        }
-
-        private bool IsNoTransition(IWebElement element)
-        {
-            string transitionDuration = element.GetCssValue("transitionDuration");
-
-            return transitionDuration == null
-                || !decimal.TryParse(transitionDuration.TrimEnd('m', 's'), out decimal transitionTime)
-                || transitionTime == 0;
         }
 
         public TOwner Check()
