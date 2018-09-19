@@ -1,10 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using System.Linq;
+using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-multiselect", ComponentTypeName = "multi-select")]
     [ControlFinding(FindTermBy.Label)]
-    [IdXPathForLabel("[ul[id='{0}_taglist']]")]
+    [IdXPathForLabel("[.//ul[@id='{0}_taglist']]")]
     [ValueXPath("span[1]")]
     public class KendoMultiSelect<TOwner> : Control<TOwner>
         where TOwner : PageObject<TOwner>
@@ -13,6 +14,13 @@ namespace Atata.KendoUI
             ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
             "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
             "/li";
+
+        /// <summary>
+        /// Gets the <see cref="DataProvider{TData, TOwner}"/> instance for the value indicating whether the control is read-only.
+        /// By default checks "readonly" attribute of nested input element.
+        /// Override <see cref="GetIsReadOnly"/> method to change the behavior.
+        /// </summary>
+        public DataProvider<bool, TOwner> IsReadOnly => GetOrCreateDataProvider("read-only", GetIsReadOnly);
 
         [FindFirst]
         [TraceLog]
@@ -54,6 +62,16 @@ namespace Atata.KendoUI
                 By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
                 DropDownOption(value).
                 With(searchOptions));
+        }
+
+        protected virtual bool GetIsReadOnly()
+        {
+            return AssociatedInput.IsReadOnly;
+        }
+
+        protected override bool GetIsEnabled()
+        {
+            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
         }
     }
 }
