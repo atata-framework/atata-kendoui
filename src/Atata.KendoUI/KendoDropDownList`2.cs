@@ -48,7 +48,7 @@ namespace Atata.KendoUI
 
         protected override T GetValue()
         {
-            string value = Scope.Get(By.XPath(".//span[@class='k-input']{0}").FormatWith(ValueXPath)).Text.Trim();
+            string value = Scope.Get(By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}").FormatWith(ValueXPath)).Text.Trim();
             return ConvertStringToValue(value);
         }
 
