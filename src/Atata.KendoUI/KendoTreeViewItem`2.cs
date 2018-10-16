@@ -38,7 +38,7 @@ namespace Atata.KendoUI
         [FindFirst]
         protected CheckBox<TOwner> CheckBox { get; private set; }
 
-        [FindByClass("k-checkbox-wrapper")]
+        [FindByClass("k-checkbox-wrapper", "k-checkbox")]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
         protected Control<TOwner> CheckBoxWrapper { get; private set; }
 
