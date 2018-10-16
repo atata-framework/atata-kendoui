@@ -7,7 +7,7 @@ namespace Atata.KendoUI
     [ControlDefinition("li", ContainingClass = "k-item", ComponentTypeName = "item", Visibility = Visibility.Any)]
     [FindSettings(OuterXPath = "./ul/", TargetName = nameof(Children))]
     [FindSettings(OuterXPath = ".//", TargetName = nameof(Descendants))]
-    [FindSettings(OuterXPath = "./*[1]//", Visibility = Visibility.Any)]
+    [FindSettings(OuterXPath = "./*[1]//", Visibility = Visibility.Any, TargetAnyType = true)]
     public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
         where TItem : KendoTreeViewItem<TItem, TOwner>
         where TOwner : PageObject<TOwner>
@@ -74,7 +74,7 @@ namespace Atata.KendoUI
             GetOrCreateDataProvider("focused state", GetIsFocused);
 
         protected string TextXPath =>
-            Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
+            Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
         protected virtual IEnumerable<Attribute> GetTextAttributes()
         {

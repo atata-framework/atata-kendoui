@@ -41,10 +41,10 @@ namespace Atata.KendoUI
         protected KendoPopup<TOwner> Popup { get; private set; }
 
         protected string ValueXPath =>
-            Metadata.Get<ValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
+            Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
         protected string ItemValueXPath =>
-            Metadata.Get<ItemValueXPathAttribute>(AttributeLevels.DeclaredAndComponent)?.XPath;
+            Metadata.Get<ItemValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
         protected override T GetValue()
         {
