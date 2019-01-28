@@ -14,10 +14,13 @@ namespace Atata.KendoUI.Tests
                 UseChrome().
                     WithArguments("start-maximized", "disable-infobars", "disable-extensions").
                 UseBaseUrl(BaseUrl).
+                UseCulture("en-US").
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
+                AddNLogLogging().
+                AddScreenshotFileSaving().
                 LogNUnitError().
-                UseCulture("en-US").
+                TakeScreenshotOnNUnitError().
                 Build();
 
             OnSetUp();
