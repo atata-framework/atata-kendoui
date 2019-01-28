@@ -7,12 +7,23 @@ variables:
   
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Build Solution'
   inputs:
     projects: '**\*.sln'
     arguments: '-c $(buildConfiguration) /p:RunCodeAnalysis=true /warnaserror'
 
 - task: VSTest@2
+  displayName: 'Run Tests'
   inputs:
     testAssemblyVer2: |
       **\*.Tests*.dll
       !**\obj\**
+    runInParallel: true
+    runTestsInIsolation: true
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish Test Logs'
+  inputs:
+    artifactName: 'Test Logs'
+    targetPath: src/Atata.KendoUI.Tests/bin/$(buildConfiguration)/net45/Logs
+  condition: succeededOrFailed()
