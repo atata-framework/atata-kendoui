@@ -18,6 +18,10 @@
             public Text<_> Category { get; private set; }
 
             public Text<_> AirConditioner { get; private set; }
+
+            public DataProvider<bool?, _> HasAirConditioner => GetOrCreateDataProvider<bool?>(
+                "has air conditioner",
+                () => AirConditioner == "Yes");
         }
     }
 }
