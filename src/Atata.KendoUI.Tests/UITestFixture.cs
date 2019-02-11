@@ -13,6 +13,7 @@ namespace Atata.KendoUI.Tests
             AtataContext.Configure().
                 UseChrome().
                     WithArguments("start-maximized", "disable-infobars", "disable-extensions").
+                    WithLocalDriverPath().
                 UseBaseUrl(BaseUrl).
                 UseCulture("en-US").
                 UseNUnitTestName().
