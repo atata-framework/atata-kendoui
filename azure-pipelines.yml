@@ -21,7 +21,7 @@ jobs:
     inputs:
       command: test
       projects: '**\*.Tests.csproj'
-      arguments: -f $(testsRunFramework) --no-build
+      arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build
   - task: PublishPipelineArtifact@0
     displayName: Publish test results
     inputs:
