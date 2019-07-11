@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
@@ -13,9 +13,10 @@ Works with Kendo UI components for jQuery, Angular, React and Vue.
 Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
 
 Atata.KendoUI on GitHub: https://github.com/atata-framework/atata-kendoui
-Atata Framework documentation: https://atata-framework.github.io</Description>
-    <Copyright>© Yevgeniy Shunevych 2018</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/atata-framework/atata-kendoui/master/LICENSE</PackageLicenseUrl>
+Atata Framework documentation: https://atata.io</Description>
+    <Copyright>© Yevgeniy Shunevych 2019</Copyright>
+    <PackageId>Atata.KendoUI</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/atata-framework/atata-kendoui</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/atata-framework/atata/master/logo_68.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
