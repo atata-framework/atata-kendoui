@@ -5,7 +5,7 @@
 [![Build Status](https://dev.azure.com/atata-framework/atata-kendoui/_apis/build/status/atata-kendoui-ci)](https://dev.azure.com/atata-framework/atata-kendoui/_build/latest?definitionId=16)
 [![Gitter](https://badges.gitter.im/atata-framework/atata-kendoui.svg)](https://gitter.im/atata-framework/atata-kendoui)
 [![Slack](https://img.shields.io/badge/join-Slack-green.svg?colorB=4EB898)](https://join.slack.com/t/atata-framework/shared_invite/enQtNDMzMzk3OTY5NjgzLTJlNzAyN2E3MzY3MDE4ZGE1ZDQzOGY2NThiYWExZTNkNDc5YjdlNzFjYmUwYjZmNDI2MDJlMGQ3ODNlMDljMzU)
-[![Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata-framework.github.io/)
+[![Atata Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata.io)
 [![Twitter](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://twitter.com/AtataFramework)
 
 C#/.NET package containing a set of [Atata](https://github.com/atata-framework/atata) components for automated web testing integration with [Kendo UI HTML Framework](http://www.telerik.com/kendo-ui).
