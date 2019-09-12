@@ -28,6 +28,7 @@ Namespace is `Atata.KendoUI`.
 - `KendoMultiSelect`
 - `KendoNumericTextBox`
 - `KendoTimePicker`
+- `KendoDatePicker`
 - `KendoDateTimePicker`
 - `KendoLink`
 - `KendoSwitch`
