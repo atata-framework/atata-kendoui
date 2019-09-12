@@ -38,7 +38,7 @@ Atata Framework documentation: https://atata.io</Description>
     <PackageReference Include="Atata" Version="1.2.0" />
     <PackageReference Include="Atata.WebDriverExtras" Version="1.2.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
