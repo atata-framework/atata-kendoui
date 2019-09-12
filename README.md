@@ -14,7 +14,7 @@ Works with Kendo UI components for jQuery, Angular, React and Vue.
 
 Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
 
-**[What's new in v1.0.0](https://atata-framework.github.io/blog/2018/10/16/atata.kendoui-1.0.0-released/)**
+**[What's new in v1.1.0](https://atata.io/blog/2019/09/12/atata.kendoui-1.1.0-released/)**
 
 ## Components
 
