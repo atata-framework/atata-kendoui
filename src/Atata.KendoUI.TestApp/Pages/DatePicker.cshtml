@@ -5,6 +5,15 @@
 <label for="regular">Regular</label>
 <input id="regular" />
 
+<label for="using-date-input">Using Date Input</label>
+<input id="using-date-input" />
+
+<label for="using-date-input-with-value">Using Date Input with Value</label>
+<input id="using-date-input-with-value" value="2.11.1988" />
+
+<br />
+<br />
+
 <label>
     Disabled
     <input id="disabled" value="10/10/2000" />
@@ -17,7 +26,19 @@
 
 <script>
     $(function () {
-        $('#regular').kendoDatePicker();
+        $('#regular').kendoDatePicker({
+            format: "MM/dd/yyyy"
+        });
+
+        $("#using-date-input").kendoDatePicker({
+            format: "dd-MM-yyyy",
+            dateInput: true
+        });
+
+        $("#using-date-input-with-value").kendoDatePicker({
+            format: "d.M.yyyy",
+            dateInput: true
+        });
 
         $('#disabled').kendoDatePicker().data('kendoDatePicker').enable(false);
 

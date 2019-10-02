@@ -20,6 +20,18 @@ namespace Atata.KendoUI
             return ConvertStringToValue(valueAsString);
         }
 
+        protected override DateTime? ConvertStringToValue(string value)
+        {
+            try
+            {
+                return base.ConvertStringToValue(value);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         protected override void SetValue(DateTime? value)
         {
             string valueAsString = ConvertValueToString(value);
