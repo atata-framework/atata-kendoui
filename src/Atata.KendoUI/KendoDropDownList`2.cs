@@ -58,7 +58,8 @@ namespace Atata.KendoUI
 
             DropDownButton.Click();
 
-            Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
+            if (Popup.IsPresent)
+                Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
 
             GetDropDownOption(valueAsString).
                 Click();
