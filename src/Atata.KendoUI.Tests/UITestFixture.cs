@@ -36,5 +36,27 @@ namespace Atata.KendoUI.Tests
         {
             AtataContext.Current.CleanUp();
         }
+
+        protected static SnippetPage GoToSnippetPage(KendoLibrary library)
+        {
+            string componentName = TestContext.CurrentContext.Test.MethodName;
+            string prefixToRemove = "Kendo";
+
+            if (componentName.StartsWith(prefixToRemove))
+                componentName = componentName.Remove(0, prefixToRemove.Length);
+
+            return GoToSnippetPage(library, componentName);
+        }
+
+        protected static SnippetPage GoToSnippetPage(KendoLibrary library, string componentName)
+        {
+            string url = $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io";
+            return GoToSnippetPage(url);
+        }
+
+        protected static SnippetPage GoToSnippetPage(string url)
+        {
+            return Go.To<SnippetPage>(url: url);
+        }
     }
 }

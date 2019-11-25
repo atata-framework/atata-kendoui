@@ -1,0 +1,28 @@
+﻿@page
+@{
+    ViewBag.Title = "DateInput";
+}
+<label for="regular">Regular</label>
+<input id="regular" />
+
+<label>
+    Disabled
+    <input id="disabled" value="10/10/2000" />
+</label>
+
+<label>
+    Read Only
+    <input id="readonly" value="7/20/2005" />
+</label>
+
+<script>
+    $(function () {
+        $('#regular').kendoDateInput({
+            format: "MM/dd/yyyy"
+        });
+
+        $('#disabled').kendoDateInput().data('kendoDateInput').enable(false);
+
+        $('#readonly').kendoDateInput().data('kendoDateInput').readonly();
+    });
+</script>
