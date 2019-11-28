@@ -57,7 +57,6 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        [Explicit]
         public void KendoDateInput_ReadOnly()
         {
             var control = GoToTestPage().ReadOnly;
@@ -75,6 +74,7 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
+        [Explicit]
         public void NgKendoDateInput()
         {
             var control = GoToSnippetPage("https://www.telerik.com/kendo-angular-ui/components/dateinputs/dateinput/").
