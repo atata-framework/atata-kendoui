@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 
 namespace Atata.KendoUI.Tests
 {
@@ -12,7 +14,7 @@ namespace Atata.KendoUI.Tests
         {
             AtataContext.Configure().
                 UseChrome().
-                    WithArguments("start-maximized", "disable-infobars", "disable-extensions").
+                    WithArguments(GetChromeArguments().ToArray()).
                     WithLocalDriverPath().
                 UseBaseUrl(BaseUrl).
                 UseCulture("en-US").
@@ -25,6 +27,17 @@ namespace Atata.KendoUI.Tests
                 Build();
 
             OnSetUp();
+        }
+
+        private static IEnumerable<string> GetChromeArguments()
+        {
+            yield return "start-maximized";
+            yield return "disable-extensions";
+
+            bool headless = TestContext.Parameters.Get("headless", false);
+
+            if (headless)
+                yield return "headless";
         }
 
         protected virtual void OnSetUp()

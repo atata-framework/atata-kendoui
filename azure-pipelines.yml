@@ -15,13 +15,21 @@ jobs:
       projects: '**\*.sln'
       arguments: -c $(buildConfiguration) /p:RunCodeAnalysis=true /warnaserror
   - task: DotNetCoreCLI@2
-    displayName: Run tests
+    displayName: Run tests non-headless
     timeoutInMinutes: 30
     continueOnError: true
     inputs:
       command: test
       projects: '**\*.Tests.csproj'
       arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build
+  - task: DotNetCoreCLI@2
+    displayName: Run tests headless
+    timeoutInMinutes: 30
+    continueOnError: true
+    inputs:
+      command: test
+      projects: '**\*.Tests.csproj'
+      arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build -s src/Headless.runsettings
   - task: PublishPipelineArtifact@1
     displayName: Publish test results
     inputs:
