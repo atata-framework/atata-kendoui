@@ -77,7 +77,7 @@ namespace Atata.KendoUI.Tests
         [Explicit]
         public void NgKendoDateInput()
         {
-            var control = GoToSnippetPage("https://www.telerik.com/kendo-angular-ui/components/dateinputs/dateinput/").
+            var control = GoToSnippetPage(KendoLibrary.Angular, "dateinputs/dateinput").
                 SwitchToFirstFrame().
                 Get<NgKendoDateInput<SnippetPage>>();
 
