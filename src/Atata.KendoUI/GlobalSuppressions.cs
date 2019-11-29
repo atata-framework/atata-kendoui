@@ -1,0 +1,2 @@
+﻿[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "<Pending>", Scope = "member", Target = "~P:Atata.KendoUI.KendoPopup`1.DefaultAnimationWaitingOptions")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "<Pending>", Scope = "member", Target = "~P:Atata.KendoUI.KendoTreeViewItem`2.DefaultAnimationWaitingOptions")]

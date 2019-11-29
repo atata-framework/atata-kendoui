@@ -38,6 +38,10 @@ Atata Framework documentation: https://atata.io</Description>
   <ItemGroup>
     <PackageReference Include="Atata" Version="1.4.0" />
     <PackageReference Include="Atata.WebDriverExtras" Version="1.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>All</PrivateAssets>

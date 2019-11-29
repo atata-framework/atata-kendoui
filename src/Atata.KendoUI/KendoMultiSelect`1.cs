@@ -10,7 +10,7 @@ namespace Atata.KendoUI
     public class KendoMultiSelect<TOwner> : Control<TOwner>
         where TOwner : PageObject<TOwner>
     {
-        private static readonly string DropDownListItemXPath =
+        private const string DropDownListItemXPath =
             ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
             "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
             "/li";
