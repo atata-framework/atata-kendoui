@@ -54,6 +54,11 @@ namespace Atata.KendoUI.Tests
             return GoToSnippetPage(url);
         }
 
+        protected static SnippetPage GoToSnippetPage(string url)
+        {
+            return Go.To<SnippetPage>(url: url);
+        }
+
         private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName)
         {
             switch (library)
@@ -69,11 +74,6 @@ namespace Atata.KendoUI.Tests
                 default:
                     return $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io";
             }
-        }
-
-        protected static SnippetPage GoToSnippetPage(string url)
-        {
-            return Go.To<SnippetPage>(url: url);
         }
     }
 }
