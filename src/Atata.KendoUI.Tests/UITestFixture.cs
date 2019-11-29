@@ -50,8 +50,25 @@ namespace Atata.KendoUI.Tests
 
         protected static SnippetPage GoToSnippetPage(KendoLibrary library, string componentName)
         {
-            string url = $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io";
+            string url = ResolveSnippetPageUrl(library, componentName);
             return GoToSnippetPage(url);
+        }
+
+        private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName)
+        {
+            switch (library)
+            {
+                case KendoLibrary.JQuery:
+                    return componentName.ToLowerInvariant();
+                case KendoLibrary.Angular:
+                    return $"https://www.telerik.com/kendo-angular-ui/components/{componentName.ToLowerInvariant()}";
+                case KendoLibrary.AspNetMvc:
+                    return $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}";
+                case KendoLibrary.AspNetCore:
+                    return $"https://demos.telerik.com/aspnet-core/{componentName.ToLowerInvariant()}";
+                default:
+                    return $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io";
+            }
         }
 
         protected static SnippetPage GoToSnippetPage(string url)

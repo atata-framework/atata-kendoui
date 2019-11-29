@@ -12,6 +12,7 @@ namespace Atata.KendoUI
         [FindFirst]
         [TraceLog]
         [Name("Associated")]
+        [ControlDefinition("input[not(@type) or (@type!='button' and @type!='submit' and @type!='reset')]", ComponentTypeName = "input")]
         protected Input<string, TOwner> AssociatedInput { get; private set; }
 
         protected override T GetValue()
@@ -25,13 +26,27 @@ namespace Atata.KendoUI
 
         protected override void SetValue(T value)
         {
+            EnsureFocused();
+
+            AssociatedInput.Scope.Clear();
+
+            EnsureFocused();
+
+            string valueAsString = ConvertValueToString(value);
+
+            string keysToSend = string.IsNullOrEmpty(valueAsString)
+                ? "0" + Keys.Backspace
+                : valueAsString;
+
+            AssociatedInput.Scope.SendKeys(keysToSend);
+        }
+
+        protected virtual void EnsureFocused()
+        {
             IWebElement formattedValueInput = Scope.Get(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
 
             if (formattedValueInput != null && formattedValueInput.Displayed)
                 formattedValueInput.Click();
-
-            string valueAsString = ConvertValueToString(value);
-            AssociatedInput.Set(valueAsString);
         }
 
         protected override bool GetIsReadOnly()

@@ -15,9 +15,17 @@ namespace Atata.KendoUI.Tests
 
             var control = Controls.Create<TControl>("Test", attributes);
 
-            control.WaitTo.Within(20).Exist();
+            control.WaitTo.Within(45).Exist();
 
             return control;
+        }
+
+        public TControl GetByIndex<TControl>(int index, params Attribute[] attributes)
+            where TControl : Control<_>
+        {
+            attributes = new[] { new FindByIndexAttribute(index) }.Concat(attributes).ToArray();
+
+            return Get<TControl>(attributes);
         }
 
         public _ SwitchToFirstFrame()

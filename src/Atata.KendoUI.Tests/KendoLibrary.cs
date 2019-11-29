@@ -5,6 +5,8 @@
         JQuery,
         Angular,
         React,
-        Vue
+        Vue,
+        AspNetMvc,
+        AspNetCore
     }
 }
