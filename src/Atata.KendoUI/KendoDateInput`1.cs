@@ -10,7 +10,7 @@ namespace Atata.KendoUI
     /// Handles any <c>input</c> element with <c>type="date"</c>, <c>type="text"</c> or without the defined <c>type</c> attribute
     /// and which has a parent element containing either class <c>k-dateinput</c> or <c>k-dateinput-wrap</c>.
     /// </summary>
-    /// <typeparam name="TOwner">The type of the owner.</typeparam>
+    /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
     [ControlDefinition("input[@type='text' or @type='date' or not(@type)][parent::*[contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput-wrap ')]]", ComponentTypeName = "date input")]
     [Format("d")]
     public class KendoDateInput<TOwner> : DateInput<TOwner>
