@@ -21,7 +21,7 @@ namespace Atata.KendoUI
                 ? AssociatedInput.Attributes["aria-valuenow"]
                 : AssociatedInput.Value;
 
-            return ConvertStringToValue(valueAsString);
+            return ConvertStringToValueUsingGetFormat(valueAsString);
         }
 
         protected override void SetValue(T value)
@@ -32,7 +32,7 @@ namespace Atata.KendoUI
 
             EnsureFocused();
 
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
             string keysToSend = string.IsNullOrEmpty(valueAsString)
                 ? "0" + Keys.Backspace
