@@ -1,7 +1,15 @@
 ﻿using System;
+using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
+    /// <summary>
+    /// Represents the Kendo UI date picker control.
+    /// Default search is performed by the label.
+    /// The default format is <c>"d"</c> (short date pattern, e.g. <c>6/15/2009</c>).
+    /// Handles any element with <c>k-datepicker</c> class.
+    /// </summary>
+    /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
     [ControlDefinition(ContainingClass = "k-datepicker", ComponentTypeName = "date picker")]
     [ControlFinding(FindTermBy.Label)]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
@@ -17,14 +25,14 @@ namespace Atata.KendoUI
         protected override DateTime? GetValue()
         {
             string valueAsString = AssociatedInput.Value;
-            return ConvertStringToValue(valueAsString);
+            return ConvertStringToValueUsingGetFormat(valueAsString);
         }
 
-        protected override DateTime? ConvertStringToValue(string value)
+        protected override DateTime? ConvertStringToValueUsingGetFormat(string value)
         {
             try
             {
-                return base.ConvertStringToValue(value);
+                return base.ConvertStringToValueUsingGetFormat(value);
             }
             catch
             {
@@ -34,8 +42,19 @@ namespace Atata.KendoUI
 
         protected override void SetValue(DateTime? value)
         {
-            string valueAsString = ConvertValueToString(value);
-            AssociatedInput.Set(valueAsString);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
+
+            IWebElement scope = AssociatedInput.Scope;
+
+            scope.Clear();
+
+            if (!string.IsNullOrEmpty(valueAsString))
+            {
+                scope.SendKeys(Keys.Home);
+
+                foreach (char item in valueAsString)
+                    scope.SendKeys(item.ToString());
+            }
         }
 
         protected override bool GetIsReadOnly()
