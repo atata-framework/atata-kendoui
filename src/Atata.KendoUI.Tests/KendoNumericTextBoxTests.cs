@@ -21,7 +21,7 @@ namespace Atata.KendoUI.Tests
         [TestCase(TestName = nameof(KendoNumericTextBox) + "(Angular)", Explicit = true)]
         public void KendoNumericTextBox_Angular()
         {
-            var control = GoToSnippetPage(KendoLibrary.Angular, "inputs/numerictextbox").
+            var control = GoToAngularDemoPage("inputs/numerictextbox").
                 SwitchToFirstFrame().
                 Get<KendoNumericTextBox<SnippetPage>>();
 

@@ -41,7 +41,7 @@ namespace Atata.KendoUI.Tests
         [Explicit]
         public void NgKendoDatePicker()
         {
-            var control = GoToSnippetPage(KendoLibrary.Angular, "dateinputs/datepicker").
+            var control = GoToAngularDemoPage("dateinputs/datepicker").
                 SwitchToFirstFrame().
                 Get<NgKendoDatePicker<SnippetPage>>();
 

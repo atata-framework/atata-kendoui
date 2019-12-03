@@ -4,30 +4,23 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoDropDownListTests : UITestFixture
     {
-        private DropDownListPage page;
-
-        protected override void OnSetUp()
+        private static DropDownListPage GoToTestPage()
         {
-            page = Go.To<DropDownListPage>();
+            return Go.To<DropDownListPage>();
         }
 
-        [Test]
-        public void KendoDropDownList()
+        [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue, KendoLibrary.Angular)]
+        public void KendoDropDownList(KendoLibrary library)
         {
-            var control = page.Regular;
+            var control = GoToSnippetPage(library).Get<KendoDropDownList<SnippetPage>>();
 
-            control.Should.BeEnabled();
-            control.Should.Not.BeReadOnly();
-            control.Set("Item 20");
-            control.Should.Equal("Item 20");
-            control.Set("Item 7");
-            control.Should.Equal("Item 7");
+            TestControl(control);
         }
 
         [Test]
         public void KendoDropDownList_Disabled()
         {
-            var control = page.Disabled;
+            var control = GoToTestPage().Disabled;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
@@ -37,7 +30,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoDropDownList_ReadOnly()
         {
-            var control = page.ReadOnly;
+            var control = GoToTestPage().ReadOnly;
 
             control.Should.BeEnabled();
             control.Should.BeReadOnly();
@@ -47,12 +40,12 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoDropDownList_Multiple()
         {
-            page.
+            GoToTestPage().
                 EnableAll().
-                Regular.Set("Item 19").
+                Regular.Set("X-Large").
                 Disabled.Set("Grey").
                 ReadOnly.Set(DropDownListPage.ItemValue.Black).
-                Regular.Should.Equal("Item 19").
+                Regular.Should.Equal("X-Large").
                 Disabled.Should.Equal("Grey").
                 ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
         }
@@ -60,12 +53,25 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoDropDownList_SlowAnimation()
         {
-            page.
+            GoToTestPage().
                 EnableAll().
                 SlowAnimating.Set("Item 5").
                 Disabled.Set("Grey").
                 SlowAnimating.Should.Equal("Item 5").
                 Disabled.Should.Equal("Grey");
+        }
+
+        private static void TestControl<TPage>(KendoDropDownList<TPage> control)
+            where TPage : PageObject<TPage>
+        {
+            control.Should.BeEnabled();
+            control.Should.Not.BeReadOnly();
+
+            control.Set("Large");
+            control.Should.Equal("Large");
+
+            control.Set("Small");
+            control.Should.Equal("Small");
         }
     }
 }

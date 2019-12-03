@@ -72,14 +72,18 @@ namespace Atata.KendoUI.Tests
             return Go.To<SnippetPage>(url: url);
         }
 
+        protected static SnippetPage GoToAngularDemoPage(string componentName)
+        {
+            string url = $"https://www.telerik.com/kendo-angular-ui/components/{componentName.ToLowerInvariant()}";
+            return GoToSnippetPage(url);
+        }
+
         private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName)
         {
             switch (library)
             {
                 case KendoLibrary.JQuery:
                     return componentName.ToLowerInvariant();
-                case KendoLibrary.Angular:
-                    return $"https://www.telerik.com/kendo-angular-ui/components/{componentName.ToLowerInvariant()}";
                 case KendoLibrary.AspNetMvc:
                     return $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}";
                 case KendoLibrary.AspNetCore:
