@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
@@ -16,14 +15,6 @@ namespace Atata.KendoUI
     public class NgKendoDateInput<TOwner> : KendoDateInput<TOwner>
         where TOwner : PageObject<TOwner>
     {
-        protected override void SetValue(DateTime? value)
-        {
-            if (value == null)
-                OnClear();
-            else
-                base.SetValue(value);
-        }
-
         protected override void OnClear()
         {
             Driver.Perform(x => x.KeyDown(Scope, Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete));

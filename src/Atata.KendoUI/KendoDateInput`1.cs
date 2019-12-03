@@ -30,18 +30,22 @@ namespace Atata.KendoUI
 
         protected override void SetValue(DateTime? value)
         {
-            string valueAsString = ConvertValueToStringUsingSetFormat(value);
-            IWebElement scope = Scope;
+            OnClear();
 
-            scope.Clear();
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
             if (!string.IsNullOrEmpty(valueAsString))
             {
-                scope.SendKeys(Keys.Home);
+                IWebElement scope = Scope;
 
                 foreach (char item in valueAsString)
                     scope.SendKeys(item.ToString());
             }
+        }
+
+        protected override void OnClear()
+        {
+            Scope.ClearWithHomeShiftEndDelKeys();
         }
     }
 }
