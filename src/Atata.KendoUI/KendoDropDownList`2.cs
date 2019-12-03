@@ -77,7 +77,7 @@ namespace Atata.KendoUI
 
         protected override bool GetIsReadOnly()
         {
-            return Scope.Exists(By.XPath(".//*[@readonly]").OfAnyVisibility().SafelyAtOnce());
+            return Scope.Exists(By.XPath(".//*[@readonly and @readonly!='false']").OfAnyVisibility().SafelyAtOnce());
         }
 
         protected override bool GetIsEnabled()
