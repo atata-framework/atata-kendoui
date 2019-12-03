@@ -23,7 +23,16 @@ namespace Atata.KendoUI
 
         private static bool HasNoCssTransition(IWebElement element)
         {
-            string transitionDuration = element.GetCssValue("transitionDuration");
+            string transitionDuration;
+
+            try
+            {
+                transitionDuration = element.GetCssValue("transitionDuration");
+            }
+            catch (StaleElementReferenceException)
+            {
+                return true;
+            }
 
             return transitionDuration == null
                 || !decimal.TryParse(transitionDuration.TrimEnd('m', 's'), out decimal transitionTime)
