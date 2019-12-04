@@ -30,19 +30,13 @@ namespace Atata.KendoUI
 
         protected override void SetValue(DateTime? value)
         {
-            ////Log.Screenshot("Before clear");
-
             OnClear();
-
-            ////Log.Screenshot("After clear");
 
             string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
             if (!string.IsNullOrEmpty(valueAsString))
             {
                 IWebElement scope = Scope;
-
-                ////Log.Screenshot("Before sending keys");
 
                 foreach (char key in valueAsString)
                 {
@@ -54,8 +48,6 @@ namespace Atata.KendoUI
                     if (!char.IsLetterOrDigit(key))
                         Owner.Wait(0.1);
                 }
-
-                ////Log.Screenshot("After sending keys");
             }
         }
 
