@@ -15,7 +15,8 @@ jobs:
       projects: '**\*.sln'
       arguments: -c $(buildConfiguration) /p:RunCodeAnalysis=true /warnaserror
   - task: DotNetCoreCLI@2
-    displayName: Run tests non-headless
+    displayName: Run tests visual
+    name: RunTestsVisual
     timeoutInMinutes: 10
     continueOnError: true
     inputs:
@@ -24,6 +25,7 @@ jobs:
       arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build
   - task: DotNetCoreCLI@2
     displayName: Run tests headless
+    name: RunTestsHeadless
     timeoutInMinutes: 10
     continueOnError: true
     inputs:

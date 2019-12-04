@@ -52,8 +52,16 @@ namespace Atata.KendoUI
             {
                 scope.SendKeys(Keys.Home);
 
-                foreach (char item in valueAsString)
-                    scope.SendKeys(item.ToString());
+                foreach (char key in valueAsString)
+                {
+                    if (!char.IsLetterOrDigit(key))
+                        Owner.Wait(0.1);
+
+                    scope.SendKeys(key.ToString());
+
+                    if (!char.IsLetterOrDigit(key))
+                        Owner.Wait(0.1);
+                }
             }
         }
 
