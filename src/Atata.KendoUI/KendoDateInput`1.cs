@@ -38,8 +38,16 @@ namespace Atata.KendoUI
             {
                 IWebElement scope = Scope;
 
-                foreach (char item in valueAsString)
-                    scope.SendKeys(item.ToString());
+                foreach (char key in valueAsString)
+                {
+                    if (!char.IsLetterOrDigit(key))
+                        Owner.Wait(0.1);
+
+                    scope.SendKeys(key.ToString());
+
+                    if (!char.IsLetterOrDigit(key))
+                        Owner.Wait(0.1);
+                }
             }
         }
 
