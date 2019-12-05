@@ -8,7 +8,7 @@
     <Product>Atata Framework</Product>
     <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
 
-Works with Kendo UI components for jQuery, Angular, React and Vue.
+Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
 Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
 

@@ -10,11 +10,11 @@
 
 C#/.NET package containing a set of [Atata](https://github.com/atata-framework/atata) components for automated web testing integration with [Kendo UI HTML Framework](http://www.telerik.com/kendo-ui).
 
-Works with Kendo UI components for jQuery, Angular, React and Vue.
+Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
 Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
 
-**[What's new in v1.1.0](https://atata.io/blog/2019/09/12/atata.kendoui-1.1.0-released/)**
+**[What's new in v1.2.0](https://atata.io/blog/2019/12/05/atata.kendoui-1.2.0-released/)**
 
 ## Components
 
@@ -29,6 +29,9 @@ Namespace is `Atata.KendoUI`.
 - `KendoNumericTextBox`
 - `KendoTimePicker`
 - `KendoDatePicker`
+  -  `NgKendoDatePicker` for Angular
+- `KendoDateInput`
+  - `NgKendoDateInput` for Angular
 - `KendoDateTimePicker`
 - `KendoLink`
 - `KendoSwitch`
@@ -36,6 +39,14 @@ Namespace is `Atata.KendoUI`.
 - `KendoRadioButton`
 - `KendoEditor`
 - `KendoPopup`
+
+## Feedback
+
+Any feedback, issues and feature requests are welcome.
+
+If you faced an issue please report it to [Atata.KendoUI Issues](https://github.com/atata-framework/atata-kendoui/issues),
+[ask a question on Stack Overflow](https://stackoverflow.com/questions/ask?tags=atata) using [atata](https://stackoverflow.com/questions/tagged/atata) tag
+or use another [Atata Contact](https://atata.io/contact/) way.
 
 ## License
 
