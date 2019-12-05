@@ -49,12 +49,12 @@ namespace Atata.KendoUI
         protected override T GetValue()
         {
             string value = Scope.Get(By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}").FormatWith(ValueXPath)).Text.Trim();
-            return ConvertStringToValue(value);
+            return ConvertStringToValueUsingGetFormat(value);
         }
 
         protected override void SetValue(T value)
         {
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
             DropDownButton.Click();
 

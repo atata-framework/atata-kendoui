@@ -14,12 +14,12 @@
         protected override T GetValue()
         {
             string valueAsString = AssociatedInput.Value;
-            return ConvertStringToValue(valueAsString);
+            return ConvertStringToValueUsingGetFormat(valueAsString);
         }
 
         protected override void SetValue(T value)
         {
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
             AssociatedInput.Set(valueAsString);
         }
 

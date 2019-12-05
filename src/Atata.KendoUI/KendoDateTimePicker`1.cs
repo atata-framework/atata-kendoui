@@ -17,12 +17,12 @@ namespace Atata.KendoUI
         protected override DateTime? GetValue()
         {
             string valueAsString = AssociatedInput.Value;
-            return ConvertStringToValue(valueAsString);
+            return ConvertStringToValueUsingGetFormat(valueAsString);
         }
 
         protected override void SetValue(DateTime? value)
         {
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
             AssociatedInput.Set(valueAsString);
         }
 

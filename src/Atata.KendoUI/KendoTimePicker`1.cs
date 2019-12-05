@@ -17,12 +17,12 @@ namespace Atata.KendoUI
         protected override TimeSpan? GetValue()
         {
             string valueAsString = AssociatedInput.Value;
-            return ConvertStringToValue(valueAsString);
+            return ConvertStringToValueUsingGetFormat(valueAsString);
         }
 
         protected override void SetValue(TimeSpan? value)
         {
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
             AssociatedInput.Set(valueAsString);
         }
 

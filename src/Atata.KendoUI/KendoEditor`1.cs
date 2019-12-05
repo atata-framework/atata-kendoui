@@ -13,12 +13,12 @@
         {
             string content = null;
             ContentFrame.DoWithin(x => content = x.Content);
-            return ConvertStringToValue(content);
+            return ConvertStringToValueUsingGetFormat(content);
         }
 
         protected override void SetValue(string value)
         {
-            string valueAsString = ConvertValueToString(value);
+            string valueAsString = ConvertValueToStringUsingSetFormat(value);
             ContentFrame.DoWithin(x => x.Scope.FillInWith(valueAsString));
         }
     }
