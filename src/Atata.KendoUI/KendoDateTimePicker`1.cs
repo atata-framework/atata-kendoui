@@ -3,7 +3,7 @@
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-datetimepicker", ComponentTypeName = "date/time picker")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("g")]
     public class KendoDateTimePicker<TOwner> : EditableField<DateTime?, TOwner>

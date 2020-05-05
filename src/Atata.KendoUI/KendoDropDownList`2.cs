@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-dropdown", ComponentTypeName = "drop-down list")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("@aria-owns='{0}_listbox'")]
     public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>

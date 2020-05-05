@@ -3,7 +3,7 @@
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-timepicker", ComponentTypeName = "time picker")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("t")]
     public class KendoTimePicker<TOwner> : EditableField<TimeSpan?, TOwner>

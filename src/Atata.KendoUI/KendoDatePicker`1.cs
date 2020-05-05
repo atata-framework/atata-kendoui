@@ -11,7 +11,7 @@ namespace Atata.KendoUI
     /// </summary>
     /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
     [ControlDefinition(ContainingClass = "k-datepicker", ComponentTypeName = "date picker")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("d")]
     public class KendoDatePicker<TOwner> : EditableField<DateTime?, TOwner>

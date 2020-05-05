@@ -4,7 +4,7 @@ using System.Linq;
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-switch", ComponentTypeName = "switch")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[input[@id='{0}']]")]
     public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwner>
         where TOwner : PageObject<TOwner>

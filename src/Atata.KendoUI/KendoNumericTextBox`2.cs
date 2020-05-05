@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[span/input[2][@id='{0}']]")]
     public class KendoNumericTextBox<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>

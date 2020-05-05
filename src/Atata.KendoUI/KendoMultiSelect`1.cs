@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-multiselect", ComponentTypeName = "multi-select")]
-    [ControlFinding(FindTermBy.Label)]
+    [FindByLabel]
     [IdXPathForLabel("[.//ul[@id='{0}_taglist']]")]
     [ValueXPath("span[1]")]
     public class KendoMultiSelect<TOwner> : Control<TOwner>
