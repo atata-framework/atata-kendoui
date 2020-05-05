@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Atata.KendoUI
 {
@@ -8,6 +9,22 @@ namespace Atata.KendoUI
     public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwner>
         where TOwner : PageObject<TOwner>
     {
+        /// <summary>
+        /// Gets the default animation waiting options.
+        /// Timeout is 5 seconds.
+        /// Interval is 0.1 seconds.
+        /// </summary>
+        public static RetryOptions DefaultAnimationWaitingOptions { get; } = new RetryOptions
+        {
+            Interval = TimeSpan.FromSeconds(.1),
+            Timeout = TimeSpan.FromSeconds(5)
+        };
+
+        [Name("Handle")]
+        [FindByClass("k-switch-handle")]
+        [TraceLog]
+        protected Control<TOwner> SwitchHandle { get; private set; }
+
         /// <summary>
         /// Gets the <see cref="DataProvider{TData, TOwner}" /> instance of the checked state value.
         /// </summary>
@@ -27,7 +44,11 @@ namespace Atata.KendoUI
         protected override void SetValue(bool value)
         {
             if (Value != value)
+            {
                 Scope.Click();
+
+                SwitchHandle.WaitForCssTransitionEnd("switch", DefaultAnimationWaitingOptions, SearchOptions.SafelyAtOnce());
+            }
         }
 
         /// <summary>
@@ -48,6 +69,15 @@ namespace Atata.KendoUI
         public TOwner Uncheck()
         {
             return Set(false);
+        }
+
+        /// <summary>
+        /// Toggles the state of the control.
+        /// </summary>
+        /// <returns>The owner page object.</returns>
+        public TOwner Toggle()
+        {
+            return Set(!Value);
         }
 
         protected override bool GetIsReadOnly()

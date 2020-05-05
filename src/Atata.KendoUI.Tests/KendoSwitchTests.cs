@@ -32,6 +32,12 @@ namespace Atata.KendoUI.Tests
             control.Check();
             control.Should.BeTrue();
             control.IsChecked.Should.BeTrue();
+
+            control.Toggle();
+            control.Toggle();
+            control.Toggle();
+
+            control.Should.BeFalse();
         }
 
         [Test]
