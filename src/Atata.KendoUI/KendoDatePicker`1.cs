@@ -8,6 +8,9 @@ namespace Atata.KendoUI
     /// Default search is performed by the label.
     /// The default format is <c>"d"</c> (short date pattern, e.g. <c>6/15/2009</c>).
     /// Handles any element with <c>k-datepicker</c> class.
+    /// <para>
+    /// When using Kendo UI for Angular prefer to use <see cref="NgKendoDatePicker{TOwner}"/> control instead.
+    /// </para>
     /// </summary>
     /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
     [ControlDefinition(ContainingClass = "k-datepicker", ComponentTypeName = "date picker")]
