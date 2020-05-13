@@ -52,11 +52,7 @@ namespace Atata.KendoUI.Tests
 
         protected static SnippetPage GoToSnippetPage(KendoLibrary library)
         {
-            string componentName = TestContext.CurrentContext.Test.MethodName;
-            string prefixToRemove = "Kendo";
-
-            if (componentName.StartsWith(prefixToRemove))
-                componentName = componentName.Remove(0, prefixToRemove.Length);
+            string componentName = RetrieveComponentNameFromTestName();
 
             return GoToSnippetPage(library, componentName);
         }
@@ -76,6 +72,24 @@ namespace Atata.KendoUI.Tests
         {
             string url = $"https://www.telerik.com/kendo-angular-ui/components/{componentName.ToLowerInvariant()}";
             return GoToSnippetPage(url);
+        }
+
+        private static string RetrieveComponentNameFromTestName()
+        {
+            string componentName = TestContext.CurrentContext.Test.MethodName;
+            string[] prefixOptionsToRemove =
+            {
+                "VueKendo",
+                "NgKendo",
+                "ReactKendo",
+                "Kendo"
+            };
+
+            string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix));
+
+            return prefixToRemove != null
+                ? componentName.Remove(0, prefixToRemove.Length)
+                : componentName;
         }
 
         private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName)
