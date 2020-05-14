@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net40;net45;net46;netstandard2.0</TargetFrameworks>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Authors>Yevgeniy Shunevych</Authors>
     <Company>Yevgeniy Shunevych</Company>
     <Product>Atata Framework</Product>
@@ -21,16 +21,9 @@ Atata Framework documentation: https://atata.io</Description>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
     <PackageTags>atata automation testing test selenium webdriver browser kendo kendoui</PackageTags>
-    <PackageReleaseNotes>1.2.0 - https://atata.io/blog/2019/12/05/atata.kendoui-1.2.0-released/
-1.1.0 - https://atata.io/blog/2019/09/12/atata.kendoui-1.1.0-released/
-1.0.0 - https://atata.io/blog/2018/10/16/atata.kendoui-1.0.0-released/
-0.8.0 - https://atata.io/blog/2018/09/19/atata.kendoui-0.8.0-released/
-0.7.0 - https://atata.io/blog/2018/08/13/atata.kendoui-0.7.0-released/
-0.6.0 - https://atata.io/blog/2018/01/19/atata.kendoui-0.6.0-released/
-0.5.0 - https://atata.io/blog/2017/10/18/atata.kendoui-0.5.0-released/
-0.4.1 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.1
-0.4.0 - https://github.com/atata-framework/atata-kendoui/releases/tag/v0.4.0
-0.3.0 - Initial release.</PackageReleaseNotes>
+    <PackageReleaseNotes>1.3.0 - https://atata.io/blog/2020/05/14/atata.kendoui-1.3.0-released/
+1.2.0 - https://atata.io/blog/2019/12/05/atata.kendoui-1.2.0-released/
+1.1.0 - https://atata.io/blog/2019/09/12/atata.kendoui-1.1.0-released/</PackageReleaseNotes>
     <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryType>git</RepositoryType>
@@ -53,8 +46,8 @@ Atata Framework documentation: https://atata.io</Description>
     </PackageReference>
   </ItemGroup>
 
-   <ItemGroup Condition="'$(TargetFramework)' == 'net40' Or '$(TargetFramework)' == 'net45'">
-     <Reference Include="Microsoft.CSharp" />
-   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
