@@ -65,7 +65,12 @@ namespace Atata.KendoUI.Tests
 
         protected static SnippetPage GoToSnippetPage(string url)
         {
-            return Go.To<SnippetPage>(url: url);
+            var page = Go.To<SnippetPage>(url: url);
+
+            if (url.Contains(".stackblitz.io"))
+                page.WaitAndClickRunButton();
+
+            return page;
         }
 
         protected static SnippetPage GoToAngularDemoPage(string componentName)

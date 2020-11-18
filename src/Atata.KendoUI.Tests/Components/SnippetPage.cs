@@ -35,5 +35,17 @@ namespace Atata.KendoUI.Tests
 
             return this;
         }
+
+        public _ WaitAndClickRunButton()
+        {
+            var runButton = Controls.Create<Button<_>>(
+                "Run this project",
+                new FindByContentAttribute(TermCase.None));
+
+            runButton.WaitTo.Within(30).BeVisible();
+            runButton.Click();
+
+            return this;
+        }
     }
 }
