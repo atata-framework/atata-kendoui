@@ -27,7 +27,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="83.0.4103.3900" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="86.0.4240.2200" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="8.0.0.9566">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
