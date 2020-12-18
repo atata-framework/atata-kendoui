@@ -46,8 +46,6 @@ namespace Atata.KendoUI
             if (Value != value)
             {
                 Scope.Click();
-
-                SwitchHandle.WaitForCssTransitionEnd("switch", DefaultAnimationWaitingOptions, SearchOptions.SafelyAtOnce());
             }
         }
 
