@@ -51,11 +51,11 @@
         public TOwner Clear()
         {
             ExecuteTriggers(TriggerEvents.BeforeSet);
-            Log.Start(new DataClearingLogSection(this));
 
-            OnClear();
+            Log.ExecuteSection(
+                new ValueClearLogSection(this),
+                OnClear);
 
-            Log.EndSection();
             ExecuteTriggers(TriggerEvents.AfterSet);
 
             return Owner;

@@ -36,11 +36,11 @@ namespace Atata.KendoUI
         public TOwner Add(string value)
         {
             ExecuteTriggers(TriggerEvents.BeforeSet);
-            Log.Start(new DataAdditionLogSection(this, value));
 
-            OnAdd(value);
+            Log.ExecuteSection(
+                new ValueChangeLogSection(this, "Add", value),
+                () => OnAdd(value));
 
-            Log.EndSection();
             ExecuteTriggers(TriggerEvents.AfterSet);
 
             return Owner;

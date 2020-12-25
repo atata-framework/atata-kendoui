@@ -10,12 +10,13 @@ namespace Atata.KendoUI
         {
             if (waitingOptions?.Timeout > TimeSpan.Zero)
             {
-                AtataContext.Current.Log.Start($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace);
-
-                IWebElement element = searchOptions == null ? component.Scope : component.GetScope(searchOptions);
-                element?.Try().Until(HasNoCssTransition, waitingOptions);
-
-                AtataContext.Current.Log.EndSection();
+                AtataContext.Current.Log.ExecuteSection(
+                    new LogSection($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace),
+                    () =>
+                    {
+                        IWebElement element = searchOptions == null ? component.Scope : component.GetScope(searchOptions);
+                        element?.Try().Until(HasNoCssTransition, waitingOptions);
+                    });
             }
 
             return component.Owner;
