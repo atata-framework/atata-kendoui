@@ -58,7 +58,7 @@ namespace Atata.KendoUI
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
         {
             return StaleSafely.Execute(
-                opt => Driver.Get(
+                opt => Driver.GetWithLogging(
                     By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
                     DropDownOption(value).
                     With(opt)),

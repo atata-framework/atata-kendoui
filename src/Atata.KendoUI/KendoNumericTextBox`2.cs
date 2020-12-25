@@ -43,7 +43,7 @@ namespace Atata.KendoUI
 
         protected virtual void EnsureFocused()
         {
-            IWebElement formattedValueInput = Scope.Get(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
+            IWebElement formattedValueInput = Scope.GetWithLogging(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
 
             if (formattedValueInput != null && formattedValueInput.Displayed)
                 formattedValueInput.Click();
