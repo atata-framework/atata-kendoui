@@ -1,37 +1,65 @@
 variables:
   buildConfiguration: 'Release'
-  testsRunFramework: 'net45'
 
 jobs:
-- job: BuildAndRunTests
-  displayName: Build and run tests
+- job: BuildAndRunCodeAnalysis
+  displayName: Build and run code analysis
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-latest
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build solution with code analysis
+    inputs:
+      command: build
+      projects: '**\*.sln'
+      arguments: -c $(buildConfiguration) -warnaserror
+
+- job: RunTestsVisual
+  displayName: Run tests visual
+  pool:
+    vmImage: windows-latest
   steps:
   - task: DotNetCoreCLI@2
     displayName: Build solution
     inputs:
       command: build
       projects: '**\*.sln'
-      arguments: -c $(buildConfiguration) /p:RunCodeAnalysis=true /warnaserror
+      arguments: -c $(buildConfiguration) -p:RunCodeAnalysis=false
   - task: DotNetCoreCLI@2
-    displayName: Run tests visual
+    displayName: Run tests
     timeoutInMinutes: 10
     continueOnError: true
     inputs:
       command: test
-      projects: '**\*.Tests.csproj'
-      arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build
-  - task: DotNetCoreCLI@2
-    displayName: Run tests headless
-    timeoutInMinutes: 10
-    continueOnError: true
-    inputs:
-      command: test
-      projects: '**\*.Tests.csproj'
-      arguments: -c $(buildConfiguration) -f $(testsRunFramework) --no-build -s src/Headless.runsettings
+      projects: '**\*Tests.csproj'
+      arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build
   - task: PublishPipelineArtifact@1
     displayName: Publish test results
     inputs:
-      artifactName: Test results
-      targetPath: src/Atata.KendoUI.Tests/bin/$(buildConfiguration)/$(testsRunFramework)/Logs
+      artifactName: Visual test results
+      targetPath: src/Atata.KendoUI.Tests/bin/$(buildConfiguration)/netcoreapp3.1/Logs
+
+- job: RunTestsHeadless
+  displayName: Run tests headless
+  pool:
+    vmImage: windows-latest
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build solution
+    inputs:
+      command: build
+      projects: '**\*.sln'
+      arguments: -c $(buildConfiguration) -p:RunCodeAnalysis=false
+  - task: DotNetCoreCLI@2
+    displayName: Run tests
+    timeoutInMinutes: 10
+    continueOnError: true
+    inputs:
+      command: test
+      projects: '**\*Tests.csproj'
+      arguments: -c $(buildConfiguration) -s "azure-pipelines.headless.runsettings" --no-build
+  - task: PublishPipelineArtifact@1
+    displayName: Publish test results
+    inputs:
+      artifactName: Headless test results
+      targetPath: src/Atata.KendoUI.Tests/bin/$(buildConfiguration)/netcoreapp3.1/Logs

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <TestRunParameters>
+    <Parameter name="headless" value="true" />
+  </TestRunParameters>
+  <NUnit>
+    <DisplayName>FullName</DisplayName>
+  </NUnit>
+</RunSettings>
