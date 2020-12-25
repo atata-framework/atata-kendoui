@@ -50,7 +50,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal(new DateTime(2005, 7, 20));
         }
 
-        private void TestControl<TPage>(KendoDateInput<TPage> control)
+        private static void TestControl<TPage>(KendoDateInput<TPage> control)
             where TPage : PageObject<TPage>
         {
             control.Should.BeEnabled();

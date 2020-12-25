@@ -88,7 +88,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal(new DateTime(2005, 7, 20));
         }
 
-        private void TestControl<TPage>(KendoDatePicker<TPage> control)
+        private static void TestControl<TPage>(KendoDatePicker<TPage> control)
             where TPage : PageObject<TPage>
         {
             control.Should.BeEnabled();

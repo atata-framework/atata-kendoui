@@ -66,7 +66,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal(0.15m);
         }
 
-        private void TestControl<TPage>(KendoNumericTextBox<TPage> control)
+        private static void TestControl<TPage>(KendoNumericTextBox<TPage> control)
             where TPage : PageObject<TPage>
         {
             control.Should.BeEnabled();
