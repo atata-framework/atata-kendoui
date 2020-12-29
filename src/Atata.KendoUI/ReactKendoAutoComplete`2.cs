@@ -24,9 +24,7 @@
 
         protected override void OnClear()
         {
-            Driver.ExecuteScript(
-                $"arguments[0].value = '';" +
-                $"arguments[0].dispatchEvent(new Event('change'));", AssociatedInput.Scope);
+            AssociatedInput.Script.SetValueAndDispatchChangeEvent(string.Empty);
         }
     }
 }
