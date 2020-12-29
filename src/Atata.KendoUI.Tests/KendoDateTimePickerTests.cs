@@ -27,6 +27,13 @@ namespace Atata.KendoUI.Tests
 
             control.Set(null);
             control.Should.BeNull();
+
+            value = new DateTime(1998, 11, 2, 19, 15, 0);
+            control.Set(value);
+            control.Should.Equal(value);
+
+            control.Clear();
+            control.Should.BeNull();
         }
 
         [Test]
