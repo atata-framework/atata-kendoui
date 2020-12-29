@@ -3,7 +3,7 @@
     [ControlDefinition(ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
     [FindByLabel]
     [IdXPathForLabel("[.//input[@aria-owns='{0}_listbox']]")]
-    public class KendoComboBox<T, TOwner> : EditableField<T, TOwner>
+    public class KendoComboBox<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
         [FindFirst]
@@ -31,6 +31,16 @@
         protected override bool GetIsEnabled()
         {
             return AssociatedInput.IsEnabled;
+        }
+
+        protected override void OnClear()
+        {
+            AssociatedInput.Clear();
+        }
+
+        protected override void OnType(string text)
+        {
+            AssociatedInput.Type(text);
         }
     }
 }
