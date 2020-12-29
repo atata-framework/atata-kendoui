@@ -23,7 +23,7 @@ namespace Atata.KendoUI
                 base.SetValue(value);
         }
 
-        protected virtual void OnClear()
+        protected override void OnClear()
         {
             AssociatedInput.Scope.Click();
             Driver.Perform(x => x.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete));
