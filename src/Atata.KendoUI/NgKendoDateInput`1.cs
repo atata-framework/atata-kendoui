@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace Atata.KendoUI
+﻿namespace Atata.KendoUI
 {
     /// <summary>
     /// Represents the Kendo UI date input control for Angular.
@@ -12,12 +10,9 @@ namespace Atata.KendoUI
     /// </summary>
     /// <typeparam name="TOwner">The type of the owner.</typeparam>
     [ValueSetFormat("MMddyyyy")]
+    [ValueClearUsingCtrlADeleteKeys]
     public class NgKendoDateInput<TOwner> : KendoDateInput<TOwner>
         where TOwner : PageObject<TOwner>
     {
-        protected override void OnClear()
-        {
-            Driver.Perform(x => x.KeyDown(Scope, Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete));
-        }
     }
 }
