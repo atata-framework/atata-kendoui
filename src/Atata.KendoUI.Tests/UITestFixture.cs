@@ -99,17 +99,13 @@ namespace Atata.KendoUI.Tests
 
         private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName)
         {
-            switch (library)
+            return library switch
             {
-                case KendoLibrary.JQuery:
-                    return componentName.ToLowerInvariant();
-                case KendoLibrary.AspNetMvc:
-                    return $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}";
-                case KendoLibrary.AspNetCore:
-                    return $"https://demos.telerik.com/aspnet-core/{componentName.ToLowerInvariant()}";
-                default:
-                    return $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io";
-            }
+                KendoLibrary.JQuery => componentName.ToLowerInvariant(),
+                KendoLibrary.AspNetMvc => $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}",
+                KendoLibrary.AspNetCore => $"https://demos.telerik.com/aspnet-core/{componentName.ToLowerInvariant()}",
+                _ => $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io",
+            };
         }
     }
 }
