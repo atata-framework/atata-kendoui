@@ -16,6 +16,7 @@ namespace Atata.KendoUI
     /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
     [ControlDefinition("input[@type='text' or @type='date' or not(@type)][parent::*[contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput-wrap ')]]", ComponentTypeName = "date input")]
     [Format("d")]
+    [ValueClearUsingShiftHomeDeleteKeys]
     public class KendoDateInput<TOwner> : DateInput<TOwner>
         where TOwner : PageObject<TOwner>
     {
@@ -52,11 +53,6 @@ namespace Atata.KendoUI
                         Owner.Wait(0.1);
                 }
             }
-        }
-
-        protected override void OnClear()
-        {
-            Scope.ClearWithHomeShiftEndDelKeys();
         }
     }
 }
