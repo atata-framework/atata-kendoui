@@ -18,10 +18,11 @@ namespace Atata.KendoUI.Tests
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
+
             control.Set("Some value");
             control.Should.Equal("Some value");
 
-            control.Set(null);
+            control.Clear();
             control.Should.BeNull();
         }
     }
