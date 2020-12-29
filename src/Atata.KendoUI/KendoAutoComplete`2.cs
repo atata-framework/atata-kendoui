@@ -13,7 +13,7 @@
     [ControlDefinition(ContainingClass = "k-autocomplete", ComponentTypeName = "auto-complete")]
     [FindByLabel]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
-    public class KendoAutoComplete<T, TOwner> : EditableField<T, TOwner>
+    public class KendoAutoComplete<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
         [FindFirst]
@@ -43,27 +43,14 @@
             return AssociatedInput.IsEnabled;
         }
 
-        /// <summary>
-        /// Clears the value.
-        /// Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
-        /// </summary>
-        /// <returns>The owner page object.</returns>
-        public TOwner Clear()
-        {
-            ExecuteTriggers(TriggerEvents.BeforeSet);
-
-            Log.ExecuteSection(
-                new ValueClearLogSection(this),
-                OnClear);
-
-            ExecuteTriggers(TriggerEvents.AfterSet);
-
-            return Owner;
-        }
-
-        protected virtual void OnClear()
+        protected override void OnClear()
         {
             AssociatedInput.Clear();
+        }
+
+        protected override void OnType(string text)
+        {
+            AssociatedInput.Type(text);
         }
     }
 }
