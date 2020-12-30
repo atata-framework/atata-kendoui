@@ -64,7 +64,7 @@ namespace Atata.KendoUI
                 Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
 
             GetDropDownOption(valueAsString).
-                Click();
+                ClickWithLogging();
 
             Popup.WaitUntilClosed(CloseAnimationWaitingOptions);
         }

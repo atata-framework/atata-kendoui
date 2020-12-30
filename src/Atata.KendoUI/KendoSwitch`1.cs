@@ -44,9 +44,7 @@ namespace Atata.KendoUI
         protected override void SetValue(bool value)
         {
             if (Value != value)
-            {
-                Scope.Click();
-            }
+                Scope.ClickWithLogging();
         }
 
         /// <summary>

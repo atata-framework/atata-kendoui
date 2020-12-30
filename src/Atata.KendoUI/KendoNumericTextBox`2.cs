@@ -39,7 +39,7 @@ namespace Atata.KendoUI
             IWebElement formattedValueInput = Scope.GetWithLogging(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
 
             if (formattedValueInput != null && formattedValueInput.Displayed)
-                formattedValueInput.Click();
+                formattedValueInput.ClickWithLogging();
         }
 
         protected override bool GetIsReadOnly()
