@@ -26,6 +26,12 @@ namespace Atata.KendoUI.Tests
 
             control.Set(null);
             control.Should.BeNull();
+
+            control.Set(TimeSpan.FromHours(17));
+            control.Should.Equal(TimeSpan.FromHours(17));
+
+            control.Clear();
+            control.Should.BeNull();
         }
 
         [Test]

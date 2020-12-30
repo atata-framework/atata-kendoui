@@ -6,7 +6,7 @@ namespace Atata.KendoUI
     [FindByLabel]
     [IdXPathForLabel("[.//input[@id='{0}']]")]
     [Format("t")]
-    public class KendoTimePicker<TOwner> : EditableField<TimeSpan?, TOwner>
+    public class KendoTimePicker<TOwner> : EditableTextField<TimeSpan?, TOwner>
         where TOwner : PageObject<TOwner>
     {
         [FindFirst]
@@ -34,6 +34,16 @@ namespace Atata.KendoUI
         protected override bool GetIsEnabled()
         {
             return AssociatedInput.IsEnabled;
+        }
+
+        protected override void OnClear()
+        {
+            AssociatedInput.Clear();
+        }
+
+        protected override void OnType(string text)
+        {
+            AssociatedInput.Type(text);
         }
     }
 }
