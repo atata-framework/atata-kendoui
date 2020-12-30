@@ -85,6 +85,13 @@ namespace Atata.KendoUI.Tests
 
             control.Set(9);
             control.Should.Equal(9);
+
+            control.Clear();
+            control.Should.BeNull();
+
+            control.Type("1");
+            control.Type("2");
+            control.Should.Equal(12);
         }
     }
 }

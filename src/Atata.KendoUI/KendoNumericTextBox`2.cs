@@ -6,7 +6,7 @@ namespace Atata.KendoUI
     [ControlDefinition(ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
     [FindByLabel]
     [IdXPathForLabel("[span/input[2][@id='{0}']]")]
-    public class KendoNumericTextBox<T, TOwner> : EditableField<T, TOwner>
+    public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
         [FindFirst]
@@ -26,19 +26,12 @@ namespace Atata.KendoUI
 
         protected override void SetValue(T value)
         {
-            EnsureFocused();
-
-            AssociatedInput.Scope.Clear();
-
-            EnsureFocused();
+            OnClear();
 
             string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-            string keysToSend = string.IsNullOrEmpty(valueAsString)
-                ? "0" + Keys.Backspace
-                : valueAsString;
-
-            AssociatedInput.Scope.SendKeys(keysToSend);
+            if (!string.IsNullOrEmpty(valueAsString))
+                OnType(valueAsString);
         }
 
         protected virtual void EnsureFocused()
@@ -57,6 +50,21 @@ namespace Atata.KendoUI
         protected override bool GetIsEnabled()
         {
             return AssociatedInput.IsEnabled;
+        }
+
+        protected override void OnClear()
+        {
+            EnsureFocused();
+
+            AssociatedInput.Clear();
+            AssociatedInput.Type("0" + Keys.Backspace);
+        }
+
+        protected override void OnType(string text)
+        {
+            EnsureFocused();
+
+            AssociatedInput.Type(text);
         }
     }
 }
