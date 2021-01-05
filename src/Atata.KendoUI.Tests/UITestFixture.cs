@@ -12,19 +12,14 @@ namespace Atata.KendoUI.Tests
         [SetUp]
         public void SetUp()
         {
-            AtataContext.Configure().
-                UseChrome().
-                    WithArguments(GetChromeArguments().ToArray()).
-                    WithLocalDriverPath().
-                UseBaseUrl(BaseUrl).
-                UseCulture("en-US").
-                UseNUnitTestName().
-                AddNUnitTestContextLogging().
-                AddNLogLogging().
-                AddScreenshotFileSaving().
-                LogNUnitError().
-                TakeScreenshotOnNUnitError().
-                Build();
+            AtataContext.Configure()
+                .UseChrome()
+                    .WithArguments(GetChromeArguments())
+                .UseBaseUrl(BaseUrl)
+                .UseCulture("en-US")
+                .UseAllNUnitFeatures()
+                .AddScreenshotFileSaving()
+                .Build();
 
             OnSetUp();
         }
