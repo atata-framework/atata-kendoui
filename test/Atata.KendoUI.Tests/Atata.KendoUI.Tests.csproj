@@ -2,23 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Authors>Yevgeniy Shunevych</Authors>
-    <Company>Yevgeniy Shunevych</Company>
-    <Product>Atata Framework</Product>
-    <Copyright>© Yevgeniy Shunevych 2020</Copyright>
-    <CodeAnalysisRuleSet>..\..\Atata.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Atata.WebDriverSetup" Version="1.2.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
     <PackageReference Include="NLog" Version="4.7.6" />
     <PackageReference Include="NLog.Schema" Version="4.7.6" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" PrivateAssets="All" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.16.0.25740" PrivateAssets="All" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,7 +14,9 @@ namespace Atata.KendoUI
     /// </para>
     /// </summary>
     /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
-    [ControlDefinition("input[@type='text' or @type='date' or not(@type)][parent::*[contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput-wrap ')]]", ComponentTypeName = "date input")]
+    [ControlDefinition(
+        "input[@type='text' or @type='date' or not(@type)][parent::*[contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput-wrap ')]]",
+        ComponentTypeName = "date input")]
     [Format("d")]
     [ValueClearUsingShiftHomeDeleteKeys]
     public class KendoDateInput<TOwner> : DateInput<TOwner>

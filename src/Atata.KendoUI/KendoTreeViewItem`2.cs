@@ -45,7 +45,8 @@ namespace Atata.KendoUI
         /// <summary>
         /// Gets the text control.
         /// Finds control by "k-in" class.
-        /// More specific/deep path to find text element can be set via <see cref="ValueXPathAttribute"/> applied to custom class inherited from <see cref="KendoTreeViewItem{TItem, TOwner}"/>, for example:
+        /// More specific/deep path to find text element can be set via <see cref="ValueXPathAttribute"/> applied to custom class
+        /// inherited from <see cref="KendoTreeViewItem{TItem, TOwner}"/>, for example:
         /// <c>[ValueXPath("/span[1]/strong")]</c>.
         /// Format can be applied using <c>[Format("CUSTOM{0}FORMAT", TargetName = nameof(Text))]</c> attribute applied to custom inherited class.
         /// It is also possible to override <see cref="GetTextAttributes"/> method to add/replace specific attributes.

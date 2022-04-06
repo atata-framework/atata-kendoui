@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -88,7 +89,7 @@ namespace Atata.KendoUI.Tests
                 "Kendo"
             };
 
-            string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix));
+            string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix, StringComparison.Ordinal));
 
             return prefixToRemove != null
                 ? componentName.Remove(0, prefixToRemove.Length)
