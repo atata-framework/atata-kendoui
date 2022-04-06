@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atata.KendoUI", "src\Atata.KendoUI\Atata.KendoUI.csproj", "{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA1DC10A-A39A-4BAE-B776-95F13653DF53}"
+	ProjectSection(SolutionItems) = preProject
+		Atata.ruleset = Atata.ruleset
+		azure-pipelines.release.yml = azure-pipelines.release.yml
+		azure-pipelines.headless.runsettings = azure-pipelines.headless.runsettings
+		azure-pipelines.runsettings = azure-pipelines.runsettings
+		azure-pipelines.yml = azure-pipelines.yml
+		headless.runsettings = headless.runsettings
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atata.KendoUI.Tests", "test\Atata.KendoUI.Tests\Atata.KendoUI.Tests.csproj", "{F0313974-6C3E-4E53-A87B-9F899BAC9401}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atata.KendoUI.TestApp", "test\Atata.KendoUI.TestApp\Atata.KendoUI.TestApp.csproj", "{9AC396E3-5AC5-4D66-89BB-95EB40C13DA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D19F68-B8CA-4EB0-872D-7A331E6A959D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0313974-6C3E-4E53-A87B-9F899BAC9401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0313974-6C3E-4E53-A87B-9F899BAC9401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0313974-6C3E-4E53-A87B-9F899BAC9401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0313974-6C3E-4E53-A87B-9F899BAC9401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC396E3-5AC5-4D66-89BB-95EB40C13DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC396E3-5AC5-4D66-89BB-95EB40C13DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC396E3-5AC5-4D66-89BB-95EB40C13DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC396E3-5AC5-4D66-89BB-95EB40C13DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D39D302-EFB2-4A7B-A0DE-ADE481D044D9}
+	EndGlobalSection
+EndGlobal
