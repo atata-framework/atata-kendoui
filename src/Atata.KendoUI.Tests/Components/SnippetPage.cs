@@ -47,5 +47,17 @@ namespace Atata.KendoUI.Tests
 
             return this;
         }
+
+        public _ WaitAndClickAcceptAndCloseButton()
+        {
+            var acceptButton = Controls.Create<Button<_>>(
+                "Accept and Close",
+                new FindByIdAttribute("onetrust-accept-btn-handler"));
+
+            acceptButton.WaitTo.Within(30).BeVisible();
+            acceptButton.Click();
+
+            return this;
+        }
     }
 }

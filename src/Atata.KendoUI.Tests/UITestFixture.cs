@@ -65,6 +65,8 @@ namespace Atata.KendoUI.Tests
 
             if (url.Contains(".stackblitz.io"))
                 page.WaitAndClickRunButton();
+            else if (url.Contains("demos.telerik.com"))
+                page.WaitAndClickAcceptAndCloseButton();
 
             return page;
         }
