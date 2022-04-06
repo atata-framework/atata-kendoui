@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
+using Atata.WebDriverSetup;
 using NUnit.Framework;
 
 namespace Atata.KendoUI.Tests
@@ -10,27 +12,37 @@ namespace Atata.KendoUI.Tests
     [SetUpFixture]
     public class SetUpFixture
     {
-        private Process coreRunProcess;
+        private Process _coreRunProcess;
 
         [OneTimeSetUp]
-        public void GlobalSetUp()
+        public async Task GlobalSetUpAsync()
+        {
+            await Task.WhenAll(
+                Task.Run(SetUpDriver),
+                Task.Run(SetUpTestApp));
+        }
+
+        private static void SetUpDriver() =>
+            DriverSetup.AutoSetUp(BrowserNames.Chrome);
+
+        private static WebResponse PingTestApp() =>
+            WebRequest.CreateHttp(UITestFixture.BaseUrl).GetResponse();
+
+        private void SetUpTestApp()
         {
             try
             {
                 PingTestApp();
             }
-            catch
+            catch (WebException)
             {
                 RunTestApp();
             }
         }
 
-        private static WebResponse PingTestApp() =>
-            WebRequest.CreateHttp(UITestFixture.BaseUrl).GetResponse();
-
         private void RunTestApp()
         {
-            coreRunProcess = new Process
+            _coreRunProcess = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -40,7 +52,7 @@ namespace Atata.KendoUI.Tests
                 }
             };
 
-            coreRunProcess.Start();
+            _coreRunProcess.Start();
 
             Thread.Sleep(5000);
 
@@ -58,10 +70,10 @@ namespace Atata.KendoUI.Tests
         [OneTimeTearDown]
         public void GlobalTearDown()
         {
-            if (coreRunProcess != null)
+            if (_coreRunProcess != null)
             {
-                coreRunProcess.Kill(true);
-                coreRunProcess.Dispose();
+                _coreRunProcess.Kill(true);
+                _coreRunProcess.Dispose();
             }
         }
     }
