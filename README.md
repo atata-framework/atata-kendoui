@@ -12,7 +12,7 @@ C#/.NET package containing a set of [Atata](https://github.com/atata-framework/a
 
 Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
-Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
+*The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.**
 
 **[What's new in v1.4.0](https://atata.io/blog/2020/12/30/atata.kendoui-1.4.0-released/)**
 

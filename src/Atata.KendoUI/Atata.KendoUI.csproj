@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net40;net45;net46;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Version>1.4.0</Version>
     <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
 
 Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
-Supports .NET Framework 4.0+ and .NET Core/Standard 2.0+.
+The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.
 
 Atata.KendoUI on GitHub: https://github.com/atata-framework/atata-kendoui
 Atata Framework documentation: https://atata.io</Description>
