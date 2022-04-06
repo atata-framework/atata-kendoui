@@ -2,7 +2,7 @@
 
 [![NuGet](http://img.shields.io/nuget/v/Atata.KendoUI.svg)](https://www.nuget.org/packages/Atata.KendoUI/)
 [![GitHub Release](https://img.shields.io/github/release/atata-framework/atata-kendoui.svg)](https://github.com/atata-framework/atata-kendoui/releases)
-[![Build Status](https://dev.azure.com/atata-framework/atata-kendoui/_apis/build/status/atata-kendoui-ci?branchName=master)](https://dev.azure.com/atata-framework/atata-kendoui/_build/latest?definitionId=16&branchName=master)
+[![Build Status](https://dev.azure.com/atata-framework/atata-kendoui/_apis/build/status/atata-kendoui-ci?branchName=main)](https://dev.azure.com/atata-framework/atata-kendoui/_build/latest?definitionId=16&branchName=main)
 [![Gitter](https://badges.gitter.im/atata-framework/atata-kendoui.svg)](https://gitter.im/atata-framework/atata-kendoui)
 [![Slack](https://img.shields.io/badge/join-Slack-green.svg?colorB=4EB898)](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
 [![Atata Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata.io)
