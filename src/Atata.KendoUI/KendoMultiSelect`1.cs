@@ -59,9 +59,10 @@ namespace Atata.KendoUI
         {
             return StaleSafely.Execute(
                 opt => Driver.GetWithLogging(
-                    By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
-                    DropDownOption(value).
-                    With(opt)),
+                    By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
+                    .DropDownOption(value)
+                    .Visible()
+                    .With(opt)),
                 searchOptions ?? SearchOptions.Unsafely());
         }
 

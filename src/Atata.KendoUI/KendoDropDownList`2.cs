@@ -48,7 +48,10 @@ namespace Atata.KendoUI
 
         protected override T GetValue()
         {
-            string value = Scope.GetWithLogging(By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}").FormatWith(ValueXPath))
+            string value = Scope.GetWithLogging(
+                By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}")
+                    .FormatWith(ValueXPath)
+                    .Visible())
                 .Text.Trim();
 
             return ConvertStringToValueUsingGetFormat(value);
@@ -72,9 +75,10 @@ namespace Atata.KendoUI
         protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
         {
             return Driver.GetWithLogging(
-                By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']").
-                DropDownOption(value).
-                With(searchOptions));
+                By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
+                    .DropDownOption(value)
+                    .Visible()
+                    .With(searchOptions));
         }
 
         protected override bool GetIsReadOnly()
