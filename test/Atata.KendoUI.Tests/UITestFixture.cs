@@ -19,7 +19,7 @@ namespace Atata.KendoUI.Tests
                 .UseBaseUrl(BaseUrl)
                 .UseCulture("en-US")
                 .UseAllNUnitFeatures()
-                .AddNLogLogging()
+                .AddNLogFileLogging()
                 .AddScreenshotFileSaving()
                 .Build();
 

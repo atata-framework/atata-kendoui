@@ -8,19 +8,12 @@
     <PackageReference Include="Atata.WebDriverSetup" Version="1.2.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="NLog.Schema" Version="4.7.15" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Atata.KendoUI\Atata.KendoUI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
