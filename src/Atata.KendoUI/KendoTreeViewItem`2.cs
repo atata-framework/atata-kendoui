@@ -62,17 +62,17 @@ namespace Atata.KendoUI
         [FindByClass("k-group", OuterXPath = null)]
         protected Control<TOwner> ChildrenGroup { get; private set; }
 
-        public DataProvider<bool, TOwner> IsExpanded =>
-            GetOrCreateDataProvider("expanded state", GetIsExpanded);
+        public ValueProvider<bool, TOwner> IsExpanded =>
+            CreateValueProvider("expanded state", GetIsExpanded);
 
-        public DataProvider<bool, TOwner> IsChecked =>
-            GetOrCreateDataProvider("checked state", GetIsChecked);
+        public ValueProvider<bool, TOwner> IsChecked =>
+            CreateValueProvider("checked state", GetIsChecked);
 
-        public DataProvider<bool, TOwner> IsSelected =>
-            GetOrCreateDataProvider("selected state", GetIsSelected);
+        public ValueProvider<bool, TOwner> IsSelected =>
+            CreateValueProvider("selected state", GetIsSelected);
 
-        public DataProvider<bool, TOwner> IsFocused =>
-            GetOrCreateDataProvider("focused state", GetIsFocused);
+        public ValueProvider<bool, TOwner> IsFocused =>
+            CreateValueProvider("focused state", GetIsFocused);
 
         protected string TextXPath =>
             Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;

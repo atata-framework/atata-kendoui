@@ -15,7 +15,7 @@ namespace Atata.KendoUI.Tests
 
             var control = Controls.Create<TControl>("Test", attributes);
 
-            control.WaitTo.Within(45).Exist();
+            control.WaitTo.WithinSeconds(45).Exist();
 
             return control;
         }
@@ -42,7 +42,7 @@ namespace Atata.KendoUI.Tests
                 "Run this project",
                 new FindByContentAttribute(TermCase.None));
 
-            runButton.WaitTo.Within(30).BeVisible();
+            runButton.WaitTo.WithinSeconds(30).BeVisible();
             runButton.Click();
 
             return this;
@@ -54,7 +54,7 @@ namespace Atata.KendoUI.Tests
                 "Accept and Close",
                 new FindByIdAttribute("onetrust-accept-btn-handler"));
 
-            acceptButton.WaitTo.Within(30).BeVisible();
+            acceptButton.WaitTo.WithinSeconds(30).BeVisible();
             acceptButton.Click();
 
             return this;

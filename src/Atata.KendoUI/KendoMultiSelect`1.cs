@@ -20,7 +20,8 @@ namespace Atata.KendoUI
         /// By default checks "readonly" attribute of nested input element.
         /// Override <see cref="GetIsReadOnly"/> method to change the behavior.
         /// </summary>
-        public DataProvider<bool, TOwner> IsReadOnly => GetOrCreateDataProvider("read-only", GetIsReadOnly);
+        public ValueProvider<bool, TOwner> IsReadOnly =>
+            CreateValueProvider("read-only", GetIsReadOnly);
 
         [FindFirst]
         [TraceLog]

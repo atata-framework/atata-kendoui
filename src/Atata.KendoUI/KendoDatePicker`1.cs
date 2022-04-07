@@ -58,12 +58,12 @@ namespace Atata.KendoUI
                 foreach (char key in valueAsString)
                 {
                     if (!char.IsLetterOrDigit(key))
-                        Owner.Wait(0.1);
+                        Owner.WaitSeconds(0.1);
 
                     scope.SendKeys(key.ToString());
 
                     if (!char.IsLetterOrDigit(key))
-                        Owner.Wait(0.1);
+                        Owner.WaitSeconds(0.1);
                 }
             }
         }

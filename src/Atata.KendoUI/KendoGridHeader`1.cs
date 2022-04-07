@@ -19,8 +19,8 @@ namespace Atata.KendoUI
         /// <summary>
         /// Gets the sort order.
         /// </summary>
-        public DataProvider<KendoGridHeaderSortOrder, TOwner> SortOrder =>
-            GetOrCreateDataProvider("sort order", OnGetSortOrder);
+        public ValueProvider<KendoGridHeaderSortOrder, TOwner> SortOrder =>
+            CreateValueProvider("sort order", OnGetSortOrder);
 
         protected virtual KendoGridHeaderSortOrder OnGetSortOrder()
         {

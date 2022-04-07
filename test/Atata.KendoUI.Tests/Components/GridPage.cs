@@ -19,7 +19,7 @@
 
             public Text<_> AirConditioner { get; private set; }
 
-            public DataProvider<bool?, _> HasAirConditioner => GetOrCreateDataProvider<bool?>(
+            public ValueProvider<bool?, _> HasAirConditioner => CreateValueProvider<bool?>(
                 "has air conditioner",
                 () => AirConditioner == "Yes");
         }
