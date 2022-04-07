@@ -18,7 +18,7 @@ namespace Atata.KendoUI
         "input[@type='text' or @type='date' or not(@type)][parent::*[contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dateinput-wrap ')]]",
         ComponentTypeName = "date input")]
     [Format("d")]
-    [ValueClearUsingShiftHomeDeleteKeys]
+    [ClearsValueUsingShiftHomeDeleteKeys]
     public class KendoDateInput<TOwner> : DateInput<TOwner>
         where TOwner : PageObject<TOwner>
     {

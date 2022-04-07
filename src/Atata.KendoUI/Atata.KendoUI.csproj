@@ -19,7 +19,7 @@ Atata Framework documentation: https://atata.io</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata" Version="1.9.0" />
+    <PackageReference Include="Atata" Version="1.14.0" />
   </ItemGroup>
 
 </Project>

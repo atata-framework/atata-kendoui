@@ -51,7 +51,7 @@ namespace Atata.KendoUI
         /// Format can be applied using <c>[Format("CUSTOM{0}FORMAT", TargetName = nameof(Text))]</c> attribute applied to custom inherited class.
         /// It is also possible to override <see cref="GetTextAttributes"/> method to add/replace specific attributes.
         /// </summary>
-        [ContentSource(ContentSource.TextContent)]
+        [GetsContentFromSource(ContentSource.TextContent)]
         [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
         public Text<TOwner> Text => Controls.Resolve<Text<TOwner>>(nameof(Text), GetTextAttributes);
 

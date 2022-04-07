@@ -10,7 +10,7 @@
     /// </summary>
     /// <typeparam name="TOwner">The type of the owner.</typeparam>
     [ValueSetFormat("MMddyyyy")]
-    [ValueClearUsingCtrlADeleteKeys]
+    [ClearsValueUsingCtrlADeleteKeys]
     public class NgKendoDateInput<TOwner> : KendoDateInput<TOwner>
         where TOwner : PageObject<TOwner>
     {
