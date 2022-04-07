@@ -60,7 +60,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal("Germany, Austria");
 
             control.Clear();
-            control.Should.BeNull();
+            control.Should.BeEmpty();
         }
     }
 }
