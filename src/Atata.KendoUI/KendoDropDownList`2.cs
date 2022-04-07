@@ -35,7 +35,7 @@ namespace Atata.KendoUI
         [TraceLog]
         protected Control<TOwner> DropDownButton { get; private set; }
 
-        [FindFirst(ScopeSource = ScopeSource.Page)]
+        [FindFirst(ScopeSource = ScopeSource.Page, Visibility = Visibility.Visible)]
         [Name("Drop-Down")]
         [TraceLog]
         protected KendoPopup<TOwner> Popup { get; private set; }
