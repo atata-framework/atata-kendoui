@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoTreeViewTests : UITestFixture
     {
-        private TreeViewPage page;
+        private TreeViewPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<TreeViewPage>();
+            _page = Go.To<TreeViewPage>();
         }
 
         [Test]
         public void KendoTreeView()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Children.Count.Should.Equal(1);
             control.Descendants.Count.Should.Equal(14);
@@ -37,7 +37,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTreeView_Toggle()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             TestToggle(control);
         }
@@ -45,7 +45,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTreeView_Toggle_SlowAnimation()
         {
-            var control = page.SlowAnimating;
+            var control = _page.SlowAnimating;
 
             TestToggle(control);
         }
@@ -68,7 +68,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTreeView_DragAndDrop()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Descendants[x => x.Text == "prices.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
 
@@ -84,7 +84,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTreeView_CheckBoxes()
         {
-            var control = page.WithCheckboxes;
+            var control = _page.WithCheckboxes;
 
             control.Descendants[x => x.Text == "March.pdf"].Check();
             control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeTrue();
@@ -109,7 +109,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTreeView_CustomTemplate()
         {
-            var control = page.WithCustomTemplate;
+            var control = _page.WithCustomTemplate;
 
             control[0].Text.Should.Equal("My Documents");
 

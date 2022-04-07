@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoSwitchTests : UITestFixture
     {
-        private SwitchPage page;
+        private SwitchPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<SwitchPage>();
+            _page = Go.To<SwitchPage>();
         }
 
         [Test]
         public void KendoSwitch()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
@@ -43,7 +43,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoSwitch_Disabled()
         {
-            var control = page.Disabled;
+            var control = _page.Disabled;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
@@ -54,7 +54,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoSwitch_FindByLabel()
         {
-            var control = page.FindsByLabel;
+            var control = _page.FindsByLabel;
 
             control.Should.BeEnabled();
             control.Should.BeFalse();

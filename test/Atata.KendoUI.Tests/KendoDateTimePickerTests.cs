@@ -5,17 +5,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoDateTimePickerTests : UITestFixture
     {
-        private DateTimePickerPage page;
+        private DateTimePickerPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<DateTimePickerPage>();
+            _page = Go.To<DateTimePickerPage>();
         }
 
         [Test]
         public void KendoDateTimePicker()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
@@ -39,7 +39,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoDateTimePicker_Disabled()
         {
-            var control = page.Disabled;
+            var control = _page.Disabled;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
@@ -49,7 +49,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoDateTimePicker_ReadOnly()
         {
-            var control = page.ReadOnly;
+            var control = _page.ReadOnly;
 
             control.Should.BeEnabled();
             control.Should.BeReadOnly();

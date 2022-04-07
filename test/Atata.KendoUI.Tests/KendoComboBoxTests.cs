@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoComboBoxTests : UITestFixture
     {
-        private ComboBoxPage page;
+        private ComboBoxPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<ComboBoxPage>();
+            _page = Go.To<ComboBoxPage>();
         }
 
         [Test]
         public void KendoComboBox()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
@@ -32,7 +32,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoComboBox_Disabled()
         {
-            var control = page.Disabled;
+            var control = _page.Disabled;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
@@ -42,7 +42,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoComboBox_ReadOnly()
         {
-            var control = page.ReadOnly;
+            var control = _page.ReadOnly;
 
             control.Should.BeEnabled();
             control.Should.BeReadOnly();

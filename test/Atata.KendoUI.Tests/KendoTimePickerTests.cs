@@ -5,17 +5,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoTimePickerTests : UITestFixture
     {
-        private TimePickerPage page;
+        private TimePickerPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<TimePickerPage>();
+            _page = Go.To<TimePickerPage>();
         }
 
         [Test]
         public void KendoTimePicker()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
@@ -37,7 +37,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTimePicker_Disabled()
         {
-            var control = page.Disabled;
+            var control = _page.Disabled;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
@@ -47,7 +47,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoTimePicker_ReadOnly()
         {
-            var control = page.ReadOnly;
+            var control = _page.ReadOnly;
 
             control.Should.BeEnabled();
             control.Should.BeReadOnly();

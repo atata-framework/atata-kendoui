@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoCheckBoxTests : UITestFixture
     {
-        private CheckBoxPage page;
+        private CheckBoxPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<CheckBoxPage>();
+            _page = Go.To<CheckBoxPage>();
         }
 
         [Test]
         public void KendoCheckBox()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.Exist();
             control.Should.BeEnabled();
@@ -30,14 +30,14 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoCheckBox_Disabled()
         {
-            var control = page.DisabledChecked;
+            var control = _page.DisabledChecked;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();
             control.Should.Equal(true);
             control.Should.BeChecked();
 
-            control = page.DisabledUnchecked;
+            control = _page.DisabledUnchecked;
 
             control.Should.BeDisabled();
             control.Should.Not.BeReadOnly();

@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoMultiSelectTests : UITestFixture
     {
-        private MultiSelectPage page;
+        private MultiSelectPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<MultiSelectPage>();
+            _page = Go.To<MultiSelectPage>();
         }
 
         [Test]
         public void KendoMultiSelect()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.IsReadOnly.Should.BeFalse();
@@ -25,7 +25,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoMultiSelect_Disabled()
         {
-            var control = page.Disabled;
+            var control = _page.Disabled;
 
             control.Should.BeDisabled();
             control.IsReadOnly.Should.BeFalse();
@@ -34,7 +34,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoMultiSelect_ReadOnly()
         {
-            var control = page.ReadOnly;
+            var control = _page.ReadOnly;
 
             control.Should.BeEnabled();
             control.IsReadOnly.Should.BeTrue();
@@ -43,7 +43,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoMultiSelect_SlowAnimation()
         {
-            page.
+            _page.
                 SlowAnimating.Add("Item 5").
                 Regular.Add("Item 3");
         }

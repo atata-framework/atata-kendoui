@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoGridTests : UITestFixture
     {
-        private GridPage page;
+        private GridPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<GridPage>();
+            _page = Go.To<GridPage>();
         }
 
         [Test]
         public void KendoGrid_Basic()
         {
-            var control = page.Cars;
+            var control = _page.Cars;
 
             control.Rows.Count.Should.Equal(12);
             control.Rows.Should.Contain(x => x.CarMake == "Audi" && x.CarModel == "A4");
@@ -26,7 +26,7 @@ namespace Atata.KendoUI.Tests
         [Test]
         public void KendoGrid_Sort()
         {
-            var control = page.Cars;
+            var control = _page.Cars;
 
             var header1 = control.Headers[x => x.Text == "Car Make"];
             var header2 = control.Headers[x => x.Text == "Car Model"];
