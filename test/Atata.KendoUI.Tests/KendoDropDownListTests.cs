@@ -9,7 +9,9 @@ namespace Atata.KendoUI.Tests
             return Go.To<DropDownListPage>();
         }
 
-        [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue, KendoLibrary.Angular)]
+        // TODO: KendoLibrary.Vue was removed. The snippet page stopped to work properly in Chrome, so Vue test removed for now.
+        ////[PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue, KendoLibrary.Angular)]
+        [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Angular)]
         public void KendoDropDownList(KendoLibrary library)
         {
             var control = GoToSnippetPage(library).Get<KendoDropDownList<SnippetPage>>();
