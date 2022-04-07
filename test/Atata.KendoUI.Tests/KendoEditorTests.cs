@@ -4,17 +4,17 @@ namespace Atata.KendoUI.Tests
 {
     public class KendoEditorTests : UITestFixture
     {
-        private EditorPage page;
+        private EditorPage _page;
 
         protected override void OnSetUp()
         {
-            page = Go.To<EditorPage>();
+            _page = Go.To<EditorPage>();
         }
 
         [Test]
         public void KendoEditor()
         {
-            var control = page.Regular;
+            var control = _page.Regular;
 
             control.Should.BeEnabled();
             control.Should.Not.BeReadOnly();
@@ -23,7 +23,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal("Some value");
 
             control.Clear();
-            control.Should.BeNull();
+            control.Should.BeEmpty();
         }
     }
 }
