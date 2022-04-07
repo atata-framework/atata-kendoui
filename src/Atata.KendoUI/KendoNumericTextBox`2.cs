@@ -9,7 +9,7 @@ namespace Atata.KendoUI
     public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        [FindFirst]
+        [FindFirst(Visibility = Visibility.Visible)]
         [TraceLog]
         [Name("Associated")]
         [ControlDefinition("input[not(@type) or (@type!='button' and @type!='submit' and @type!='reset')]", ComponentTypeName = "input")]
