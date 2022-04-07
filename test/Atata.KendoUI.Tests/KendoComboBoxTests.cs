@@ -26,7 +26,7 @@ namespace Atata.KendoUI.Tests
             control.Should.Equal(randomValue);
 
             control.Clear();
-            control.Should.BeNull();
+            control.Should.BeEmpty();
         }
 
         [Test]
