@@ -56,25 +56,19 @@ namespace Atata.KendoUI
             Driver.Perform(x => x.SendKeys(Keys.Enter));
         }
 
-        protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
-        {
-            return StaleSafely.Execute(
+        protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null) =>
+            StaleSafely.Execute(
                 opt => Driver.GetWithLogging(
                     By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
                     .DropDownOption(value)
                     .Visible()
                     .With(opt)),
                 searchOptions ?? SearchOptions.Unsafely());
-        }
 
-        protected virtual bool GetIsReadOnly()
-        {
-            return AssociatedInput.IsReadOnly;
-        }
+        protected virtual bool GetIsReadOnly() =>
+            AssociatedInput.IsReadOnly;
 
-        protected override bool GetIsEnabled()
-        {
-            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
-        }
+        protected override bool GetIsEnabled() =>
+            !Attributes.Class.Value.Contains(KendoClass.Disabled);
     }
 }

@@ -17,14 +17,10 @@ namespace Atata.KendoUI
             Timeout = TimeSpan.FromSeconds(5)
         };
 
-        public TOwner WaitUntilOpen(RetryOptions waitingOptions = null)
-        {
-            return this.WaitForCssTransitionEnd("open", waitingOptions ?? DefaultAnimationWaitingOptions);
-        }
+        public TOwner WaitUntilOpen(RetryOptions waitingOptions = null) =>
+            this.WaitForCssTransitionEnd("open", waitingOptions ?? DefaultAnimationWaitingOptions);
 
-        public TOwner WaitUntilClosed(RetryOptions waitingOptions = null)
-        {
-            return this.WaitForCssTransitionEnd("close", waitingOptions ?? DefaultAnimationWaitingOptions, SearchOptions.SafelyAtOnce());
-        }
+        public TOwner WaitUntilClosed(RetryOptions waitingOptions = null) =>
+            this.WaitForCssTransitionEnd("close", waitingOptions ?? DefaultAnimationWaitingOptions, SearchOptions.SafelyAtOnce());
     }
 }

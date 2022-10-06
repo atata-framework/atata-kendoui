@@ -6,9 +6,7 @@ namespace Atata.KendoUI
     public class KendoLink<TOwner> : Link<TOwner>
         where TOwner : PageObject<TOwner>
     {
-        protected override bool GetIsEnabled()
-        {
-            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
-        }
+        protected override bool GetIsEnabled() =>
+            !Attributes.Class.Value.Contains(KendoClass.Disabled);
     }
 }

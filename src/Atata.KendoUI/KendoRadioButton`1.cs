@@ -8,9 +8,7 @@
         [TraceLog]
         private Label<TOwner> AssociatedLabel { get; set; }
 
-        protected override void OnClick()
-        {
+        protected override void OnClick() =>
             AssociatedLabel.Click();
-        }
     }
 }

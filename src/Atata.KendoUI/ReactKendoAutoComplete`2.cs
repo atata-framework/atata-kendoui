@@ -17,14 +17,10 @@
             string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
             if (!string.IsNullOrEmpty(valueAsString))
-            {
                 AssociatedInput.Scope.SendKeys(valueAsString);
-            }
         }
 
-        protected override void OnClear()
-        {
+        protected override void OnClear() =>
             AssociatedInput.Script.SetValueAndDispatchChangeEvent(string.Empty);
-        }
     }
 }

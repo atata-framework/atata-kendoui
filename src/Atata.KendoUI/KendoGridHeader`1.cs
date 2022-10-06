@@ -35,19 +35,15 @@ namespace Atata.KendoUI
         /// Sorts in ascending order.
         /// </summary>
         /// <returns>The owner page object.</returns>
-        public TOwner SortAscending()
-        {
-            return Sort(KendoGridHeaderSortOrder.Ascending);
-        }
+        public TOwner SortAscending() =>
+            Sort(KendoGridHeaderSortOrder.Ascending);
 
         /// <summary>
         /// Sorts in descending order.
         /// </summary>
         /// <returns>The owner page object.</returns>
-        public TOwner SortDescending()
-        {
-            return Sort(KendoGridHeaderSortOrder.Descending);
-        }
+        public TOwner SortDescending() =>
+            Sort(KendoGridHeaderSortOrder.Descending);
 
         /// <summary>
         /// Sorts using the specified order.
@@ -61,9 +57,7 @@ namespace Atata.KendoUI
                 Click();
 
                 if (SortOrder.Value != sortOrder)
-                {
                     Click();
-                }
             }
 
             return Owner;

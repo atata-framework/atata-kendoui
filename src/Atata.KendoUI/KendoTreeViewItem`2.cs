@@ -82,50 +82,32 @@ namespace Atata.KendoUI
             yield return new FindByXPathAttribute($"*[contains(concat(' ', normalize-space(@class), ' '), ' k-in ')]{TextXPath}");
         }
 
-        protected virtual bool GetIsExpanded()
-        {
-            return ToggleIcon.Attributes.Class.Value.Contains(KendoClass.Icon.Collapse);
-        }
+        protected virtual bool GetIsExpanded() =>
+            ToggleIcon.Attributes.Class.Value.Contains(KendoClass.Icon.Collapse);
 
-        protected virtual bool GetIsChecked()
-        {
-            return CheckBox.IsChecked;
-        }
+        protected virtual bool GetIsChecked() =>
+            CheckBox.IsChecked;
 
-        protected virtual bool GetIsSelected()
-        {
-            return Text.Attributes.Class.Value.Contains(KendoClass.Selected);
-        }
+        protected virtual bool GetIsSelected() =>
+            Text.Attributes.Class.Value.Contains(KendoClass.Selected);
 
-        protected virtual bool GetIsFocused()
-        {
-            return Text.Attributes.Class.Value.Contains(KendoClass.Focused);
-        }
+        protected virtual bool GetIsFocused() =>
+            Text.Attributes.Class.Value.Contains(KendoClass.Focused);
 
-        protected override bool GetIsEnabled()
-        {
-            return !Text.Attributes.Class.Value.Contains(KendoClass.Disabled);
-        }
+        protected override bool GetIsEnabled() =>
+            !Text.Attributes.Class.Value.Contains(KendoClass.Disabled);
 
-        protected override void OnClick()
-        {
+        protected override void OnClick() =>
             Text.Click();
-        }
 
-        protected override void OnDoubleClick()
-        {
+        protected override void OnDoubleClick() =>
             Text.DoubleClick();
-        }
 
-        protected override void OnRightClick()
-        {
+        protected override void OnRightClick() =>
             Text.RightClick();
-        }
 
-        public TOwner Select()
-        {
-            return Text.Click();
-        }
+        public TOwner Select() =>
+            Text.Click();
 
         public TOwner Expand()
         {

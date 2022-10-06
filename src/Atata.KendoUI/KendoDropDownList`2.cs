@@ -72,23 +72,17 @@ namespace Atata.KendoUI
             Popup.WaitUntilClosed(CloseAnimationWaitingOptions);
         }
 
-        protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null)
-        {
-            return Driver.GetWithLogging(
+        protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null) =>
+            Driver.GetWithLogging(
                 By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
                     .DropDownOption(value)
                     .Visible()
                     .With(searchOptions));
-        }
 
-        protected override bool GetIsReadOnly()
-        {
-            return Scope.GetWithLogging(By.XPath(".//*[@readonly and @readonly!='false']").OfAnyVisibility().SafelyAtOnce()) != null;
-        }
+        protected override bool GetIsReadOnly() =>
+            Scope.GetWithLogging(By.XPath(".//*[@readonly and @readonly!='false']").OfAnyVisibility().SafelyAtOnce()) != null;
 
-        protected override bool GetIsEnabled()
-        {
-            return !WrapControl.Attributes.Class.Value.Contains(KendoClass.Disabled);
-        }
+        protected override bool GetIsEnabled() =>
+            !WrapControl.Attributes.Class.Value.Contains(KendoClass.Disabled);
     }
 }

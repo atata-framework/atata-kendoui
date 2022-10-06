@@ -26,24 +26,16 @@ namespace Atata.KendoUI
             AssociatedInput.Set(valueAsString);
         }
 
-        protected override bool GetIsReadOnly()
-        {
-            return AssociatedInput.IsReadOnly;
-        }
+        protected override bool GetIsReadOnly() =>
+            AssociatedInput.IsReadOnly;
 
-        protected override bool GetIsEnabled()
-        {
-            return AssociatedInput.IsEnabled;
-        }
+        protected override bool GetIsEnabled() =>
+            AssociatedInput.IsEnabled;
 
-        protected override void OnClear()
-        {
+        protected override void OnClear() =>
             AssociatedInput.Clear();
-        }
 
-        protected override void OnType(string text)
-        {
+        protected override void OnType(string text) =>
             AssociatedInput.Type(text);
-        }
     }
 }

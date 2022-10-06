@@ -37,10 +37,8 @@ namespace Atata.KendoUI
         public new FieldVerificationProvider<bool, KendoSwitch<TOwner>, TOwner> Should =>
             new FieldVerificationProvider<bool, KendoSwitch<TOwner>, TOwner>(this);
 
-        protected override bool GetValue()
-        {
-            return Attributes.Class.Value.Contains("k-switch-on");
-        }
+        protected override bool GetValue() =>
+            Attributes.Class.Value.Contains("k-switch-on");
 
         protected override void SetValue(bool value)
         {
@@ -53,38 +51,28 @@ namespace Atata.KendoUI
         /// Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
         /// </summary>
         /// <returns>The owner page object.</returns>
-        public TOwner Check()
-        {
-            return Set(true);
-        }
+        public TOwner Check() =>
+            Set(true);
 
         /// <summary>
         /// Unchecks the control.
         /// Also executes <see cref="TriggerEvents.BeforeSet" /> and <see cref="TriggerEvents.AfterSet" /> triggers.
         /// </summary>
         /// <returns>The owner page object.</returns>
-        public TOwner Uncheck()
-        {
-            return Set(false);
-        }
+        public TOwner Uncheck() =>
+            Set(false);
 
         /// <summary>
         /// Toggles the state of the control.
         /// </summary>
         /// <returns>The owner page object.</returns>
-        public TOwner Toggle()
-        {
-            return Set(!Value);
-        }
+        public TOwner Toggle() =>
+            Set(!Value);
 
-        protected override bool GetIsReadOnly()
-        {
-            return Attributes.GetValue<bool?>("aria-readonly") == true;
-        }
+        protected override bool GetIsReadOnly() =>
+            Attributes.GetValue<bool?>("aria-readonly") == true;
 
-        protected override bool GetIsEnabled()
-        {
-            return !Attributes.Class.Value.Contains(KendoClass.Disabled);
-        }
+        protected override bool GetIsEnabled() =>
+            !Attributes.Class.Value.Contains(KendoClass.Disabled);
     }
 }
