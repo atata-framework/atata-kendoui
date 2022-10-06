@@ -1,46 +1,41 @@
-﻿using NUnit.Framework;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+public class KendoGridTests : UITestFixture
 {
-    public class KendoGridTests : UITestFixture
+    private GridPage _page;
+
+    protected override void OnSetUp() =>
+        _page = Go.To<GridPage>();
+
+    [Test]
+    public void Interact()
     {
-        private GridPage _page;
+        var control = _page.Cars;
 
-        protected override void OnSetUp()
-        {
-            _page = Go.To<GridPage>();
-        }
+        control.Rows.Count.Should.Equal(12);
+        control.Rows.Should.Contain(x => x.CarMake == "Audi" && x.CarModel == "A4");
+        control.Rows[x => x.CarMake == "Honda" && x.CarModel == "Accord"].Should.Exist();
+        control.Rows[x => x.CarMake == "Volvo" && x.Year == 2010].HasAirConditioner.Should.BeTrue();
+        control.Rows[2].CarModel.Should.Equal("535d");
+    }
 
-        [Test]
-        public void KendoGrid_Basic()
-        {
-            var control = _page.Cars;
+    [Test]
+    public void Sort()
+    {
+        var control = _page.Cars;
 
-            control.Rows.Count.Should.Equal(12);
-            control.Rows.Should.Contain(x => x.CarMake == "Audi" && x.CarModel == "A4");
-            control.Rows[x => x.CarMake == "Honda" && x.CarModel == "Accord"].Should.Exist();
-            control.Rows[x => x.CarMake == "Volvo" && x.Year == 2010].HasAirConditioner.Should.BeTrue();
-            control.Rows[2].CarModel.Should.Equal("535d");
-        }
+        var header1 = control.Headers[x => x.Text == "Car Make"];
+        var header2 = control.Headers[x => x.Text == "Car Model"];
 
-        [Test]
-        public void KendoGrid_Sort()
-        {
-            var control = _page.Cars;
+        header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
+        header1.SortAscending();
+        header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.Ascending);
 
-            var header1 = control.Headers[x => x.Text == "Car Make"];
-            var header2 = control.Headers[x => x.Text == "Car Model"];
+        header2.SortDescending();
+        header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
+        header2.SortOrder.Should.Equal(KendoGridHeaderSortOrder.Descending);
 
-            header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
-            header1.SortAscending();
-            header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.Ascending);
-
-            header2.SortDescending();
-            header1.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
-            header2.SortOrder.Should.Equal(KendoGridHeaderSortOrder.Descending);
-
-            header2.Sort(KendoGridHeaderSortOrder.None);
-            header2.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
-        }
+        header2.Sort(KendoGridHeaderSortOrder.None);
+        header2.SortOrder.Should.Equal(KendoGridHeaderSortOrder.None);
     }
 }

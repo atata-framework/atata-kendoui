@@ -1,59 +1,53 @@
-﻿using System;
-using NUnit.Framework;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+public class KendoDateTimePickerTests : UITestFixture
 {
-    public class KendoDateTimePickerTests : UITestFixture
+    private DateTimePickerPage _page;
+
+    protected override void OnSetUp() =>
+        _page = Go.To<DateTimePickerPage>();
+
+    [Test]
+    public void Interact()
     {
-        private DateTimePickerPage _page;
+        var control = _page.Regular;
 
-        protected override void OnSetUp()
-        {
-            _page = Go.To<DateTimePickerPage>();
-        }
+        control.Should.BeEnabled();
+        control.Should.Not.BeReadOnly();
+        control.Should.BeNull();
 
-        [Test]
-        public void KendoDateTimePicker()
-        {
-            var control = _page.Regular;
+        DateTime value = new DateTime(2018, 7, 11, 15, 30, 0);
+        control.Set(value);
+        control.Should.Equal(value);
 
-            control.Should.BeEnabled();
-            control.Should.Not.BeReadOnly();
-            control.Should.BeNull();
+        control.Set(null);
+        control.Should.BeNull();
 
-            DateTime value = new DateTime(2018, 7, 11, 15, 30, 0);
-            control.Set(value);
-            control.Should.Equal(value);
+        value = new DateTime(1998, 11, 2, 19, 15, 0);
+        control.Set(value);
+        control.Should.Equal(value);
 
-            control.Set(null);
-            control.Should.BeNull();
+        control.Clear();
+        control.Should.BeNull();
+    }
 
-            value = new DateTime(1998, 11, 2, 19, 15, 0);
-            control.Set(value);
-            control.Should.Equal(value);
+    [Test]
+    public void Disabled()
+    {
+        var control = _page.Disabled;
 
-            control.Clear();
-            control.Should.BeNull();
-        }
+        control.Should.BeDisabled();
+        control.Should.Not.BeReadOnly();
+        control.Should.Equal(new DateTime(2000, 10, 10));
+    }
 
-        [Test]
-        public void KendoDateTimePicker_Disabled()
-        {
-            var control = _page.Disabled;
+    [Test]
+    public void ReadOnly()
+    {
+        var control = _page.ReadOnly;
 
-            control.Should.BeDisabled();
-            control.Should.Not.BeReadOnly();
-            control.Should.Equal(new DateTime(2000, 10, 10));
-        }
-
-        [Test]
-        public void KendoDateTimePicker_ReadOnly()
-        {
-            var control = _page.ReadOnly;
-
-            control.Should.BeEnabled();
-            control.Should.BeReadOnly();
-            control.Should.Equal(new DateTime(2005, 7, 20, 17, 45, 0));
-        }
+        control.Should.BeEnabled();
+        control.Should.BeReadOnly();
+        control.Should.Equal(new DateTime(2005, 7, 20, 17, 45, 0));
     }
 }

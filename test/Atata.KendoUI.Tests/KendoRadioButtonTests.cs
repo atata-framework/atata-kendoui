@@ -1,43 +1,38 @@
-﻿using NUnit.Framework;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+public class KendoRadioButtonTests : UITestFixture
 {
-    public class KendoRadioButtonTests : UITestFixture
+    private RadioButtonPage _page;
+
+    protected override void OnSetUp() =>
+        _page = Go.To<RadioButtonPage>();
+
+    [Test]
+    public void Interact()
     {
-        private RadioButtonPage _page;
+        var control = _page.Regular;
 
-        protected override void OnSetUp()
-        {
-            _page = Go.To<RadioButtonPage>();
-        }
+        control.Should.Exist();
+        control.Should.BeEnabled();
+        control.Should.Not.BeChecked();
+        control.Check();
+        control.Should.BeChecked();
+        control.Should.Equal(true);
+    }
 
-        [Test]
-        public void KendoRadioButton()
-        {
-            var control = _page.Regular;
+    [Test]
+    public void Disabled()
+    {
+        var control = _page.DisabledChecked;
 
-            control.Should.Exist();
-            control.Should.BeEnabled();
-            control.Should.Not.BeChecked();
-            control.Check();
-            control.Should.BeChecked();
-            control.Should.Equal(true);
-        }
+        control.Should.BeDisabled();
+        control.Should.Equal(true);
+        control.Should.BeChecked();
 
-        [Test]
-        public void KendoRadioButton_Disabled()
-        {
-            var control = _page.DisabledChecked;
+        control = _page.DisabledUnchecked;
 
-            control.Should.BeDisabled();
-            control.Should.Equal(true);
-            control.Should.BeChecked();
-
-            control = _page.DisabledUnchecked;
-
-            control.Should.BeDisabled();
-            control.Should.Equal(false);
-            control.Should.BeUnchecked();
-        }
+        control.Should.BeDisabled();
+        control.Should.Equal(false);
+        control.Should.BeUnchecked();
     }
 }

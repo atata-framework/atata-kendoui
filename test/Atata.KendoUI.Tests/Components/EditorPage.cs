@@ -1,11 +1,10 @@
-﻿namespace Atata.KendoUI.Tests
-{
-    using _ = EditorPage;
+﻿namespace Atata.KendoUI.Tests;
 
-    [Url("editor")]
-    public class EditorPage : Page<_>
-    {
-        [FindFirst]
-        public KendoEditor<_> Regular { get; private set; }
-    }
+using _ = EditorPage;
+
+[Url("editor")]
+public class EditorPage : Page<_>
+{
+    [FindFirst]
+    public KendoEditor<_> Regular { get; private set; }
 }

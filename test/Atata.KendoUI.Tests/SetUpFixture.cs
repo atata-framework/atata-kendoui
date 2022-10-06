@@ -1,80 +1,56 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Net.NetworkInformation;
+using Atata.Cli;
 using Atata.WebDriverSetup;
-using NUnit.Framework;
 
-namespace Atata.KendoUI.Tests
+namespace Atata.KendoUI.Tests;
+
+[SetUpFixture]
+public class SetUpFixture
 {
-    [SetUpFixture]
-    public class SetUpFixture
+    private CliCommand _dotnetRunCommand;
+
+    [OneTimeSetUp]
+    public async Task GlobalSetUpAsync() =>
+        await Task.WhenAll(
+            DriverSetup.AutoSetUpAsync(BrowserNames.Chrome),
+            Task.Run(SetUpTestApp));
+
+    private static bool IsTestAppRunning() =>
+        IPGlobalProperties.GetIPGlobalProperties()
+            .GetActiveTcpListeners()
+            .Any(x => x.Port == UITestFixture.TestAppPort);
+
+    private void SetUpTestApp()
     {
-        private Process _coreRunProcess;
+        if (!IsTestAppRunning())
+            StartTestApp();
+    }
 
-        [OneTimeSetUp]
-        public async Task GlobalSetUpAsync()
+    private void StartTestApp()
+    {
+        string testAppPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "Atata.KendoUI.TestApp");
+
+        ProgramCli dotnetCli = new ProgramCli("dotnet", useCommandShell: true)
+            .WithWorkingDirectory(testAppPath);
+
+        _dotnetRunCommand = dotnetCli.Start("run");
+
+        var testAppWait = new SafeWait<SetUpFixture>(this)
         {
-            await Task.WhenAll(
-                Task.Run(SetUpDriver),
-                Task.Run(SetUpTestApp));
-        }
+            Timeout = TimeSpan.FromSeconds(40),
+            PollingInterval = TimeSpan.FromSeconds(0.2)
+        };
 
-        private static void SetUpDriver() =>
-            DriverSetup.AutoSetUp(BrowserNames.Chrome);
+        testAppWait.Until(x => IsTestAppRunning());
+    }
 
-        private static WebResponse PingTestApp() =>
-            WebRequest.CreateHttp(UITestFixture.BaseUrl).GetResponse();
-
-        private void SetUpTestApp()
+    [OneTimeTearDown]
+    public void GlobalTearDown()
+    {
+        if (_dotnetRunCommand != null)
         {
-            try
-            {
-                PingTestApp();
-            }
-            catch (WebException)
-            {
-                RunTestApp();
-            }
-        }
-
-        private void RunTestApp()
-        {
-            _coreRunProcess = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "cmd.exe",
-                    Arguments = "/c dotnet run",
-                    WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\Atata.KendoUI.TestApp")
-                }
-            };
-
-            _coreRunProcess.Start();
-
-            Thread.Sleep(5000);
-
-            var testAppWait = new SafeWait<SetUpFixture>(this)
-            {
-                Timeout = TimeSpan.FromSeconds(40),
-                PollingInterval = TimeSpan.FromSeconds(1)
-            };
-
-            testAppWait.IgnoreExceptionTypes(typeof(WebException));
-
-            testAppWait.Until(x => PingTestApp());
-        }
-
-        [OneTimeTearDown]
-        public void GlobalTearDown()
-        {
-            if (_coreRunProcess != null)
-            {
-                _coreRunProcess.Kill(true);
-                _coreRunProcess.Dispose();
-            }
+            _dotnetRunCommand.Kill(true);
+            _dotnetRunCommand.Dispose();
         }
     }
 }

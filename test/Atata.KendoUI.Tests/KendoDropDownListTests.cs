@@ -1,18 +1,14 @@
-﻿using NUnit.Framework;
-
-namespace Atata.KendoUI.Tests
+﻿namespace Atata.KendoUI.Tests
 {
     public class KendoDropDownListTests : UITestFixture
     {
-        private static DropDownListPage GoToTestPage()
-        {
-            return Go.To<DropDownListPage>();
-        }
+        private static DropDownListPage GoToTestPage() =>
+            Go.To<DropDownListPage>();
 
         // TODO: KendoLibrary.Vue was removed. The snippet page stopped to work properly in Chrome, so Vue test removed for now.
         ////[PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue, KendoLibrary.Angular)]
         [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Angular)]
-        public void KendoDropDownList(KendoLibrary library)
+        public void Interact(KendoLibrary library)
         {
             var control = GoToSnippetPage(library).Get<KendoDropDownList<SnippetPage>>();
 
@@ -20,7 +16,7 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        public void KendoDropDownList_Disabled()
+        public void Disabled()
         {
             var control = GoToTestPage().Disabled;
 
@@ -30,7 +26,7 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        public void KendoDropDownList_ReadOnly()
+        public void ReadOnly()
         {
             var control = GoToTestPage().ReadOnly;
 
@@ -40,27 +36,27 @@ namespace Atata.KendoUI.Tests
         }
 
         [Test]
-        public void KendoDropDownList_Multiple()
+        public void Multiple()
         {
-            GoToTestPage().
-                EnableAll().
-                Regular.Set("X-Large").
-                Disabled.Set("Grey").
-                ReadOnly.Set(DropDownListPage.ItemValue.Black).
-                Regular.Should.Equal("X-Large").
-                Disabled.Should.Equal("Grey").
-                ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
+            GoToTestPage()
+                .EnableAll()
+                .Regular.Set("X-Large")
+                .Disabled.Set("Grey")
+                .ReadOnly.Set(DropDownListPage.ItemValue.Black)
+                .Regular.Should.Equal("X-Large")
+                .Disabled.Should.Equal("Grey")
+                .ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
         }
 
         [Test]
-        public void KendoDropDownList_SlowAnimation()
+        public void SlowAnimation()
         {
-            GoToTestPage().
-                EnableAll().
-                SlowAnimating.Set("Item 5").
-                Disabled.Set("Grey").
-                SlowAnimating.Should.Equal("Item 5").
-                Disabled.Should.Equal("Grey");
+            GoToTestPage()
+                .EnableAll()
+                .SlowAnimating.Set("Item 5")
+                .Disabled.Set("Grey")
+                .SlowAnimating.Should.Equal("Item 5")
+                .Disabled.Should.Equal("Grey");
         }
 
         private static void TestControl<TPage>(KendoDropDownList<TPage> control)

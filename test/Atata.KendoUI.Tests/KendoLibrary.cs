@@ -1,12 +1,11 @@
-﻿namespace Atata.KendoUI.Tests
+﻿namespace Atata.KendoUI.Tests;
+
+public enum KendoLibrary
 {
-    public enum KendoLibrary
-    {
-        JQuery,
-        Angular,
-        React,
-        Vue,
-        AspNetMvc,
-        AspNetCore
-    }
+    JQuery,
+    Angular,
+    React,
+    Vue,
+    AspNetMvc,
+    AspNetCore
 }

@@ -1,121 +1,116 @@
-﻿using NUnit.Framework;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+public class KendoTreeViewTests : UITestFixture
 {
-    public class KendoTreeViewTests : UITestFixture
+    private TreeViewPage _page;
+
+    protected override void OnSetUp() =>
+        _page = Go.To<TreeViewPage>();
+
+    [Test]
+    public void Interact()
     {
-        private TreeViewPage _page;
+        var control = _page.Regular;
 
-        protected override void OnSetUp()
-        {
-            _page = Go.To<TreeViewPage>();
-        }
+        control.Children.Count.Should.Equal(1);
+        control.Descendants.Count.Should.Equal(14);
+        control[0].Children.Count.Should.Equal(6);
+        control[0][1].Children.Count.Should.Equal(2);
+        control[0][1].Descendants.Count.Should.Equal(4);
 
-        [Test]
-        public void KendoTreeView()
-        {
-            var control = _page.Regular;
+        control[0][1][1].Children.Should.BeEmpty();
 
-            control.Children.Count.Should.Equal(1);
-            control.Descendants.Count.Should.Equal(14);
-            control[0].Children.Count.Should.Equal(6);
-            control[0][1].Children.Count.Should.Equal(2);
-            control[0][1].Descendants.Count.Should.Equal(4);
+        control[0][0].Text.Should.Equal("images");
+        control[0][1].Text.Should.Equal("resources");
+        control[0][1][0].Parent.Text.Should.Equal("resources");
 
-            control[0][1][1].Children.Should.BeEmpty();
+        control.Descendants[x => x.Text == "resources"].Click();
+        control[0][1].IsSelected.Should.BeTrue();
+        control[0][1].IsFocused.Should.BeTrue();
+        control[0][1].IsEnabled.Should.BeTrue();
+    }
 
-            control[0][0].Text.Should.Equal("images");
-            control[0][1].Text.Should.Equal("resources");
-            control[0][1][0].Parent.Text.Should.Equal("resources");
+    [Test]
+    public void Toggle()
+    {
+        var control = _page.Regular;
 
-            control.Descendants[x => x.Text == "resources"].Click();
-            control[0][1].IsSelected.Should.BeTrue();
-            control[0][1].IsFocused.Should.BeTrue();
-            control[0][1].IsEnabled.Should.BeTrue();
-        }
+        TestToggle(control);
+    }
 
-        [Test]
-        public void KendoTreeView_Toggle()
-        {
-            var control = _page.Regular;
+    [Test]
+    public void Toggle_SlowAnimation()
+    {
+        var control = _page.SlowAnimating;
 
-            TestToggle(control);
-        }
+        TestToggle(control);
+    }
 
-        [Test]
-        public void KendoTreeView_Toggle_SlowAnimation()
-        {
-            var control = _page.SlowAnimating;
+    private static void TestToggle(KendoTreeView<TreeViewPage> control)
+    {
+        control[0][0].Collapse();
+        control[0][1][0].Collapse();
+        control[0][1].Collapse();
+        control[0].Toggle();
+        control[0][1][0][1].Text.Should.Equal("prices.pdf");
+        control[0][1][0][1].Should.Exist();
+        control[0][1][0][1].Should.BeHidden();
+        control[0][1][0][1].Select();
+        control.Descendants[x => x.Text == "prices.pdf"].IsSelected.Should.BeTrue();
+        control.Descendants[x => x.Text == "prices.pdf"].IsFocused.Should.BeTrue();
+        control.Descendants[x => x.Text == "prices.pdf"].Parent.IsExpanded.Should.BeTrue();
+    }
 
-            TestToggle(control);
-        }
+    [Test]
+    public void DragAndDrop()
+    {
+        var control = _page.Regular;
 
-        private static void TestToggle(KendoTreeView<TreeViewPage> control)
-        {
-            control[0][0].Collapse();
-            control[0][1][0].Collapse();
-            control[0][1].Collapse();
-            control[0].Toggle();
-            control[0][1][0][1].Text.Should.Equal("prices.pdf");
-            control[0][1][0][1].Should.Exist();
-            control[0][1][0][1].Should.BeHidden();
-            control[0][1][0][1].Select();
-            control.Descendants[x => x.Text == "prices.pdf"].IsSelected.Should.BeTrue();
-            control.Descendants[x => x.Text == "prices.pdf"].IsFocused.Should.BeTrue();
-            control.Descendants[x => x.Text == "prices.pdf"].Parent.IsExpanded.Should.BeTrue();
-        }
+        control.Descendants[x => x.Text == "prices.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
 
-        [Test]
-        public void KendoTreeView_DragAndDrop()
-        {
-            var control = _page.Regular;
+        control.Descendants[x => x.Text == "pdf"].Children.SelectData(x => x.Text).Should.EqualSequence("brochure.pdf");
+        control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf");
 
-            control.Descendants[x => x.Text == "prices.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
+        control.Descendants[x => x.Text == "brochure.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
 
-            control.Descendants[x => x.Text == "pdf"].Children.SelectData(x => x.Text).Should.EqualSequence("brochure.pdf");
-            control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf");
+        control.Descendants[x => x.Text == "pdf"].Children.Should.BeEmpty();
+        control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf", "brochure.pdf");
+    }
 
-            control.Descendants[x => x.Text == "brochure.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
+    [Test]
+    public void Interact_WithCheckBoxes()
+    {
+        var control = _page.WithCheckboxes;
 
-            control.Descendants[x => x.Text == "pdf"].Children.Should.BeEmpty();
-            control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf", "brochure.pdf");
-        }
+        control.Descendants[x => x.Text == "March.pdf"].Check();
+        control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeTrue();
+        control.Descendants[x => x.Text == "March.pdf"].Uncheck();
+        control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeFalse();
 
-        [Test]
-        public void KendoTreeView_CheckBoxes()
-        {
-            var control = _page.WithCheckboxes;
+        control[0].Collapse();
 
-            control.Descendants[x => x.Text == "March.pdf"].Check();
-            control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeTrue();
-            control.Descendants[x => x.Text == "March.pdf"].Uncheck();
-            control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeFalse();
+        var folderItem = control[0][0];
 
-            control[0].Collapse();
+        foreach (var item in folderItem.Children)
+            item.IsChecked.Should.BeFalse();
 
-            var folderItem = control[0][0];
+        folderItem.Check();
+        folderItem.IsChecked.Should.BeTrue();
+        folderItem.IsExpanded.Should.BeTrue();
 
-            foreach (var item in folderItem.Children)
-                item.IsChecked.Should.BeFalse();
+        foreach (var item in folderItem.Children)
+            item.IsChecked.Should.BeTrue();
+    }
 
-            folderItem.Check();
-            folderItem.IsChecked.Should.BeTrue();
-            folderItem.IsExpanded.Should.BeTrue();
+    [Test]
+    public void CustomTemplate()
+    {
+        var control = _page.WithCustomTemplate;
 
-            foreach (var item in folderItem.Children)
-                item.IsChecked.Should.BeTrue();
-        }
+        control[0].Text.Should.Equal("My Documents");
 
-        [Test]
-        public void KendoTreeView_CustomTemplate()
-        {
-            var control = _page.WithCustomTemplate;
-
-            control[0].Text.Should.Equal("My Documents");
-
-            control.Descendants[x => x.Text == "index.html"].Should.BeVisible();
-            control.Descendants[x => x.Text == "index.html"].Remove.Click();
-            control.Descendants[x => x.Text == "index.html"].Should.Not.Exist();
-        }
+        control.Descendants[x => x.Text == "index.html"].Should.BeVisible();
+        control.Descendants[x => x.Text == "index.html"].Remove.Click();
+        control.Descendants[x => x.Text == "index.html"].Should.Not.Exist();
     }
 }

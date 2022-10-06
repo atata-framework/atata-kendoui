@@ -1,52 +1,47 @@
-﻿using NUnit.Framework;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+public class KendoComboBoxTests : UITestFixture
 {
-    public class KendoComboBoxTests : UITestFixture
+    private ComboBoxPage _page;
+
+    protected override void OnSetUp() =>
+        _page = Go.To<ComboBoxPage>();
+
+    [Test]
+    public void Interact()
     {
-        private ComboBoxPage _page;
+        var control = _page.Regular;
 
-        protected override void OnSetUp()
-        {
-            _page = Go.To<ComboBoxPage>();
-        }
+        control.Should.BeEnabled();
+        control.Should.Not.BeReadOnly();
 
-        [Test]
-        public void KendoComboBox()
-        {
-            var control = _page.Regular;
+        control.Set("Some value");
+        control.Should.Equal("Some value");
 
-            control.Should.BeEnabled();
-            control.Should.Not.BeReadOnly();
+        control.SetRandom(out string randomValue);
+        control.Should.Equal(randomValue);
 
-            control.Set("Some value");
-            control.Should.Equal("Some value");
+        control.Clear();
+        control.Should.BeEmpty();
+    }
 
-            control.SetRandom(out string randomValue);
-            control.Should.Equal(randomValue);
+    [Test]
+    public void Disabled()
+    {
+        var control = _page.Disabled;
 
-            control.Clear();
-            control.Should.BeEmpty();
-        }
+        control.Should.BeDisabled();
+        control.Should.Not.BeReadOnly();
+        control.Should.Equal("Item 1");
+    }
 
-        [Test]
-        public void KendoComboBox_Disabled()
-        {
-            var control = _page.Disabled;
+    [Test]
+    public void ReadOnly()
+    {
+        var control = _page.ReadOnly;
 
-            control.Should.BeDisabled();
-            control.Should.Not.BeReadOnly();
-            control.Should.Equal("Item 1");
-        }
-
-        [Test]
-        public void KendoComboBox_ReadOnly()
-        {
-            var control = _page.ReadOnly;
-
-            control.Should.BeEnabled();
-            control.Should.BeReadOnly();
-            control.Should.Equal(ComboBoxPage.ItemValue.Item2);
-        }
+        control.Should.BeEnabled();
+        control.Should.BeReadOnly();
+        control.Should.Equal(ComboBoxPage.ItemValue.Item2);
     }
 }

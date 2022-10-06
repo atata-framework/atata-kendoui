@@ -1,63 +1,59 @@
-﻿using System;
-using System.Linq;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests
+using _ = SnippetPage;
+
+public class SnippetPage : Page<_>
 {
-    using _ = SnippetPage;
-
-    public class SnippetPage : Page<_>
+    public TControl Get<TControl>(params Attribute[] attributes)
+        where TControl : Control<_>
     {
-        public TControl Get<TControl>(params Attribute[] attributes)
-            where TControl : Control<_>
-        {
-            if (!attributes.Any(x => x is FindAttribute))
-                attributes = new[] { new FindFirstAttribute() }.Concat(attributes).ToArray();
+        if (!attributes.Any(x => x is FindAttribute))
+            attributes = new[] { new FindFirstAttribute() }.Concat(attributes).ToArray();
 
-            var control = Find<TControl>("Test", attributes);
+        var control = Find<TControl>("Test", attributes);
 
-            control.WaitTo.WithinSeconds(45).Exist();
+        control.WaitTo.WithinSeconds(45).Exist();
 
-            return control;
-        }
+        return control;
+    }
 
-        public TControl GetByIndex<TControl>(int index, params Attribute[] attributes)
-            where TControl : Control<_>
-        {
-            attributes = new[] { new FindByIndexAttribute(index) }.Concat(attributes).ToArray();
+    public TControl GetByIndex<TControl>(int index, params Attribute[] attributes)
+        where TControl : Control<_>
+    {
+        attributes = new[] { new FindByIndexAttribute(index) }.Concat(attributes).ToArray();
 
-            return Get<TControl>(attributes);
-        }
+        return Get<TControl>(attributes);
+    }
 
-        public _ SwitchToFirstFrame()
-        {
-            var frame = Find<Frame<_>>("Test");
-            Driver.SwitchTo().Frame(frame.Scope);
+    public _ SwitchToFirstFrame()
+    {
+        var frame = Find<Frame<_>>("Test");
+        Driver.SwitchTo().Frame(frame.Scope);
 
-            return this;
-        }
+        return this;
+    }
 
-        public _ WaitAndClickRunButton()
-        {
-            var runButton = Find<Button<_>>(
-                "Run this project",
-                new FindByContentAttribute(TermCase.None));
+    public _ WaitAndClickRunButton()
+    {
+        var runButton = Find<Button<_>>(
+            "Run this project",
+            new FindByContentAttribute(TermCase.None));
 
-            runButton.WaitTo.WithinSeconds(30).BeVisible();
-            runButton.Click();
+        runButton.WaitTo.WithinSeconds(30).BeVisible();
+        runButton.Click();
 
-            return this;
-        }
+        return this;
+    }
 
-        public _ WaitAndClickAcceptAndCloseButton()
-        {
-            var acceptButton = Find<Button<_>>(
-                "Accept and Close",
-                new FindByIdAttribute("onetrust-accept-btn-handler"));
+    public _ WaitAndClickAcceptAndCloseButton()
+    {
+        var acceptButton = Find<Button<_>>(
+            "Accept and Close",
+            new FindByIdAttribute("onetrust-accept-btn-handler"));
 
-            acceptButton.WaitTo.WithinSeconds(30).BeVisible();
-            acceptButton.Click();
+        acceptButton.WaitTo.WithinSeconds(30).BeVisible();
+        acceptButton.Click();
 
-            return this;
-        }
+        return this;
     }
 }
