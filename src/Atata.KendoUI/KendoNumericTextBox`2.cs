@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
@@ -13,6 +12,7 @@ namespace Atata.KendoUI
         [TraceLog]
         [Name("Associated")]
         [ControlDefinition("input[not(@type) or (@type!='button' and @type!='submit' and @type!='reset')]", ComponentTypeName = "input")]
+        [ClearsValueUsingCtrlADeleteKeys]
         protected Input<string, TOwner> AssociatedInput { get; private set; }
 
         protected override T GetValue()
@@ -34,37 +34,16 @@ namespace Atata.KendoUI
                 OnType(valueAsString);
         }
 
-        protected virtual void EnsureFocused()
-        {
-            IWebElement formattedValueInput = Scope.GetWithLogging(By.CssSelector($"input.{KendoClass.FormattedValue}").Input().OfAnyVisibility().SafelyAtOnce());
+        protected override bool GetIsReadOnly() =>
+            AssociatedInput.IsReadOnly;
 
-            if (formattedValueInput != null && formattedValueInput.Displayed)
-                formattedValueInput.ClickWithLogging();
-        }
+        protected override bool GetIsEnabled() =>
+            AssociatedInput.IsEnabled;
 
-        protected override bool GetIsReadOnly()
-        {
-            return AssociatedInput.IsReadOnly;
-        }
-
-        protected override bool GetIsEnabled()
-        {
-            return AssociatedInput.IsEnabled;
-        }
-
-        protected override void OnClear()
-        {
-            EnsureFocused();
-
+        protected override void OnClear() =>
             AssociatedInput.Clear();
-            AssociatedInput.Type("0" + Keys.Backspace);
-        }
 
-        protected override void OnType(string text)
-        {
-            EnsureFocused();
-
+        protected override void OnType(string text) =>
             AssociatedInput.Type(text);
-        }
     }
 }

@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix `KendoDatePicker<TOwner>` for the latest version of Kendo UI for Vue.
+- Fix `KendoNumericTextBox<T, TOwner>` for the latest version of Kendo UI for Vue.
