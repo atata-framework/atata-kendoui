@@ -37,7 +37,7 @@ jobs:
     displayName: Publish test results
     inputs:
       artifactName: Visual test results
-      targetPath: test/Atata.KendoUI.Tests/bin/$(buildConfiguration)/netcoreapp3.1/artifacts
+      targetPath: test/Atata.KendoUI.Tests/bin/$(buildConfiguration)/net6.0/artifacts
 
 - job: RunTestsHeadless
   displayName: Run tests headless
@@ -62,4 +62,4 @@ jobs:
     displayName: Publish test results
     inputs:
       artifactName: Headless test results
-      targetPath: test/Atata.KendoUI.Tests/bin/$(buildConfiguration)/netcoreapp3.1/artifacts
+      targetPath: test/Atata.KendoUI.Tests/bin/$(buildConfiguration)/net6.0/artifacts
