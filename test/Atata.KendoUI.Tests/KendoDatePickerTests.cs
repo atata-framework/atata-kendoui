@@ -111,6 +111,9 @@ namespace Atata.KendoUI.Tests
 
             control.Clear();
             control.Should.BeNull();
+
+            control.Owner.Press(Keys.Tab);
+            control.Should.BeNull();
         }
     }
 }

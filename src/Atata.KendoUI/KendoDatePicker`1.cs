@@ -23,6 +23,7 @@ namespace Atata.KendoUI
         [FindFirst]
         [TraceLog]
         [Name("Associated")]
+        [ClearsValueUsingCtrlADeleteKeys]
         protected TextInput<TOwner> AssociatedInput { get; private set; }
 
         protected override DateTime? GetValue()
@@ -47,12 +48,12 @@ namespace Atata.KendoUI
         {
             string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-            IWebElement scope = AssociatedInput.Scope;
-
-            scope.Clear();
+            OnClear();
 
             if (!string.IsNullOrEmpty(valueAsString))
             {
+                IWebElement scope = AssociatedInput.Scope;
+
                 scope.SendKeys(Keys.Home);
 
                 foreach (char key in valueAsString)
@@ -68,24 +69,16 @@ namespace Atata.KendoUI
             }
         }
 
-        protected override bool GetIsReadOnly()
-        {
-            return AssociatedInput.IsReadOnly;
-        }
+        protected override bool GetIsReadOnly() =>
+            AssociatedInput.IsReadOnly;
 
-        protected override bool GetIsEnabled()
-        {
-            return AssociatedInput.IsEnabled;
-        }
+        protected override bool GetIsEnabled() =>
+            AssociatedInput.IsEnabled;
 
-        protected override void OnClear()
-        {
+        protected override void OnClear() =>
             AssociatedInput.Clear();
-        }
 
-        protected override void OnType(string text)
-        {
+        protected override void OnType(string text) =>
             AssociatedInput.Type(text);
-        }
     }
 }

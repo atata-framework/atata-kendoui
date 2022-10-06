@@ -1,7 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
-
-namespace Atata.KendoUI
+﻿namespace Atata.KendoUI
 {
     /// <summary>
     /// Represents the Kendo UI date picker control for Angular.
@@ -15,18 +12,5 @@ namespace Atata.KendoUI
     public class NgKendoDatePicker<TOwner> : KendoDatePicker<TOwner>
         where TOwner : PageObject<TOwner>
     {
-        protected override void SetValue(DateTime? value)
-        {
-            if (value == null)
-                OnClear();
-            else
-                base.SetValue(value);
-        }
-
-        protected override void OnClear()
-        {
-            AssociatedInput.Scope.ClickWithLogging();
-            Driver.Perform(x => x.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete));
-        }
     }
 }
