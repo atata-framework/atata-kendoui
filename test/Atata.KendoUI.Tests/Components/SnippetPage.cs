@@ -13,7 +13,7 @@ namespace Atata.KendoUI.Tests
             if (!attributes.Any(x => x is FindAttribute))
                 attributes = new[] { new FindFirstAttribute() }.Concat(attributes).ToArray();
 
-            var control = Controls.Create<TControl>("Test", attributes);
+            var control = Find<TControl>("Test", attributes);
 
             control.WaitTo.WithinSeconds(45).Exist();
 
@@ -30,7 +30,7 @@ namespace Atata.KendoUI.Tests
 
         public _ SwitchToFirstFrame()
         {
-            var frame = Controls.Create<Frame<_>>("Test");
+            var frame = Find<Frame<_>>("Test");
             Driver.SwitchTo().Frame(frame.Scope);
 
             return this;
@@ -38,7 +38,7 @@ namespace Atata.KendoUI.Tests
 
         public _ WaitAndClickRunButton()
         {
-            var runButton = Controls.Create<Button<_>>(
+            var runButton = Find<Button<_>>(
                 "Run this project",
                 new FindByContentAttribute(TermCase.None));
 
@@ -50,7 +50,7 @@ namespace Atata.KendoUI.Tests
 
         public _ WaitAndClickAcceptAndCloseButton()
         {
-            var acceptButton = Controls.Create<Button<_>>(
+            var acceptButton = Find<Button<_>>(
                 "Accept and Close",
                 new FindByIdAttribute("onetrust-accept-btn-handler"));
 
