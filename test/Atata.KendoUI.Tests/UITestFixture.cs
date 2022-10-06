@@ -1,4 +1,6 @@
-﻿namespace Atata.KendoUI.Tests;
+﻿using NUnit.Framework.Internal;
+
+namespace Atata.KendoUI.Tests;
 
 [TestFixture]
 [Parallelizable]
@@ -77,6 +79,13 @@ public abstract class UITestFixture
     private static string RetrieveComponentNameFromTestName()
     {
         string componentName = TestContext.CurrentContext.Test.MethodName;
+
+        if (componentName == "Interact")
+        {
+            componentName = TestContext.CurrentContext.Test.ClassName[..^5];
+            componentName = componentName.Substring(componentName.LastIndexOf('.') + 1);
+        }
+
         string[] prefixOptionsToRemove =
         {
             "VueKendo",
