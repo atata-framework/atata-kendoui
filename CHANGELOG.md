@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgrade Atata package to v2.2.0.
+
 ### Fixed
 
 - Fix `KendoDatePicker<TOwner>` for the latest version of Kendo UI for Vue.
