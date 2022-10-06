@@ -4,5 +4,6 @@
   </TestRunParameters>
   <NUnit>
     <DisplayName>FullName</DisplayName>
+    <NumberOfTestWorkers>4</NumberOfTestWorkers>
   </NUnit>
 </RunSettings>
