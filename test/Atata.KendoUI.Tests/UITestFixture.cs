@@ -83,7 +83,7 @@ public abstract class UITestFixture
         if (componentName == "Interact")
         {
             componentName = TestContext.CurrentContext.Test.ClassName[..^5];
-            componentName = componentName.Substring(componentName.LastIndexOf('.') + 1);
+            componentName = componentName[(componentName.LastIndexOf('.') + 1)..];
         }
 
         string[] prefixOptionsToRemove =
