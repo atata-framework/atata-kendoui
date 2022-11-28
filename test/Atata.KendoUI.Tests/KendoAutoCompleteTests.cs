@@ -2,11 +2,10 @@
 
 public class KendoAutoCompleteTests : UITestFixture
 {
-    private static AutoCompletePage GoToTestPage() =>
-        Go.To<AutoCompletePage>();
-
-    [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.Vue, KendoLibrary.Angular)]
-    public void Interact(KendoLibrary library)
+    [TestCaseSources.JQuery]
+    [TestCaseSources.Vue]
+    [TestCaseSources.Angular]
+    public void Interact(string library)
     {
         var control = GoToSnippetPage(library)
             .Get<KendoAutoComplete<SnippetPage>>();
@@ -17,26 +16,26 @@ public class KendoAutoCompleteTests : UITestFixture
     [Test]
     public void ReactKendoAutoComplete()
     {
-        var control = GoToSnippetPage(KendoLibrary.React)
+        var control = GoToSnippetPage(KendoLibraries.React)
             .Get<ReactKendoAutoComplete<SnippetPage>>();
 
         TestControl(control);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = GoToTestPage().Disabled;
+        var control = GoToTestPage<AutoCompletePage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal("Spain");
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = GoToTestPage().ReadOnly;
+        var control = GoToTestPage<AutoCompletePage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

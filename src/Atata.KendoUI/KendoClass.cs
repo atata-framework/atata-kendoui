@@ -1,12 +1,23 @@
-﻿namespace Atata.KendoUI
+﻿using System;
+
+namespace Atata.KendoUI
 {
     public static class KendoClass
     {
-        public const string Disabled = "k-state-disabled";
+        public const string Disabled = "k-disabled";
 
-        public const string Selected = "k-state-selected";
+        public const string StateDisabled = "k-state-disabled";
 
-        public const string Focused = "k-state-focused";
+        public const string Selected = "k-selected";
+
+        public const string StateSelected = "k-state-selected";
+
+        public const string Focus = "k-focus";
+
+        [Obsolete("Use Focus or StateFocused instead.")] // Obsolete since v2.2.0.
+        public const string Focused = Focus;
+
+        public const string StateFocused = "k-state-focused";
 
         public const string FormattedValue = "k-formatted-value";
 

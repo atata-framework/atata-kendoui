@@ -1,10 +1,8 @@
-﻿using System.Linq;
-
-namespace Atata.KendoUI
+﻿namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
     [FindByLabel]
-    [IdXPathForLabel("[span/input[2][@id='{0}']]")]
+    [IdXPathForLabel("[span/input[@id='{0}']]")]
     public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
@@ -17,9 +15,8 @@ namespace Atata.KendoUI
 
         protected override T GetValue()
         {
-            string valueAsString = AssociatedInput.Attributes.Class.Value.Contains(KendoClass.FormattedValue)
-                ? AssociatedInput.Attributes["aria-valuenow"]
-                : AssociatedInput.Value;
+            string valueAsString = AssociatedInput.Script.ExecuteAgainst<string>(
+                "return (arguments[0] === document.activeElement || !arguments[0].hasAttribute('aria-valuenow')) ? arguments[0].value : arguments[0].getAttribute('aria-valuenow');");
 
             return ConvertStringToValueUsingGetFormat(valueAsString);
         }

@@ -4,18 +4,17 @@ namespace Atata.KendoUI.Tests;
 
 public class KendoNumericTextBoxTests : UITestFixture
 {
-    private static NumericTextBoxPage GoToTestPage() =>
-        Go.To<NumericTextBoxPage>();
-
-    [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue)]
-    public void Interact(KendoLibrary library)
+    [TestCaseSources.JQuery]
+    [TestCaseSources.React]
+    [TestCaseSources.Vue]
+    public void Interact(string library)
     {
         var control = GoToSnippetPage(library).Get<KendoNumericTextBox<SnippetPage>>();
 
         TestControl(control);
     }
 
-    [TestCase(TestName = nameof(Interact) + "(Angular)", Explicit = true)]
+    [TestCase(TestName = $"{nameof(Interact)}(\"{KendoLibraries.Angular}\")", Explicit = true)]
     public void Interact_Angular()
     {
         var control = GoToAngularDemoPage("inputs/numerictextbox")
@@ -25,38 +24,38 @@ public class KendoNumericTextBoxTests : UITestFixture
         TestControl(control);
     }
 
-    [TestCase(TestName = nameof(Interact) + "(AspNetMvc)", Explicit = true)]
+    [TestCase(TestName = $"{nameof(Interact)}(\"{KendoLibraries.AspNetMvc}\")", Explicit = true)]
     public void Interact_AspNetMvc()
     {
-        var control = GoToSnippetPage(KendoLibrary.AspNetMvc, "numerictextbox")
+        var control = GoToSnippetPage(KendoLibraries.AspNetMvc, "numerictextbox")
             .GetByIndex<KendoNumericTextBox<SnippetPage>>(3);
 
         TestControl(control);
     }
 
-    [TestCase(TestName = nameof(Interact) + "(AspNetCore)", Explicit = true)]
+    [TestCase(TestName = $"{nameof(Interact)}(\"{KendoLibraries.AspNetCore}\")", Explicit = true)]
     public void Interact_AspNetCore()
     {
-        var control = GoToSnippetPage(KendoLibrary.AspNetCore, "numerictextbox")
+        var control = GoToSnippetPage(KendoLibraries.AspNetCore, "numerictextbox")
             .GetByIndex<KendoNumericTextBox<SnippetPage>>(3);
 
         TestControl(control);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = GoToTestPage().Disabled;
+        var control = GoToTestPage<NumericTextBoxPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(25.75m);
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = GoToTestPage().ReadOnly;
+        var control = GoToTestPage<NumericTextBoxPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

@@ -2,15 +2,10 @@
 
 public class KendoMultiSelectTests : UITestFixture
 {
-    private MultiSelectPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<MultiSelectPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<MultiSelectPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.IsReadOnly.Should.BeFalse();
@@ -18,27 +13,27 @@ public class KendoMultiSelectTests : UITestFixture
         control.Add("Item 2");
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.Disabled;
+        var control = GoToTestPage<MultiSelectPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.IsReadOnly.Should.BeFalse();
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = _page.ReadOnly;
+        var control = GoToTestPage<MultiSelectPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.IsReadOnly.Should.BeTrue();
     }
 
-    [Test]
-    public void SlowAnimation() =>
-        _page
+    [TestCaseSources.JQuery]
+    public void SlowAnimation(string library) =>
+        GoToTestPage<MultiSelectPage>(library)
             .SlowAnimating.Add("Item 5")
             .Regular.Add("Item 3");
 }

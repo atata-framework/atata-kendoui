@@ -1,5 +1,9 @@
-﻿@{
-    string kendoUIVersion = "2020.3.1118";
+﻿@using Microsoft.Extensions.Primitives
+@{
+    StringValues versionValues = Context.Request.Query["v"];
+    string kendoUIVersion = versionValues == StringValues.Empty
+        ? "2022.3.1109"
+        : versionValues[0];
 }
 <!DOCTYPE html>
 <html>

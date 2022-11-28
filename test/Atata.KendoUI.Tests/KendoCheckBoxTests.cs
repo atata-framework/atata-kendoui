@@ -2,15 +2,10 @@
 
 public class KendoCheckBoxTests : UITestFixture
 {
-    private CheckBoxPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<CheckBoxPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<CheckBoxPage>(library).Regular;
 
         control.Should.Exist();
         control.Should.BeEnabled();
@@ -23,17 +18,18 @@ public class KendoCheckBoxTests : UITestFixture
         control.Should.Equal(true);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.DisabledChecked;
+        var page = GoToTestPage<CheckBoxPage>(library);
+        var control = page.DisabledChecked;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(true);
         control.Should.BeChecked();
 
-        control = _page.DisabledUnchecked;
+        control = page.DisabledUnchecked;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();

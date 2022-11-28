@@ -2,15 +2,10 @@
 
 public class KendoGridTests : UITestFixture
 {
-    private GridPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<GridPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Cars;
+        var control = GoToTestPage<GridPage>(library).Cars;
 
         control.Rows.Count.Should.Equal(12);
         control.Rows.Should.Contain(x => x.CarMake == "Audi" && x.CarModel == "A4");
@@ -19,10 +14,10 @@ public class KendoGridTests : UITestFixture
         control.Rows[2].CarModel.Should.Equal("535d");
     }
 
-    [Test]
-    public void Sort()
+    [TestCaseSources.JQuery]
+    public void Sort(string library)
     {
-        var control = _page.Cars;
+        var control = GoToTestPage<GridPage>(library).Cars;
 
         var header1 = control.Headers[x => x.Text == "Car Make"];
         var header2 = control.Headers[x => x.Text == "Car Model"];

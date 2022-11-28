@@ -4,11 +4,10 @@ namespace Atata.KendoUI.Tests;
 
 public class KendoDateInputTests : UITestFixture
 {
-    private static DateInputPage GoToTestPage() =>
-        Go.To<DateInputPage>();
-
-    [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue)]
-    public void Interact(KendoLibrary library)
+    [TestCaseSources.JQuery]
+    [TestCaseSources.React]
+    [TestCaseSources.Vue]
+    public void Interact(string library)
     {
         var control = GoToSnippetPage(library).Get<KendoDateInput<SnippetPage>>();
 
@@ -26,20 +25,20 @@ public class KendoDateInputTests : UITestFixture
         TestControl(control);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = GoToTestPage().Disabled;
+        var control = GoToTestPage<DateInputPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(new DateTime(2000, 10, 10));
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = GoToTestPage().ReadOnly;
+        var control = GoToTestPage<DateInputPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

@@ -2,42 +2,41 @@
 
 public class KendoDropDownListTests : UITestFixture
 {
-    private static DropDownListPage GoToTestPage() =>
-        Go.To<DropDownListPage>();
-
-    // TODO: KendoLibrary.Vue was removed. The snippet page stopped to work properly in Chrome, so Vue test removed for now.
-    ////[PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Vue, KendoLibrary.Angular)]
-    [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.React, KendoLibrary.Angular)]
-    public void Interact(KendoLibrary library)
+    // TODO: Vue was removed. The snippet page stopped to work properly in Chrome, so Vue test removed for now.
+    [TestCaseSources.JQuery]
+    [TestCaseSources.React]
+    [TestCaseSources.Angular]
+    public void Interact(string library)
     {
         var control = GoToSnippetPage(library).Get<KendoDropDownList<SnippetPage>>();
 
         TestControl(control);
     }
 
+    [TestCaseSources.JQuery]
     [Test]
-    public void Disabled()
+    public void Disabled(string library)
     {
-        var control = GoToTestPage().Disabled;
+        var control = GoToTestPage<DropDownListPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal("Black");
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = GoToTestPage().ReadOnly;
+        var control = GoToTestPage<DropDownListPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
         control.Should.Equal(DropDownListPage.ItemValue.Orange);
     }
 
-    [Test]
-    public void Multiple() =>
-        GoToTestPage()
+    [TestCaseSources.JQuery]
+    public void Multiple(string library) =>
+        GoToTestPage<DropDownListPage>(library)
             .EnableAll()
             .Regular.Set("X-Large")
             .Disabled.Set("Grey")
@@ -46,9 +45,9 @@ public class KendoDropDownListTests : UITestFixture
             .Disabled.Should.Equal("Grey")
             .ReadOnly.Should.Equal(DropDownListPage.ItemValue.Black);
 
-    [Test]
-    public void SlowAnimation() =>
-        GoToTestPage()
+    [TestCaseSources.JQuery]
+    public void SlowAnimation(string library) =>
+        GoToTestPage<DropDownListPage>(library)
             .EnableAll()
             .SlowAnimating.Set("Item 5")
             .Disabled.Set("Grey")

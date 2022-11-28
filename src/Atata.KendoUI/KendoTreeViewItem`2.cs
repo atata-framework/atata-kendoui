@@ -89,13 +89,13 @@ namespace Atata.KendoUI
             CheckBox.IsChecked;
 
         protected virtual bool GetIsSelected() =>
-            Text.Attributes.Class.Value.Contains(KendoClass.Selected);
+            Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Selected, KendoClass.StateSelected }).Any();
 
         protected virtual bool GetIsFocused() =>
-            Text.Attributes.Class.Value.Contains(KendoClass.Focused);
+            Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Focus, KendoClass.StateFocused }).Any();
 
         protected override bool GetIsEnabled() =>
-            !Text.Attributes.Class.Value.Contains(KendoClass.Disabled);
+            !Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
 
         protected override void OnClick() =>
             Text.Click();

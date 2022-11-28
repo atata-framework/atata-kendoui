@@ -2,15 +2,10 @@
 
 public class KendoRadioButtonTests : UITestFixture
 {
-    private RadioButtonPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<RadioButtonPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<RadioButtonPage>(library).Regular;
 
         control.Should.Exist();
         control.Should.BeEnabled();
@@ -20,16 +15,17 @@ public class KendoRadioButtonTests : UITestFixture
         control.Should.Equal(true);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.DisabledChecked;
+        var page = GoToTestPage<RadioButtonPage>(library);
+        var control = page.DisabledChecked;
 
         control.Should.BeDisabled();
         control.Should.Equal(true);
         control.Should.BeChecked();
 
-        control = _page.DisabledUnchecked;
+        control = page.DisabledUnchecked;
 
         control.Should.BeDisabled();
         control.Should.Equal(false);

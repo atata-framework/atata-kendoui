@@ -2,15 +2,10 @@
 
 public class KendoComboBoxTests : UITestFixture
 {
-    private ComboBoxPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<ComboBoxPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<ComboBoxPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();
@@ -25,20 +20,20 @@ public class KendoComboBoxTests : UITestFixture
         control.Should.BeEmpty();
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.Disabled;
+        var control = GoToTestPage<ComboBoxPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal("Item 1");
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = _page.ReadOnly;
+        var control = GoToTestPage<ComboBoxPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

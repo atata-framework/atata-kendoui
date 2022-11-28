@@ -2,15 +2,10 @@
 
 public class KendoEditorTests : UITestFixture
 {
-    private EditorPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<EditorPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<EditorPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();

@@ -2,15 +2,10 @@
 
 public class KendoSwitchTests : UITestFixture
 {
-    private SwitchPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<SwitchPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<SwitchPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();
@@ -36,10 +31,10 @@ public class KendoSwitchTests : UITestFixture
         control.Should.BeFalse();
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.Disabled;
+        var control = GoToTestPage<SwitchPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
@@ -47,10 +42,10 @@ public class KendoSwitchTests : UITestFixture
         control.Should.BeChecked();
     }
 
-    [Test]
-    public void FindByLabel()
+    [TestCaseSources.JQuery]
+    public void FindByLabel(string library)
     {
-        var control = _page.FindsByLabel;
+        var control = GoToTestPage<SwitchPage>(library).FindsByLabel;
 
         control.Should.BeEnabled();
         control.Should.BeFalse();

@@ -5,18 +5,16 @@ namespace Atata.KendoUI
 {
     [ControlDefinition(ContainingClass = "k-multiselect", ComponentTypeName = "multi-select")]
     [FindByLabel]
-    [IdXPathForLabel("[.//ul[@id='{0}_taglist']]")]
+    [IdXPathForLabel("[.//input[@aria-labelledby='{0}_label']]")]
     [ValueXPath("span[1]")]
     public class KendoMultiSelect<TOwner> : Control<TOwner>
         where TOwner : PageObject<TOwner>
     {
         private const string DropDownListItemXPath =
-            ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
-            "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
-            "/li";
+            ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]//ul/li";
 
         /// <summary>
-        /// Gets the <see cref="DataProvider{TData, TOwner}"/> instance for the value indicating whether the control is read-only.
+        /// Gets the <see cref="ValueProvider{TValue, TOwner}"/> instance for the value indicating whether the control is read-only.
         /// By default checks "readonly" attribute of nested input element.
         /// Override <see cref="GetIsReadOnly"/> method to change the behavior.
         /// </summary>
@@ -69,6 +67,6 @@ namespace Atata.KendoUI
             AssociatedInput.IsReadOnly;
 
         protected override bool GetIsEnabled() =>
-            !Attributes.Class.Value.Contains(KendoClass.Disabled);
+            !Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
     }
 }

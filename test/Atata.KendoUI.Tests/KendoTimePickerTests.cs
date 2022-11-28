@@ -2,15 +2,10 @@
 
 public class KendoTimePickerTests : UITestFixture
 {
-    private TimePickerPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<TimePickerPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<TimePickerPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();
@@ -29,20 +24,20 @@ public class KendoTimePickerTests : UITestFixture
         control.Should.BeNull();
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.Disabled;
+        var control = GoToTestPage<TimePickerPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(TimeSpan.FromHours(10.75));
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = _page.ReadOnly;
+        var control = GoToTestPage<TimePickerPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

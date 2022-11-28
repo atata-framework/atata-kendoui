@@ -26,7 +26,7 @@ namespace Atata.KendoUI
         protected Control<TOwner> SwitchHandle { get; private set; }
 
         /// <summary>
-        /// Gets the <see cref="DataProvider{TData, TOwner}" /> instance of the checked state value.
+        /// Gets the <see cref="ValueProvider{TValue, TOwner}" /> instance of the checked state value.
         /// </summary>
         public ValueProvider<bool, TOwner> IsChecked =>
             CreateValueProvider("checked state", () => Value);
@@ -73,6 +73,6 @@ namespace Atata.KendoUI
             Attributes.GetValue<bool?>("aria-readonly") == true;
 
         protected override bool GetIsEnabled() =>
-            !Attributes.Class.Value.Contains(KendoClass.Disabled);
+            !Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
     }
 }

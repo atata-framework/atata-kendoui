@@ -2,15 +2,10 @@
 
 public class KendoTreeViewTests : UITestFixture
 {
-    private TreeViewPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<TreeViewPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<TreeViewPage>(library).Regular;
 
         control.Children.Count.Should.Equal(1);
         control.Descendants.Count.Should.Equal(14);
@@ -30,18 +25,18 @@ public class KendoTreeViewTests : UITestFixture
         control[0][1].IsEnabled.Should.BeTrue();
     }
 
-    [Test]
-    public void Toggle()
+    [TestCaseSources.JQuery]
+    public void Toggle(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<TreeViewPage>(library).Regular;
 
         TestToggle(control);
     }
 
-    [Test]
-    public void Toggle_SlowAnimation()
+    [TestCaseSources.JQuery]
+    public void Toggle_SlowAnimation(string library)
     {
-        var control = _page.SlowAnimating;
+        var control = GoToTestPage<TreeViewPage>(library).SlowAnimating;
 
         TestToggle(control);
     }
@@ -61,10 +56,10 @@ public class KendoTreeViewTests : UITestFixture
         control.Descendants[x => x.Text == "prices.pdf"].Parent.IsExpanded.Should.BeTrue();
     }
 
-    [Test]
-    public void DragAndDrop()
+    [TestCaseSources.JQuery]
+    public void DragAndDrop(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<TreeViewPage>(library).Regular;
 
         control.Descendants[x => x.Text == "prices.pdf"].Text.DragAndDropTo(control.Descendants[x => x.Text == "zip"].Text);
 
@@ -77,10 +72,10 @@ public class KendoTreeViewTests : UITestFixture
         control.Descendants[x => x.Text == "zip"].Children.SelectData(x => x.Text).Should.EqualSequence("prices.pdf", "brochure.pdf");
     }
 
-    [Test]
-    public void Interact_WithCheckBoxes()
+    [TestCaseSources.JQuery]
+    public void Interact_WithCheckBoxes(string library)
     {
-        var control = _page.WithCheckboxes;
+        var control = GoToTestPage<TreeViewPage>(library).WithCheckboxes;
 
         control.Descendants[x => x.Text == "March.pdf"].Check();
         control.Descendants[x => x.Text == "March.pdf"].IsChecked.Should.BeTrue();
@@ -102,10 +97,10 @@ public class KendoTreeViewTests : UITestFixture
             item.IsChecked.Should.BeTrue();
     }
 
-    [Test]
-    public void CustomTemplate()
+    [TestCaseSources.JQuery]
+    public void CustomTemplate(string library)
     {
-        var control = _page.WithCustomTemplate;
+        var control = GoToTestPage<TreeViewPage>(library).WithCustomTemplate;
 
         control[0].Text.Should.Equal("My Documents");
 

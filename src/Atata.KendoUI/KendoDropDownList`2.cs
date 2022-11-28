@@ -3,16 +3,16 @@ using OpenQA.Selenium;
 
 namespace Atata.KendoUI
 {
-    [ControlDefinition(ContainingClass = "k-dropdown", ComponentTypeName = "drop-down list")]
+    [ControlDefinition(
+        "*[contains(concat(' ', normalize-space(@class), ' '), ' k-dropdownlist ') or contains(concat(' ', normalize-space(@class), ' '), ' k-dropdown ')]",
+        ComponentTypeName = "drop-down list")]
     [FindByLabel]
-    [IdXPathForLabel("@aria-owns='{0}_listbox'")]
+    [IdXPathForLabel("@aria-labelledby='{0}_label'")]
     public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
         private const string DropDownListItemXPath =
-            ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]" +
-            "//ul[contains(concat(' ', normalize-space(@class), ' '), ' k-list ')]" +
-            "/li";
+            ".//*[contains(concat(' ', normalize-space(@class), ' '), ' k-animation-container ')]//ul/li";
 
         /// <summary>
         /// Gets or sets the waiting options of open animation.
@@ -30,11 +30,6 @@ namespace Atata.KendoUI
         [TraceLog]
         protected Control<TOwner> WrapControl { get; private set; }
 
-        [FindByClass("k-select")]
-        [Name("Drop-Down")]
-        [TraceLog]
-        protected Control<TOwner> DropDownButton { get; private set; }
-
         [FindFirst(ScopeSource = ScopeSource.Page, Visibility = Visibility.Visible)]
         [Name("Drop-Down")]
         [TraceLog]
@@ -49,7 +44,7 @@ namespace Atata.KendoUI
         protected override T GetValue()
         {
             string value = Scope.GetWithLogging(
-                By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}")
+                By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input-value-text ') or contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}")
                     .FormatWith(ValueXPath)
                     .Visible())
                 .Text.Trim();
@@ -61,7 +56,7 @@ namespace Atata.KendoUI
         {
             string valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-            DropDownButton.Click();
+            Click();
 
             if (Popup.IsPresent)
                 Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
@@ -82,7 +77,13 @@ namespace Atata.KendoUI
         protected override bool GetIsReadOnly() =>
             Scope.GetWithLogging(By.XPath(".//*[@readonly and @readonly!='false']").OfAnyVisibility().SafelyAtOnce()) != null;
 
-        protected override bool GetIsEnabled() =>
-            !WrapControl.Attributes.Class.Value.Contains(KendoClass.Disabled);
+        protected override bool GetIsEnabled()
+        {
+            var domClasses = Attributes.Class.Value;
+
+            return domClasses.Contains("k-dropdownlist")
+                ? !domClasses.Contains(KendoClass.Disabled)
+                : !WrapControl.Attributes.Class.Value.Contains(KendoClass.StateDisabled);
+        }
     }
 }

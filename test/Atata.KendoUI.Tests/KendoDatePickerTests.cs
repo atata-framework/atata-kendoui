@@ -4,30 +4,29 @@ namespace Atata.KendoUI.Tests;
 
 public class KendoDatePickerTests : UITestFixture
 {
-    private static DatePickerPage GoToTestPage() =>
-        Go.To<DatePickerPage>();
-
-    [PlainTestCaseSource(KendoLibrary.JQuery, KendoLibrary.Vue, KendoLibrary.React)]
-    public void Interact(KendoLibrary library)
+    [TestCaseSources.JQuery]
+    [TestCaseSources.React]
+    [TestCaseSources.Vue]
+    public void Interact(string library)
     {
         var control = GoToSnippetPage(library).Get<KendoDatePicker<SnippetPage>>();
 
         TestControl(control);
     }
 
-    [TestCase(TestName = nameof(Interact) + "(AspNetMvc)", Explicit = true)]
+    [TestCase(TestName = $"{nameof(Interact)}(\"{KendoLibraries.AspNetMvc}\")", Explicit = true)]
     public void Interact_AspNetMvc()
     {
-        var control = GoToSnippetPage(KendoLibrary.AspNetMvc, "datepicker")
+        var control = GoToSnippetPage(KendoLibraries.AspNetMvc, "datepicker")
             .Get<KendoDatePicker<SnippetPage>>();
 
         TestControl(control);
     }
 
-    [TestCase(TestName = nameof(Interact) + "(AspNetCore)", Explicit = true)]
+    [TestCase(TestName = $"{nameof(Interact)}(\"{KendoLibraries.AspNetCore}\")", Explicit = true)]
     public void Interact_AspNetCore()
     {
-        var control = GoToSnippetPage(KendoLibrary.AspNetCore, "datepicker")
+        var control = GoToSnippetPage(KendoLibraries.AspNetCore, "datepicker")
             .Get<KendoDatePicker<SnippetPage>>();
 
         TestControl(control);
@@ -44,40 +43,40 @@ public class KendoDatePickerTests : UITestFixture
         TestControl(control);
     }
 
-    [Test]
-    public void Interact_JQuery_UsingDateInput()
+    [TestCaseSources.JQuery]
+    public void Interact_JQuery_UsingDateInput(string library)
     {
-        var control = GoToTestPage().UsingDateInput;
+        var control = GoToTestPage<DatePickerPage>(library).UsingDateInput;
 
         control.Should.BeNull();
 
         TestControl(control);
     }
 
-    [Test]
-    public void Interact_JQuery_UsingDateInput_WithValue()
+    [TestCaseSources.JQuery]
+    public void Interact_JQuery_UsingDateInput_WithValue(string library)
     {
-        var control = GoToTestPage().UsingDateInputWithValue;
+        var control = GoToTestPage<DatePickerPage>(library).UsingDateInputWithValue;
 
         control.Should.Equal(new DateTime(1988, 11, 2));
 
         TestControl(control);
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = GoToTestPage().Disabled;
+        var control = GoToTestPage<DatePickerPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(new DateTime(2000, 10, 10));
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = GoToTestPage().ReadOnly;
+        var control = GoToTestPage<DatePickerPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

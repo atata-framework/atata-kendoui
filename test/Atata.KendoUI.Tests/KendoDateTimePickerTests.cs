@@ -2,15 +2,10 @@
 
 public class KendoDateTimePickerTests : UITestFixture
 {
-    private DateTimePickerPage _page;
-
-    protected override void OnSetUp() =>
-        _page = Go.To<DateTimePickerPage>();
-
-    [Test]
-    public void Interact()
+    [TestCaseSources.JQuery]
+    public void Interact(string library)
     {
-        var control = _page.Regular;
+        var control = GoToTestPage<DateTimePickerPage>(library).Regular;
 
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();
@@ -31,20 +26,20 @@ public class KendoDateTimePickerTests : UITestFixture
         control.Should.BeNull();
     }
 
-    [Test]
-    public void Disabled()
+    [TestCaseSources.JQuery]
+    public void Disabled(string library)
     {
-        var control = _page.Disabled;
+        var control = GoToTestPage<DateTimePickerPage>(library).Disabled;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
         control.Should.Equal(new DateTime(2000, 10, 10));
     }
 
-    [Test]
-    public void ReadOnly()
+    [TestCaseSources.JQuery]
+    public void ReadOnly(string library)
     {
-        var control = _page.ReadOnly;
+        var control = GoToTestPage<DateTimePickerPage>(library).ReadOnly;
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();

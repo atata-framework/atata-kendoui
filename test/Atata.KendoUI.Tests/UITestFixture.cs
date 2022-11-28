@@ -1,4 +1,5 @@
-﻿using NUnit.Framework.Internal;
+﻿using System.Reflection;
+using NUnit.Framework.Internal;
 
 namespace Atata.KendoUI.Tests;
 
@@ -45,20 +46,28 @@ public abstract class UITestFixture
     public void TearDown() =>
         AtataContext.Current.CleanUp();
 
-    protected static SnippetPage GoToSnippetPage(KendoLibrary library)
+    protected static TPage GoToTestPage<TPage>(string library)
+        where TPage : Page<TPage>
+    {
+        string kendoUIVersion = library.Split('/')[1];
+        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>().Url;
+        return Go.To<TPage>(url: $"{pageUrl}?v={kendoUIVersion}");
+    }
+
+    protected static SnippetPage GoToSnippetPage(string library)
     {
         string componentName = RetrieveComponentNameFromTestName();
 
         return GoToSnippetPage(library, componentName);
     }
 
-    protected static SnippetPage GoToSnippetPage(KendoLibrary library, string componentName)
+    protected static SnippetPage GoToSnippetPage(string library, string componentName)
     {
         string url = ResolveSnippetPageUrl(library, componentName);
-        return GoToSnippetPage(url);
+        return GoToSnippetPageByUrl(url);
     }
 
-    protected static SnippetPage GoToSnippetPage(string url)
+    private static SnippetPage GoToSnippetPageByUrl(string url)
     {
         var page = Go.To<SnippetPage>(url: url);
 
@@ -73,7 +82,7 @@ public abstract class UITestFixture
     protected static SnippetPage GoToAngularDemoPage(string componentName)
     {
         string url = $"https://www.telerik.com/kendo-angular-ui/components/{componentName.ToLowerInvariant()}";
-        return GoToSnippetPage(url);
+        return GoToSnippetPageByUrl(url);
     }
 
     private static string RetrieveComponentNameFromTestName()
@@ -101,12 +110,12 @@ public abstract class UITestFixture
             : componentName;
     }
 
-    private static string ResolveSnippetPageUrl(KendoLibrary library, string componentName) =>
+    private static string ResolveSnippetPageUrl(string library, string componentName) =>
         library switch
         {
-            KendoLibrary.JQuery => componentName.ToLowerInvariant(),
-            KendoLibrary.AspNetMvc => $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}",
-            KendoLibrary.AspNetCore => $"https://demos.telerik.com/aspnet-core/{componentName.ToLowerInvariant()}",
-            _ => $"https://atata-kendoui-{library.ToString().ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io",
+            var x when x.StartsWith(KendoLibraries.JQuery, StringComparison.OrdinalIgnoreCase) => $"{componentName.ToLowerInvariant()}?v={library.Split('/')[1]}",
+            KendoLibraries.AspNetMvc => $"https://demos.telerik.com/aspnet-mvc/{componentName.ToLowerInvariant()}",
+            KendoLibraries.AspNetCore => $"https://demos.telerik.com/aspnet-core/{componentName.ToLowerInvariant()}",
+            _ => $"https://atata-kendoui-{library.ToLowerInvariant()}-{componentName.ToLowerInvariant()}.stackblitz.io",
         };
 }

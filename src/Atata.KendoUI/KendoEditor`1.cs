@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI
 {
-    [ControlDefinition(ContainingClass = "k-editor-widget", ComponentTypeName = "editor")]
+    [ControlDefinition(ContainingClass = "k-editor", ComponentTypeName = "editor")]
     [FindFirst]
     public class KendoEditor<TOwner> : FrameWrappedContentEditor<TOwner>
         where TOwner : PageObject<TOwner>

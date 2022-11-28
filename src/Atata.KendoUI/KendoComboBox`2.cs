@@ -2,7 +2,7 @@
 {
     [ControlDefinition(ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
     [FindByLabel]
-    [IdXPathForLabel("[.//input[@aria-owns='{0}_listbox']]")]
+    [IdXPathForLabel("[.//input[@aria-labelledby='{0}_label']]")]
     public class KendoComboBox<T, TOwner> : EditableTextField<T, TOwner>
         where TOwner : PageObject<TOwner>
     {
