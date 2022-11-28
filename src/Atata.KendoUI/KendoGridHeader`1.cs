@@ -24,7 +24,7 @@ namespace Atata.KendoUI
 
         protected virtual KendoGridHeaderSortOrder OnGetSortOrder()
         {
-            string sortValue = Attributes["aria-sort"];
+            string sortValue = DomAttributes["aria-sort"];
 
             return !string.IsNullOrEmpty(sortValue)
                 ? (KendoGridHeaderSortOrder)Enum.Parse(typeof(KendoGridHeaderSortOrder), sortValue, ignoreCase: true)

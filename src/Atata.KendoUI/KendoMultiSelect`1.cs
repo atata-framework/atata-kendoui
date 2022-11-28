@@ -67,6 +67,6 @@ namespace Atata.KendoUI
             AssociatedInput.IsReadOnly;
 
         protected override bool GetIsEnabled() =>
-            !Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
+            !DomClasses.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
     }
 }

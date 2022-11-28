@@ -83,19 +83,19 @@ namespace Atata.KendoUI
         }
 
         protected virtual bool GetIsExpanded() =>
-            ToggleIcon.Attributes.Class.Value.Contains(KendoClass.Icon.Collapse);
+            ToggleIcon.DomClasses.Value.Contains(KendoClass.Icon.Collapse);
 
         protected virtual bool GetIsChecked() =>
             CheckBox.IsChecked;
 
         protected virtual bool GetIsSelected() =>
-            Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Selected, KendoClass.StateSelected }).Any();
+            Text.DomClasses.Value.Intersect(new[] { KendoClass.Selected, KendoClass.StateSelected }).Any();
 
         protected virtual bool GetIsFocused() =>
-            Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Focus, KendoClass.StateFocused }).Any();
+            Text.DomClasses.Value.Intersect(new[] { KendoClass.Focus, KendoClass.StateFocused }).Any();
 
         protected override bool GetIsEnabled() =>
-            !Text.Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
+            !Text.DomClasses.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
 
         protected override void OnClick() =>
             Text.Click();

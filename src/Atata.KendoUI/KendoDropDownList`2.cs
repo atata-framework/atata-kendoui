@@ -79,11 +79,11 @@ namespace Atata.KendoUI
 
         protected override bool GetIsEnabled()
         {
-            var domClasses = Attributes.Class.Value;
+            var domClasses = DomClasses.Value;
 
             return domClasses.Contains("k-dropdownlist")
                 ? !domClasses.Contains(KendoClass.Disabled)
-                : !WrapControl.Attributes.Class.Value.Contains(KendoClass.StateDisabled);
+                : !WrapControl.DomClasses.Value.Contains(KendoClass.StateDisabled);
         }
     }
 }

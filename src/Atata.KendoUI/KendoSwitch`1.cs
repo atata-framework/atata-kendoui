@@ -38,7 +38,7 @@ namespace Atata.KendoUI
             new FieldVerificationProvider<bool, KendoSwitch<TOwner>, TOwner>(this);
 
         protected override bool GetValue() =>
-            Attributes.Class.Value.Contains("k-switch-on");
+            DomClasses.Value.Contains("k-switch-on");
 
         protected override void SetValue(bool value)
         {
@@ -70,9 +70,9 @@ namespace Atata.KendoUI
             Set(!Value);
 
         protected override bool GetIsReadOnly() =>
-            Attributes.GetValue<bool?>("aria-readonly") == true;
+            DomAttributes.GetValue<bool?>("aria-readonly") == true;
 
         protected override bool GetIsEnabled() =>
-            !Attributes.Class.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
+            !DomClasses.Value.Intersect(new[] { KendoClass.Disabled, KendoClass.StateDisabled }).Any();
     }
 }
