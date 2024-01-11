@@ -1,6 +1,5 @@
 variables:
-  buildConfiguration: 'Release'
-  netSdkVersion: '7.x'
+  netSdkVersion: '8.x'
 
 trigger: none
 
@@ -13,15 +12,15 @@ jobs:
   - task: NuGetToolInstaller@1
     displayName: Install NuGet tool
   - task: UseDotNet@2
-    displayName: Install .NET SDK
+    displayName: Set up .NET SDK
     inputs:
       version: $(netSdkVersion)
   - task: DotNetCoreCLI@2
     displayName: Pack
     inputs:
       command: pack
-      projects: 'src/*/*.csproj'
-      arguments: -c $(buildConfiguration)
+      packagesToPack: 'src/*/*.csproj'
+      configuration: 'Release'
   - task: NuGetCommand@2
     displayName: NuGet push
     inputs:

@@ -11,6 +11,11 @@ concat
 CSS
 Ctrl
 dasherize
+deinitialization
+deinitialize
+deinitialized
+deinitializes
+deinitializing
 dropdown
 enum
 enums
@@ -31,7 +36,10 @@ multicast
 multiline
 mutex
 MVC
+nav
+navbar
 NG
+NPM
 nullable
 polyline
 popup
@@ -40,6 +48,7 @@ screenshot
 screenshots
 serializer
 stringifier
+sudo
 Summernote
 sut
 SVG
@@ -49,9 +58,12 @@ timestamp
 uncheck
 unconfigured
 unescaped
+uninstall
+uninstalls
 unsubscribe
 username
 UTC
 utils
+validator
 viewport
 Vue
