@@ -7,7 +7,7 @@ public class KendoCheckBoxTests : UITestFixture
     {
         var control = GoToTestPage<CheckBoxPage>(library).Regular;
 
-        control.Should.Exist();
+        control.Should.BePresent();
         control.Should.BeEnabled();
         control.Should.Not.BeReadOnly();
         control.Should.BeChecked();

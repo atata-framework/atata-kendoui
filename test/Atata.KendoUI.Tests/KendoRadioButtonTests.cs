@@ -7,7 +7,7 @@ public class KendoRadioButtonTests : UITestFixture
     {
         var control = GoToTestPage<RadioButtonPage>(library).Regular;
 
-        control.Should.Exist();
+        control.Should.BePresent();
         control.Should.BeEnabled();
         control.Should.Not.BeChecked();
         control.Check();

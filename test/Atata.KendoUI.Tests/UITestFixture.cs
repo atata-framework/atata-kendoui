@@ -44,13 +44,13 @@ public abstract class UITestFixture
 
     [TearDown]
     public void TearDown() =>
-        AtataContext.Current.CleanUp();
+        AtataContext.Current?.Dispose();
 
     protected static TPage GoToTestPage<TPage>(string library)
         where TPage : Page<TPage>
     {
         string kendoUIVersion = library.Split('/')[1];
-        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>().Url;
+        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>().Value;
         return Go.To<TPage>(url: $"{pageUrl}?v={kendoUIVersion}");
     }
 

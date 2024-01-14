@@ -48,7 +48,7 @@ public class KendoTreeViewTests : UITestFixture
         control[0][1].Collapse();
         control[0].Toggle();
         control[0][1][0][1].Text.Should.Equal("prices.pdf");
-        control[0][1][0][1].Should.Exist();
+        control[0][1][0][1].Should.BePresent();
         control[0][1][0][1].Should.BeHidden();
         control[0][1][0][1].Select();
         control.Descendants[x => x.Text == "prices.pdf"].IsSelected.Should.BeTrue();
@@ -106,6 +106,6 @@ public class KendoTreeViewTests : UITestFixture
 
         control.Descendants[x => x.Text == "index.html"].Should.BeVisible();
         control.Descendants[x => x.Text == "index.html"].Remove.Click();
-        control.Descendants[x => x.Text == "index.html"].Should.Not.Exist();
+        control.Descendants[x => x.Text == "index.html"].Should.Not.BePresent();
     }
 }

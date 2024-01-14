@@ -12,7 +12,7 @@ public class SnippetPage : Page<_>
 
         var control = Find<TControl>("Test", attributes);
 
-        control.WaitTo.WithinSeconds(45).Exist();
+        control.WaitTo.WithinSeconds(45).BePresent();
 
         return control;
     }

@@ -71,9 +71,6 @@ namespace Atata.KendoUI
         public ValueProvider<bool, TOwner> IsSelected =>
             CreateValueProvider("selected state", GetIsSelected);
 
-        public ValueProvider<bool, TOwner> IsFocused =>
-            CreateValueProvider("focused state", GetIsFocused);
-
         protected string TextXPath =>
             Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
@@ -91,7 +88,7 @@ namespace Atata.KendoUI
         protected virtual bool GetIsSelected() =>
             Text.DomClasses.Value.Intersect(new[] { KendoClass.Selected, KendoClass.StateSelected }).Any();
 
-        protected virtual bool GetIsFocused() =>
+        protected override bool GetIsFocused() =>
             Text.DomClasses.Value.Intersect(new[] { KendoClass.Focus, KendoClass.StateFocused }).Any();
 
         protected override bool GetIsEnabled() =>
