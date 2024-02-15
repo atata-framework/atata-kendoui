@@ -96,12 +96,12 @@ public abstract class UITestFixture
         }
 
         string[] prefixOptionsToRemove =
-        {
+        [
             "VueKendo",
             "NgKendo",
             "ReactKendo",
             "Kendo"
-        };
+        ];
 
         string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix, StringComparison.Ordinal));
 

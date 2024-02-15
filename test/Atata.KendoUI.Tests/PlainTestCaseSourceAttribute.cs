@@ -4,7 +4,7 @@
 public class PlainTestCaseSourceAttribute : TestCaseSourceAttribute
 {
     public PlainTestCaseSourceAttribute(params object[] values)
-        : base(typeof(PlainTestCaseSourceAttribute), nameof(GetValues), new object[] { values })
+        : base(typeof(PlainTestCaseSourceAttribute), nameof(GetValues), [values])
     {
     }
 

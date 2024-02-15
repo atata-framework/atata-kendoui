@@ -8,7 +8,7 @@ public class SnippetPage : Page<_>
         where TControl : Control<_>
     {
         if (!attributes.Any(x => x is FindAttribute))
-            attributes = new[] { new FindFirstAttribute() }.Concat(attributes).ToArray();
+            attributes = [new FindFirstAttribute(), .. attributes];
 
         var control = Find<TControl>("Test", attributes);
 
@@ -20,7 +20,7 @@ public class SnippetPage : Page<_>
     public TControl GetByIndex<TControl>(int index, params Attribute[] attributes)
         where TControl : Control<_>
     {
-        attributes = new[] { new FindByIndexAttribute(index) }.Concat(attributes).ToArray();
+        attributes = [new FindByIndexAttribute(index), .. attributes];
 
         return Get<TControl>(attributes);
     }
