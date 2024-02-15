@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <LangVersion>12.0</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Version>2.3.0</Version>
     <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
 

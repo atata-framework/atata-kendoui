@@ -1,7 +1,6 @@
-﻿namespace Atata.KendoUI
+﻿namespace Atata.KendoUI;
+
+public class KendoDropDownList<TOwner> : KendoDropDownList<string, TOwner>
+    where TOwner : PageObject<TOwner>
 {
-    public class KendoDropDownList<TOwner> : KendoDropDownList<string, TOwner>
-        where TOwner : PageObject<TOwner>
-    {
-    }
 }
