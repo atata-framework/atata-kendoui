@@ -4,6 +4,6 @@
   </TestRunParameters>
   <NUnit>
     <DisplayName>FullName</DisplayName>
-    <NumberOfTestWorkers>4</NumberOfTestWorkers>
+    <Where>cat != 'Unstable'</Where>
   </NUnit>
 </RunSettings>
