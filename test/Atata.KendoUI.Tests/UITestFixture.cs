@@ -21,7 +21,6 @@ public abstract class UITestFixture
             .UseCulture("en-US")
             .UseAllNUnitFeatures()
             .LogConsumers.AddNLogFile()
-            .ScreenshotConsumers.AddFile()
             .Build();
 
         OnSetUp();
