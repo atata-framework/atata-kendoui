@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>2.3.0</Version>
+    <Version>3.0.0</Version>
     <Description>C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
 
 Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
@@ -16,7 +16,7 @@ Atata Framework documentation: https://atata.io</Description>
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
     <PackageId>Atata.KendoUI</PackageId>
     <PackageTags>atata automation testing test selenium webdriver browser kendo kendoui</PackageTags>
-    <PackageReleaseNotes>https://atata.io/blog/2024/01/15/atata.kendoui-2.3.0-released/</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/atata-framework/atata-kendoui/releases/tag/v3.0.0</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/atata-framework/atata-kendoui</PackageProjectUrl>
   </PropertyGroup>
 
