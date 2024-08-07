@@ -29,7 +29,7 @@ public abstract class UITestFixture
     private static IEnumerable<string> GetChromeArguments()
     {
         yield return "start-maximized";
-        yield return "disable-extensions";
+        yield return "disable-search-engine-choice-screen";
 
         bool headless = TestContext.Parameters.Get("headless", false);
 
