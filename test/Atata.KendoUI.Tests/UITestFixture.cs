@@ -104,8 +104,8 @@ public abstract class UITestFixture
 
         string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix, StringComparison.Ordinal));
 
-        return prefixToRemove != null
-            ? componentName.Remove(0, prefixToRemove.Length)
+        return prefixToRemove is not null
+            ? componentName[prefixToRemove.Length..]
             : componentName;
     }
 

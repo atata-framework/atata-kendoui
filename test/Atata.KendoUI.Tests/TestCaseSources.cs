@@ -5,7 +5,7 @@ public static class TestCaseSources
     public class JQueryAttribute : PlainTestCaseSourceAttribute
     {
         public JQueryAttribute()
-            : base(KendoLibraries.JQueryVersions.Select(x => $"{KendoLibraries.JQuery}/{x}").ToArray())
+            : base([.. KendoLibraries.JQueryVersions.Select(x => $"{KendoLibraries.JQuery}/{x}")])
         {
         }
     }
