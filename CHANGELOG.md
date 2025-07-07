@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Upgrade Atata package to v3.4.0.
+- Upgrade Atata package to v3.6.0.
 
 ## [3.0.0] - 2024-04-16
 

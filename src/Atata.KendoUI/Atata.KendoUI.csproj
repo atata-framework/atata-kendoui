@@ -22,7 +22,7 @@ Atata Framework documentation: https://atata.io
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata" Version="3.4.0" />
+    <PackageReference Include="Atata" Version="3.6.0" />
   </ItemGroup>
 
 </Project>
