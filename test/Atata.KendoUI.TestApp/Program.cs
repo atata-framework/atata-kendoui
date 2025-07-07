@@ -1,25 +1,13 @@
-﻿namespace Atata.KendoUI.TestApp;
+﻿var builder = WebApplication.CreateBuilder(args);
 
-public static class Program
-{
-    public static void Main(string[] args) =>
-        CreateWebApplication(new WebApplicationOptions { Args = args })
-            .Run();
+builder.Services.AddRazorPages();
 
-    public static WebApplication CreateWebApplication(WebApplicationOptions options)
-    {
-        var builder = WebApplication.CreateBuilder(options);
+var app = builder.Build();
 
-        builder.Services.AddRazorPages();
+app.UseDeveloperExceptionPage();
+app.UseStatusCodePages();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapRazorPages();
 
-        var app = builder.Build();
-
-        app.UseDeveloperExceptionPage();
-        app.UseStatusCodePages();
-        app.UseStaticFiles();
-        app.UseRouting();
-        app.MapRazorPages();
-
-        return app;
-    }
-}
+app.Run();
