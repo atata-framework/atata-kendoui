@@ -29,7 +29,7 @@ public class KendoAutoCompleteTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal("Spain");
+        control.Should.Be("Spain");
     }
 
     [TestCaseSources.JQuery]
@@ -39,7 +39,7 @@ public class KendoAutoCompleteTests : UITestFixture
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
-        control.Should.Equal("Norway");
+        control.Should.Be("Norway");
     }
 
     private static void TestControl<TPage>(KendoAutoComplete<string, TPage> control)
@@ -49,10 +49,10 @@ public class KendoAutoCompleteTests : UITestFixture
         control.Should.Not.BeReadOnly();
 
         control.Set("France");
-        control.Should.Equal("France");
+        control.Should.Be("France");
 
         control.Set("Germany, Austria");
-        control.Should.Equal("Germany, Austria");
+        control.Should.Be("Germany, Austria");
 
         control.Clear();
         control.Should.BeEmpty();

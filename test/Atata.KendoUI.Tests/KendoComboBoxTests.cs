@@ -11,10 +11,10 @@ public class KendoComboBoxTests : UITestFixture
         control.Should.Not.BeReadOnly();
 
         control.Set("Some value");
-        control.Should.Equal("Some value");
+        control.Should.Be("Some value");
 
         control.SetRandom(out string randomValue);
-        control.Should.Equal(randomValue);
+        control.Should.Be(randomValue);
 
         control.Clear();
         control.Should.BeEmpty();
@@ -27,7 +27,7 @@ public class KendoComboBoxTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal("Item 1");
+        control.Should.Be("Item 1");
     }
 
     [TestCaseSources.JQuery]
@@ -37,6 +37,6 @@ public class KendoComboBoxTests : UITestFixture
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
-        control.Should.Equal(ComboBoxPage.ItemValue.Item2);
+        control.Should.Be(ComboBoxPage.ItemValue.Item2);
     }
 }

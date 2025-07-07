@@ -49,7 +49,7 @@ public class KendoNumericTextBoxTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal(25.75m);
+        control.Should.Be(25.75m);
     }
 
     [TestCaseSources.JQuery]
@@ -59,7 +59,7 @@ public class KendoNumericTextBoxTests : UITestFixture
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
-        control.Should.Equal(0.15m);
+        control.Should.Be(0.15m);
     }
 
     private static void TestControl<TPage>(KendoNumericTextBox<TPage> control)
@@ -69,24 +69,24 @@ public class KendoNumericTextBoxTests : UITestFixture
         control.Should.Not.BeReadOnly();
 
         control.Set(125);
-        control.Should.Equal(125);
+        control.Should.Be(125);
         control.Owner.Press(Keys.Tab);
-        control.Should.Equal(125);
+        control.Should.Be(125);
 
         control.Set(98765);
-        control.Should.Equal(98765);
+        control.Should.Be(98765);
 
         control.Set(null);
         control.Should.BeNull();
 
         control.Set(9);
-        control.Should.Equal(9);
+        control.Should.Be(9);
 
         control.Clear();
         control.Should.BeNull();
 
         control.Type("1");
         control.Type("2");
-        control.Should.Equal(12);
+        control.Should.Be(12);
     }
 }

@@ -7,17 +7,17 @@ public class KendoTreeViewTests : UITestFixture
     {
         var control = GoToTestPage<TreeViewPage>(library).Regular;
 
-        control.Children.Count.Should.Equal(1);
-        control.Descendants.Count.Should.Equal(14);
-        control[0].Children.Count.Should.Equal(6);
-        control[0][1].Children.Count.Should.Equal(2);
-        control[0][1].Descendants.Count.Should.Equal(4);
+        control.Children.Count.Should.Be(1);
+        control.Descendants.Count.Should.Be(14);
+        control[0].Children.Count.Should.Be(6);
+        control[0][1].Children.Count.Should.Be(2);
+        control[0][1].Descendants.Count.Should.Be(4);
 
         control[0][1][1].Children.Should.BeEmpty();
 
-        control[0][0].Text.Should.Equal("images");
-        control[0][1].Text.Should.Equal("resources");
-        control[0][1][0].Parent.Text.Should.Equal("resources");
+        control[0][0].Text.Should.Be("images");
+        control[0][1].Text.Should.Be("resources");
+        control[0][1][0].Parent.Text.Should.Be("resources");
 
         control.Descendants[x => x.Text == "resources"].Click();
         control[0][1].IsSelected.Should.BeTrue();
@@ -47,7 +47,7 @@ public class KendoTreeViewTests : UITestFixture
         control[0][1][0].Collapse();
         control[0][1].Collapse();
         control[0].Toggle();
-        control[0][1][0][1].Text.Should.Equal("prices.pdf");
+        control[0][1][0][1].Text.Should.Be("prices.pdf");
         control[0][1][0][1].Should.BePresent();
         control[0][1][0][1].Should.BeHidden();
         control[0][1][0][1].Select();
@@ -102,7 +102,7 @@ public class KendoTreeViewTests : UITestFixture
     {
         var control = GoToTestPage<TreeViewPage>(library).WithCustomTemplate;
 
-        control[0].Text.Should.Equal("My Documents");
+        control[0].Text.Should.Be("My Documents");
 
         control.Descendants[x => x.Text == "index.html"].Should.BeVisible();
         control.Descendants[x => x.Text == "index.html"].Remove.Click();

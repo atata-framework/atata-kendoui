@@ -11,7 +11,7 @@ public class KendoEditorTests : UITestFixture
         control.Should.Not.BeReadOnly();
 
         control.Set("Some value");
-        control.Should.Equal("Some value");
+        control.Should.Be("Some value");
 
         control.Clear();
         control.Should.BeEmpty();

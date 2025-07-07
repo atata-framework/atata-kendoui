@@ -15,7 +15,7 @@ public class KendoCheckBoxTests : UITestFixture
         control.Should.BeUnchecked();
         control.Set(true);
         control.Should.BeChecked();
-        control.Should.Equal(true);
+        control.Should.Be(true);
     }
 
     [TestCaseSources.JQuery]
@@ -26,14 +26,14 @@ public class KendoCheckBoxTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal(true);
+        control.Should.Be(true);
         control.Should.BeChecked();
 
         control = page.DisabledUnchecked;
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal(false);
+        control.Should.Be(false);
         control.Should.BeUnchecked();
     }
 }

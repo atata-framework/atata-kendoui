@@ -12,7 +12,7 @@ public class KendoRadioButtonTests : UITestFixture
         control.Should.Not.BeChecked();
         control.Check();
         control.Should.BeChecked();
-        control.Should.Equal(true);
+        control.Should.Be(true);
     }
 
     [TestCaseSources.JQuery]
@@ -22,13 +22,13 @@ public class KendoRadioButtonTests : UITestFixture
         var control = page.DisabledChecked;
 
         control.Should.BeDisabled();
-        control.Should.Equal(true);
+        control.Should.Be(true);
         control.Should.BeChecked();
 
         control = page.DisabledUnchecked;
 
         control.Should.BeDisabled();
-        control.Should.Equal(false);
+        control.Should.Be(false);
         control.Should.BeUnchecked();
     }
 }

@@ -12,13 +12,13 @@ public class KendoTimePickerTests : UITestFixture
         control.Should.BeNull();
 
         control.Set(TimeSpan.FromHours(15.5));
-        control.Should.Equal(TimeSpan.FromHours(15.5));
+        control.Should.Be(TimeSpan.FromHours(15.5));
 
         control.Set(null);
         control.Should.BeNull();
 
         control.Set(TimeSpan.FromHours(17));
-        control.Should.Equal(TimeSpan.FromHours(17));
+        control.Should.Be(TimeSpan.FromHours(17));
 
         control.Clear();
         control.Should.BeNull();
@@ -31,7 +31,7 @@ public class KendoTimePickerTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal(TimeSpan.FromHours(10.75));
+        control.Should.Be(TimeSpan.FromHours(10.75));
     }
 
     [TestCaseSources.JQuery]
@@ -41,6 +41,6 @@ public class KendoTimePickerTests : UITestFixture
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
-        control.Should.Equal(TimeSpan.FromHours(17.25));
+        control.Should.Be(TimeSpan.FromHours(17.25));
     }
 }

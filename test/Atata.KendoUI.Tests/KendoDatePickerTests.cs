@@ -58,7 +58,7 @@ public class KendoDatePickerTests : UITestFixture
     {
         var control = GoToTestPage<DatePickerPage>(library).UsingDateInputWithValue;
 
-        control.Should.Equal(new DateTime(1988, 11, 2));
+        control.Should.Be(new DateTime(1988, 11, 2));
 
         TestControl(control);
     }
@@ -70,7 +70,7 @@ public class KendoDatePickerTests : UITestFixture
 
         control.Should.BeDisabled();
         control.Should.Not.BeReadOnly();
-        control.Should.Equal(new DateTime(2000, 10, 10));
+        control.Should.Be(new DateTime(2000, 10, 10));
     }
 
     [TestCaseSources.JQuery]
@@ -80,7 +80,7 @@ public class KendoDatePickerTests : UITestFixture
 
         control.Should.BeEnabled();
         control.Should.BeReadOnly();
-        control.Should.Equal(new DateTime(2005, 7, 20));
+        control.Should.Be(new DateTime(2005, 7, 20));
     }
 
     private static void TestControl<TPage>(KendoDatePicker<TPage> control)
@@ -91,18 +91,18 @@ public class KendoDatePickerTests : UITestFixture
 
         DateTime value1 = new DateTime(2018, 7, 11);
         control.Set(value1);
-        control.Should.Equal(value1);
+        control.Should.Be(value1);
 
         AtataContext.Current.Driver.Perform(x => x.KeyDown(Keys.Shift).SendKeys(Keys.Tab).KeyUp(Keys.Shift));
-        control.Should.Equal(value1);
+        control.Should.Be(value1);
 
         DateTime value2 = new DateTime(2019, 12, 31);
         control.Set(value2);
-        control.Should.Equal(value2);
+        control.Should.Be(value2);
 
         DateTime value3 = new DateTime(1995, 5, 19);
         control.Set(value3);
-        control.Should.Equal(value3);
+        control.Should.Be(value3);
 
         control.Clear();
         control.Should.BeNull();
