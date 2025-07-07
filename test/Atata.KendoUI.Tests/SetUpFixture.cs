@@ -7,7 +7,7 @@ namespace Atata.KendoUI.Tests;
 [SetUpFixture]
 public class SetUpFixture
 {
-    private CliCommand _dotnetRunCommand;
+    private CliCommand? _dotnetRunCommand;
 
     [OneTimeSetUp]
     public async Task GlobalSetUpAsync() =>
@@ -47,7 +47,7 @@ public class SetUpFixture
     [OneTimeTearDown]
     public void GlobalTearDown()
     {
-        if (_dotnetRunCommand != null)
+        if (_dotnetRunCommand is not null)
         {
             _dotnetRunCommand.Kill(true);
             _dotnetRunCommand.Dispose();

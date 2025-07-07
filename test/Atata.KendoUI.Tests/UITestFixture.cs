@@ -49,7 +49,7 @@ public abstract class UITestFixture
         where TPage : Page<TPage>
     {
         string kendoUIVersion = library.Split('/')[1];
-        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>().Value;
+        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>()!.Value;
         return Go.To<TPage>(url: $"{pageUrl}?v={kendoUIVersion}");
     }
 
@@ -86,11 +86,11 @@ public abstract class UITestFixture
 
     private static string RetrieveComponentNameFromTestName()
     {
-        string componentName = TestContext.CurrentContext.Test.MethodName;
+        string componentName = TestContext.CurrentContext.Test.MethodName!;
 
         if (componentName == "Interact")
         {
-            componentName = TestContext.CurrentContext.Test.ClassName[..^5];
+            componentName = TestContext.CurrentContext.Test.ClassName![..^5];
             componentName = componentName[(componentName.LastIndexOf('.') + 1)..];
         }
 
@@ -102,7 +102,7 @@ public abstract class UITestFixture
             "Kendo"
         ];
 
-        string prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix, StringComparison.Ordinal));
+        string? prefixToRemove = prefixOptionsToRemove.FirstOrDefault(prefix => componentName.StartsWith(prefix, StringComparison.Ordinal));
 
         return prefixToRemove is not null
             ? componentName[prefixToRemove.Length..]
