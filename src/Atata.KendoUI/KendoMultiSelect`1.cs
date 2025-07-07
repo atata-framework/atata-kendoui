@@ -51,7 +51,7 @@ public class KendoMultiSelect<TOwner> : Control<TOwner>
         Driver.Perform(x => x.SendKeys(Keys.Enter));
     }
 
-    protected virtual IWebElement GetDropDownOption(string value, SearchOptions? searchOptions = null) =>
+    protected virtual IWebElement? GetDropDownOption(string value, SearchOptions? searchOptions = null) =>
         StaleSafely.Execute(
             opt => Driver.GetWithLogging(
                 By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")

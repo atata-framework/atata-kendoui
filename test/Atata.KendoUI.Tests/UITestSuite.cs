@@ -1,46 +1,7 @@
-﻿using System.Reflection;
-using NUnit.Framework.Internal;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests;
-
-[TestFixture]
-[Parallelizable]
-public abstract class UITestSuite
+public abstract class UITestSuite : AtataTestSuite
 {
-    public const int TestAppPort = 56828;
-
-    public static string BaseUrl { get; } = $"http://localhost:{TestAppPort}/";
-
-    [SetUp]
-    public void SetUp()
-    {
-        AtataContext.Configure()
-            .UseChrome()
-                .WithArguments(GetChromeArguments())
-            .UseBaseUrl(BaseUrl)
-            .UseCulture("en-US")
-            .UseAllNUnitFeatures()
-            .LogConsumers.AddNLogFile()
-            .Build();
-
-        OnSetUp();
-    }
-
-    private static IEnumerable<string> GetChromeArguments()
-    {
-        yield return "start-maximized";
-        yield return "disable-search-engine-choice-screen";
-
-        bool headless = TestContext.Parameters.Get("headless", false);
-
-        if (headless)
-            yield return "headless";
-    }
-
-    protected virtual void OnSetUp()
-    {
-    }
-
     [TearDown]
     public void TearDown() =>
         AtataContext.Current?.Dispose();
@@ -49,7 +10,7 @@ public abstract class UITestSuite
         where TPage : Page<TPage>
     {
         string kendoUIVersion = library.Split('/')[1];
-        string pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>()!.Value;
+        string? pageUrl = typeof(TPage).GetCustomAttribute<UrlAttribute>()?.Value;
         return Go.To<TPage>(url: $"{pageUrl}?v={kendoUIVersion}");
     }
 

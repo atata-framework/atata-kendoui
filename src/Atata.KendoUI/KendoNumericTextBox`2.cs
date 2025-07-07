@@ -18,16 +18,16 @@ public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
         string valueAsString = AssociatedInput.Script.ExecuteAgainst<string>(
             "return (arguments[0] === document.activeElement || !arguments[0].hasAttribute('aria-valuenow')) ? arguments[0].value : arguments[0].getAttribute('aria-valuenow');");
 
-        return ConvertStringToValueUsingGetFormat(valueAsString);
+        return ConvertStringToValueUsingGetFormat(valueAsString)!;
     }
 
     protected override void SetValue(T value)
     {
         OnClear();
 
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-        if (!string.IsNullOrEmpty(valueAsString))
+        if (valueAsString?.Length > 0)
             OnType(valueAsString);
     }
 

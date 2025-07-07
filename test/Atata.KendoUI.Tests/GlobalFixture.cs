@@ -2,12 +2,44 @@
 using Atata.Cli;
 using Atata.WebDriverSetup;
 
+[assembly: SetCulture("en-US")]
+[assembly: Parallelizable(ParallelScope.Fixtures)]
+
 namespace Atata.KendoUI.Tests;
 
 [SetUpFixture]
-public class GlobalFixture
+public class GlobalFixture : AtataGlobalFixture
 {
+    private const int TestAppPort = 56828;
+
+    private static readonly string s_baseUrl = $"http://localhost:{TestAppPort}/";
+
     private CliCommand? _dotnetRunCommand;
+
+    protected override void ConfigureAtataContextGlobalProperties(AtataContextGlobalProperties globalProperties) =>
+        globalProperties.UseRootNamespaceOf<GlobalFixture>();
+
+    protected override void ConfigureAtataContextBaseConfiguration(AtataContextBuilder builder)
+    {
+        builder.Sessions.AddWebDriver(x => x
+            .UseStartScopes(AtataContextScopes.Test)
+            .UseChrome(x => x
+                .WithArguments(GetChromeArguments()))
+            .UseBaseUrl(s_baseUrl));
+
+        builder.LogConsumers.AddNLogFile();
+    }
+
+    private static IEnumerable<string> GetChromeArguments()
+    {
+        yield return "start-maximized";
+        yield return "disable-search-engine-choice-screen";
+
+        bool headless = TestContext.Parameters.Get("headless", false);
+
+        if (headless)
+            yield return "headless";
+    }
 
     [OneTimeSetUp]
     public async Task GlobalSetUpAsync() =>
@@ -18,7 +50,7 @@ public class GlobalFixture
     private static bool IsTestAppRunning() =>
         IPGlobalProperties.GetIPGlobalProperties()
             .GetActiveTcpListeners()
-            .Any(x => x.Port == UITestSuite.TestAppPort);
+            .Any(x => x.Port == TestAppPort);
 
     private void SetUpTestApp()
     {

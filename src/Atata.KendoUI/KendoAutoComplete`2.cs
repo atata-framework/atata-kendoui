@@ -24,13 +24,13 @@ public class KendoAutoComplete<T, TOwner> : EditableTextField<T, TOwner>
     protected override T GetValue()
     {
         string valueAsString = AssociatedInput.Value;
-        return ConvertStringToValueUsingGetFormat(valueAsString);
+        return ConvertStringToValueUsingGetFormat(valueAsString)!;
     }
 
     protected override void SetValue(T value)
     {
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
-        AssociatedInput.Set(valueAsString);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
+        AssociatedInput.Set(valueAsString ?? string.Empty);
     }
 
     protected override bool GetIsReadOnly() =>

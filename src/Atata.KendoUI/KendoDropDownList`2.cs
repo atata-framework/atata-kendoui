@@ -42,28 +42,28 @@ public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
     {
         string value = Scope.GetWithLogging(
             By.XPath($".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input-value-text ') or contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{ValueXPath}")
-                .Visible())
+                .Visible())!
             .Text.Trim();
 
-        return ConvertStringToValueUsingGetFormat(value);
+        return ConvertStringToValueUsingGetFormat(value)!;
     }
 
     protected override void SetValue(T value)
     {
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
         Click();
 
         if (Popup.IsPresent)
             Popup.WaitUntilOpen(OpenAnimationWaitingOptions);
 
-        GetDropDownOption(valueAsString).
-            ClickWithLogging();
+        GetDropDownOption(valueAsString)!
+            .ClickWithLogging();
 
         Popup.WaitUntilClosed(CloseAnimationWaitingOptions);
     }
 
-    protected virtual IWebElement GetDropDownOption(string value, SearchOptions? searchOptions = null)
+    protected virtual IWebElement? GetDropDownOption(string? value, SearchOptions? searchOptions = null)
     {
         By by = By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
             .DropDownOption(value)

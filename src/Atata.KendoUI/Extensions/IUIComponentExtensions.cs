@@ -7,7 +7,7 @@ internal static class IUIComponentExtensions
     {
         if (waitingOptions?.Timeout > TimeSpan.Zero)
         {
-            component.Context.Log.ExecuteSection(
+            component.Session.Log.ExecuteSection(
                 new LogSection($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace),
                 () =>
                 {

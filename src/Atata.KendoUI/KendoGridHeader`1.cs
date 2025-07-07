@@ -22,9 +22,9 @@ public class KendoGridHeader<TOwner> : TableHeader<TOwner>
 
     protected virtual KendoGridHeaderSortOrder OnGetSortOrder()
     {
-        string sortValue = DomAttributes["aria-sort"];
+        string? sortValue = DomAttributes["aria-sort"];
 
-        return !string.IsNullOrEmpty(sortValue)
+        return sortValue?.Length > 0
             ? (KendoGridHeaderSortOrder)Enum.Parse(typeof(KendoGridHeaderSortOrder), sortValue, ignoreCase: true)
             : KendoGridHeaderSortOrder.None;
     }

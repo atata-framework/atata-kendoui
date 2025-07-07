@@ -19,7 +19,7 @@
 public class KendoDateInput<TOwner> : DateInput<TOwner>
     where TOwner : PageObject<TOwner>
 {
-    protected override DateTime? ConvertStringToValueUsingGetFormat(string value)
+    protected override DateTime? ConvertStringToValueUsingGetFormat(string? value)
     {
         try
         {
@@ -35,9 +35,9 @@ public class KendoDateInput<TOwner> : DateInput<TOwner>
     {
         OnClear();
 
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-        if (!string.IsNullOrEmpty(valueAsString))
+        if (valueAsString?.Length > 0)
         {
             IWebElement scope = Scope;
 

@@ -53,7 +53,7 @@ public class KendoDateInputTests : UITestSuite
         control.Set(value1);
         control.Should.Be(value1);
 
-        AtataContext.Current.Driver.Perform(x => x.KeyDown(Keys.Shift).SendKeys(Keys.Tab).KeyUp(Keys.Shift));
+        WebDriverSession.Current!.Driver.Perform(x => x.KeyDown(Keys.Shift).SendKeys(Keys.Tab).KeyUp(Keys.Shift));
         control.Should.Be(value1);
 
         DateTime value2 = new DateTime(2019, 12, 31);

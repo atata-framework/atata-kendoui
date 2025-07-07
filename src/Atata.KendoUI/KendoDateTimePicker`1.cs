@@ -20,8 +20,8 @@ public class KendoDateTimePicker<TOwner> : EditableTextField<DateTime?, TOwner>
 
     protected override void SetValue(DateTime? value)
     {
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
-        AssociatedInput.Set(valueAsString);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
+        AssociatedInput.Set(valueAsString ?? string.Empty);
     }
 
     protected override bool GetIsReadOnly() =>

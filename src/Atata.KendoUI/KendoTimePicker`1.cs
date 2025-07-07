@@ -20,8 +20,8 @@ public class KendoTimePicker<TOwner> : EditableTextField<TimeSpan?, TOwner>
 
     protected override void SetValue(TimeSpan? value)
     {
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
-        AssociatedInput.Set(valueAsString);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
+        AssociatedInput.Set(valueAsString ?? string.Empty);
     }
 
     protected override bool GetIsReadOnly() =>

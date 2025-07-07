@@ -14,9 +14,9 @@ public class ReactKendoAutoComplete<T, TOwner> : KendoAutoComplete<T, TOwner>
     {
         OnClear();
 
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
-        if (!string.IsNullOrEmpty(valueAsString))
+        if (valueAsString?.Length > 0)
             AssociatedInput.Scope.SendKeys(valueAsString);
     }
 

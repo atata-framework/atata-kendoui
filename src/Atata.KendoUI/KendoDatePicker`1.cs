@@ -29,7 +29,7 @@ public class KendoDatePicker<TOwner> : EditableTextField<DateTime?, TOwner>
         return ConvertStringToValueUsingGetFormat(valueAsString);
     }
 
-    protected override DateTime? ConvertStringToValueUsingGetFormat(string value)
+    protected override DateTime? ConvertStringToValueUsingGetFormat(string? value)
     {
         try
         {
@@ -43,11 +43,11 @@ public class KendoDatePicker<TOwner> : EditableTextField<DateTime?, TOwner>
 
     protected override void SetValue(DateTime? value)
     {
-        string valueAsString = ConvertValueToStringUsingSetFormat(value);
+        string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
         OnClear();
 
-        if (!string.IsNullOrEmpty(valueAsString))
+        if (valueAsString?.Length > 0)
         {
             IWebElement scope = AssociatedInput.Scope;
 
