@@ -5,7 +5,7 @@ using Atata.WebDriverSetup;
 namespace Atata.KendoUI.Tests;
 
 [SetUpFixture]
-public class SetUpFixture
+public class GlobalFixture
 {
     private CliCommand? _dotnetRunCommand;
 
@@ -35,7 +35,7 @@ public class SetUpFixture
 
         _dotnetRunCommand = dotnetCli.Start("run");
 
-        var testAppWait = new SafeWait<SetUpFixture>(this)
+        SafeWait<GlobalFixture> testAppWait = new(this)
         {
             Timeout = TimeSpan.FromSeconds(40),
             PollingInterval = TimeSpan.FromSeconds(0.2)
