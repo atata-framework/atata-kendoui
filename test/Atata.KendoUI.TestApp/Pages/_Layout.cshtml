@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Primitives
 @{
     StringValues versionValues = Context.Request.Query["v"];
-    string kendoUIVersion = versionValues == StringValues.Empty
+    string? kendoUIVersion = versionValues == StringValues.Empty
         ? "2022.3.1109"
         : versionValues[0];
 }
