@@ -10,7 +10,7 @@ public class KendoTimePicker<TOwner> : EditableTextField<TimeSpan?, TOwner>
     [FindFirst]
     [TraceLog]
     [Name("Associated")]
-    protected TextInput<TOwner> AssociatedInput { get; private set; }
+    protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
     protected override TimeSpan? GetValue()
     {

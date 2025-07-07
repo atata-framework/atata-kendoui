@@ -25,24 +25,23 @@ public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
 
     [FindByClass("k-dropdown-wrap")]
     [TraceLog]
-    protected Control<TOwner> WrapControl { get; private set; }
+    protected Control<TOwner> WrapControl { get; private set; } = null!;
 
     [FindFirst(ScopeSource = ScopeSource.Page, Visibility = Visibility.Visible)]
     [Name("Drop-Down")]
     [TraceLog]
-    protected KendoPopup<TOwner> Popup { get; private set; }
+    protected KendoPopup<TOwner> Popup { get; private set; } = null!;
 
-    protected string ValueXPath =>
+    protected string? ValueXPath =>
         Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
-    protected string ItemValueXPath =>
+    protected string? ItemValueXPath =>
         Metadata.Get<ItemValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
     protected override T GetValue()
     {
         string value = Scope.GetWithLogging(
-            By.XPath(".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input-value-text ') or contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{0}")
-                .FormatWith(ValueXPath)
+            By.XPath($".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input-value-text ') or contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{ValueXPath}")
                 .Visible())
             .Text.Trim();
 
@@ -64,12 +63,17 @@ public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         Popup.WaitUntilClosed(CloseAnimationWaitingOptions);
     }
 
-    protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null) =>
-        Driver.GetWithLogging(
-            By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
-                .DropDownOption(value)
-                .Visible()
-                .With(searchOptions));
+    protected virtual IWebElement GetDropDownOption(string value, SearchOptions? searchOptions = null)
+    {
+        By by = By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")
+            .DropDownOption(value)
+            .Visible();
+
+        if (searchOptions is not null)
+            by = by.With(searchOptions);
+
+        return Driver.GetWithLogging(by);
+    }
 
     protected override bool GetIsReadOnly() =>
         Scope.GetWithLogging(By.XPath(".//*[@readonly and @readonly!='false']").OfAnyVisibility().SafelyAtOnce()) != null;

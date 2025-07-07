@@ -19,7 +19,7 @@ public class KendoAutoComplete<T, TOwner> : EditableTextField<T, TOwner>
     [FindFirst]
     [TraceLog]
     [Name("Associated")]
-    protected TextInput<TOwner> AssociatedInput { get; private set; }
+    protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
     protected override T GetValue()
     {

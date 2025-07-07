@@ -11,7 +11,7 @@ public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
     [Name("Associated")]
     [ControlDefinition("input[not(@type) or (@type!='button' and @type!='submit' and @type!='reset')]", ComponentTypeName = "input")]
     [ClearsValueUsingCtrlADeleteKeys]
-    protected Input<string, TOwner> AssociatedInput { get; private set; }
+    protected Input<string, TOwner> AssociatedInput { get; private set; } = null!;
 
     protected override T GetValue()
     {

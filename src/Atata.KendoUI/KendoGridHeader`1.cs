@@ -12,7 +12,7 @@ public class KendoGridHeader<TOwner> : TableHeader<TOwner>
     /// Gets the control that contains the text of header.
     /// </summary>
     [FindByXPath("(./*[1] | self::*)[position() = last()]")]
-    public Text<TOwner> Text { get; private set; }
+    public Text<TOwner> Text { get; private set; } = null!;
 
     /// <summary>
     /// Gets the sort order.

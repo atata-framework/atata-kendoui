@@ -21,12 +21,12 @@ public class KendoMultiSelect<TOwner> : Control<TOwner>
     [FindFirst]
     [TraceLog]
     [Name("Associated")]
-    protected TextInput<TOwner> AssociatedInput { get; private set; }
+    protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
-    protected string ValueXPath =>
+    protected string? ValueXPath =>
         Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
-    protected string ItemValueXPath =>
+    protected string? ItemValueXPath =>
         Metadata.Get<ItemValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
     public TOwner Add(string value)
@@ -51,7 +51,7 @@ public class KendoMultiSelect<TOwner> : Control<TOwner>
         Driver.Perform(x => x.SendKeys(Keys.Enter));
     }
 
-    protected virtual IWebElement GetDropDownOption(string value, SearchOptions searchOptions = null) =>
+    protected virtual IWebElement GetDropDownOption(string value, SearchOptions? searchOptions = null) =>
         StaleSafely.Execute(
             opt => Driver.GetWithLogging(
                 By.XPath($"{DropDownListItemXPath}{ItemValueXPath}[normalize-space(.)='{value}']")

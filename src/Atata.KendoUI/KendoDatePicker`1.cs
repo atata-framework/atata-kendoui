@@ -21,7 +21,7 @@ public class KendoDatePicker<TOwner> : EditableTextField<DateTime?, TOwner>
     [TraceLog]
     [Name("Associated")]
     [ClearsValueUsingCtrlADeleteKeys]
-    protected TextInput<TOwner> AssociatedInput { get; private set; }
+    protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
     protected override DateTime? GetValue()
     {

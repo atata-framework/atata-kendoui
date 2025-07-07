@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Upgrade Atata package to v3.6.0.
+- Enable nullable reference types.
 
 ## [3.0.0] - 2024-04-16
 

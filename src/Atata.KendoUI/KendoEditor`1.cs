@@ -7,7 +7,7 @@ public class KendoEditor<TOwner> : FrameWrappedContentEditor<TOwner>
 {
     [FindByClass("k-content")]
     [TraceLog]
-    protected Frame<OrdinaryPage, TOwner> ContentFrame { get; set; }
+    protected Frame<OrdinaryPage, TOwner> ContentFrame { get; set; } = null!;
 
     protected override Control<TOwner> GetFrameControl() => ContentFrame;
 }

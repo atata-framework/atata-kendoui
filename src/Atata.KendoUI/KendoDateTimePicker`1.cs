@@ -10,7 +10,7 @@ public class KendoDateTimePicker<TOwner> : EditableTextField<DateTime?, TOwner>
     [FindFirst]
     [TraceLog]
     [Name("Associated")]
-    protected TextInput<TOwner> AssociatedInput { get; private set; }
+    protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
     protected override DateTime? GetValue()
     {

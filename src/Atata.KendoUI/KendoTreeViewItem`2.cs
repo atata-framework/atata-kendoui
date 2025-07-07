@@ -32,11 +32,11 @@ public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
     protected RetryOptions CollapseAnimationWaitingOptions { get; set; } = DefaultAnimationWaitingOptions;
 
     [FindFirst]
-    protected CheckBox<TOwner> CheckBox { get; private set; }
+    protected CheckBox<TOwner> CheckBox { get; private set; } = null!;
 
     [FindByClass("k-checkbox-wrapper", "k-checkbox")]
     [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
-    protected Control<TOwner> CheckBoxWrapper { get; private set; }
+    protected Control<TOwner> CheckBoxWrapper { get; private set; } = null!;
 
     /// <summary>
     /// Gets the text control.
@@ -53,10 +53,10 @@ public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
 
     [FindByClass("k-icon")]
     [InvokeMethod(nameof(EnsureThatVisible), TriggerEvents.BeforeClickOrHoverOrFocus)]
-    public Control<TOwner> ToggleIcon { get; protected set; }
+    public Control<TOwner> ToggleIcon { get; protected set; } = null!;
 
     [FindByClass("k-group", OuterXPath = null)]
-    protected Control<TOwner> ChildrenGroup { get; private set; }
+    protected Control<TOwner> ChildrenGroup { get; private set; } = null!;
 
     public ValueProvider<bool, TOwner> IsExpanded =>
         CreateValueProvider("expanded state", GetIsExpanded);
@@ -67,7 +67,7 @@ public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
     public ValueProvider<bool, TOwner> IsSelected =>
         CreateValueProvider("selected state", GetIsSelected);
 
-    protected string TextXPath =>
+    protected string? TextXPath =>
         Metadata.Get<ValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
     protected virtual IEnumerable<Attribute> GetTextAttributes()

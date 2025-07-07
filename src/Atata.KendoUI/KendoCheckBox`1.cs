@@ -6,7 +6,7 @@ public class KendoCheckBox<TOwner> : CheckBox<TOwner>
 {
     [FindFirst(OuterXPath = "following-sibling::")]
     [TraceLog]
-    private Label<TOwner> AssociatedLabel { get; set; }
+    private Label<TOwner> AssociatedLabel { get; set; } = null!;
 
     protected override void SetValue(bool value)
     {

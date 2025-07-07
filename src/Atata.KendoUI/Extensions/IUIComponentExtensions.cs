@@ -2,7 +2,7 @@
 
 internal static class IUIComponentExtensions
 {
-    internal static TOwner WaitForCssTransitionEnd<TOwner>(this IUIComponent<TOwner> component, string transitionName, RetryOptions waitingOptions, SearchOptions searchOptions = null)
+    internal static TOwner WaitForCssTransitionEnd<TOwner>(this IUIComponent<TOwner> component, string transitionName, RetryOptions waitingOptions, SearchOptions? searchOptions = null)
         where TOwner : PageObject<TOwner>
     {
         if (waitingOptions?.Timeout > TimeSpan.Zero)
@@ -11,7 +11,7 @@ internal static class IUIComponentExtensions
                 new LogSection($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace),
                 () =>
                 {
-                    IWebElement element = searchOptions == null ? component.Scope : component.GetScope(searchOptions);
+                    IWebElement element = searchOptions is null ? component.Scope : component.GetScope(searchOptions);
                     element?.Try().Until(HasNoCssTransition, waitingOptions);
                 });
         }
@@ -32,7 +32,7 @@ internal static class IUIComponentExtensions
             return true;
         }
 
-        return transitionDuration == null
+        return transitionDuration is null
             || !decimal.TryParse(transitionDuration.TrimEnd('m', 's'), out decimal transitionTime)
             || transitionTime == 0;
     }

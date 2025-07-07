@@ -11,7 +11,7 @@ public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwne
     /// Timeout is 5 seconds.
     /// Interval is 0.1 seconds.
     /// </summary>
-    public static RetryOptions DefaultAnimationWaitingOptions { get; } = new RetryOptions
+    public static RetryOptions DefaultAnimationWaitingOptions { get; } = new()
     {
         Interval = TimeSpan.FromSeconds(.1),
         Timeout = TimeSpan.FromSeconds(5)
@@ -20,7 +20,7 @@ public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwne
     [Name("Handle")]
     [FindByClass("k-switch-handle")]
     [TraceLog]
-    protected Control<TOwner> SwitchHandle { get; private set; }
+    protected Control<TOwner> SwitchHandle { get; private set; } = null!;
 
     /// <summary>
     /// Gets the <see cref="ValueProvider{TValue, TOwner}" /> instance of the checked state value.
