@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 
 [TestFixture]
 [Parallelizable]
-public abstract class UITestFixture
+public abstract class UITestSuite
 {
     public const int TestAppPort = 56828;
 

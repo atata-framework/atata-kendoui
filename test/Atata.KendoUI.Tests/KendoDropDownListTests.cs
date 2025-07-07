@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoDropDownListTests : UITestFixture
+public class KendoDropDownListTests : UITestSuite
 {
     // TODO: Vue was removed. The snippet page stopped to work properly in Chrome, so Vue test removed for now.
     [TestCaseSources.JQuery]

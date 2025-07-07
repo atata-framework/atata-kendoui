@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoMultiSelectTests : UITestFixture
+public class KendoMultiSelectTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)

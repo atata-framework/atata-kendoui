@@ -1,8 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests;
-
-public class KendoNumericTextBoxTests : UITestFixture
+public class KendoNumericTextBoxTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     [TestCaseSources.React]

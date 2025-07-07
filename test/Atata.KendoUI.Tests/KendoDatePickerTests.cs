@@ -1,8 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿namespace Atata.KendoUI.Tests;
 
-namespace Atata.KendoUI.Tests;
-
-public class KendoDatePickerTests : UITestFixture
+public class KendoDatePickerTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     [TestCaseSources.React]

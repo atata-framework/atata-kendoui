@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoTreeViewTests : UITestFixture
+public class KendoTreeViewTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)

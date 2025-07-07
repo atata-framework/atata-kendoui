@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoRadioButtonTests : UITestFixture
+public class KendoRadioButtonTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)

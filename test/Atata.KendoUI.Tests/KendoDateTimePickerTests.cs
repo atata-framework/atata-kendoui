@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoDateTimePickerTests : UITestFixture
+public class KendoDateTimePickerTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)
