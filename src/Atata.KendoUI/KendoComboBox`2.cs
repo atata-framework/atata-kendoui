@@ -3,7 +3,7 @@
 [ControlDefinition(ContainingClass = "k-combobox", ComponentTypeName = "combo box")]
 [FindByLabel]
 [IdXPathForLabel("[.//input[@aria-labelledby='{0}_label']]")]
-public class KendoComboBox<T, TOwner> : EditableTextField<T, TOwner>
+public class KendoComboBox<TValue, TOwner> : EditableTextField<TValue, TOwner>
     where TOwner : PageObject<TOwner>
 {
     [FindFirst]
@@ -11,13 +11,13 @@ public class KendoComboBox<T, TOwner> : EditableTextField<T, TOwner>
     [Name("Associated")]
     protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
-    protected override T GetValue()
+    protected override TValue GetValue()
     {
         string valueAsString = AssociatedInput.Value;
         return ConvertStringToValueUsingGetFormat(valueAsString)!;
     }
 
-    protected override void SetValue(T value)
+    protected override void SetValue(TValue value)
     {
         string? valueAsString = ConvertValueToStringUsingSetFormat(value);
         AssociatedInput.Set(valueAsString ?? string.Empty);

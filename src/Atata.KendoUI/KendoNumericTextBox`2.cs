@@ -3,7 +3,7 @@
 [ControlDefinition(ContainingClass = "k-numerictextbox", ComponentTypeName = "numeric text box")]
 [FindByLabel]
 [IdXPathForLabel("[span/input[@id='{0}']]")]
-public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
+public class KendoNumericTextBox<TValue, TOwner> : EditableTextField<TValue, TOwner>
     where TOwner : PageObject<TOwner>
 {
     [FindFirst(Visibility = Visibility.Visible)]
@@ -13,7 +13,7 @@ public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
     [ClearsValueUsingCtrlADeleteKeys]
     protected Input<string, TOwner> AssociatedInput { get; private set; } = null!;
 
-    protected override T GetValue()
+    protected override TValue GetValue()
     {
         string valueAsString = AssociatedInput.Script.ExecuteAgainst<string>(
             "return (arguments[0] === document.activeElement || !arguments[0].hasAttribute('aria-valuenow')) ? arguments[0].value : arguments[0].getAttribute('aria-valuenow');");
@@ -21,7 +21,7 @@ public class KendoNumericTextBox<T, TOwner> : EditableTextField<T, TOwner>
         return ConvertStringToValueUsingGetFormat(valueAsString)!;
     }
 
-    protected override void SetValue(T value)
+    protected override void SetValue(TValue value)
     {
         OnClear();
 

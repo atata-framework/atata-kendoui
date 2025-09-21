@@ -5,12 +5,12 @@
 /// Default search is performed by the label.
 /// Handles any element with <c>k-autocomplete</c> class.
 /// </summary>
-/// <typeparam name="T">The type of the control's data.</typeparam>
+/// <typeparam name="TValue">The type of the control's value.</typeparam>
 /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
-public class ReactKendoAutoComplete<T, TOwner> : KendoAutoComplete<T, TOwner>
+public class ReactKendoAutoComplete<TValue, TOwner> : KendoAutoComplete<TValue, TOwner>
     where TOwner : PageObject<TOwner>
 {
-    protected override void SetValue(T value)
+    protected override void SetValue(TValue value)
     {
         OnClear();
 

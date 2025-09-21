@@ -8,12 +8,12 @@
 /// When using Kendo UI for React prefer to use <see cref="ReactKendoAutoComplete{T, TOwner}"/> control instead.
 /// </para>
 /// </summary>
-/// <typeparam name="T">The type of the control's data.</typeparam>
+/// <typeparam name="TValue">The type of the control's value.</typeparam>
 /// <typeparam name="TOwner">The type of the owner page object.</typeparam>
 [ControlDefinition(ContainingClass = "k-autocomplete", ComponentTypeName = "auto-complete")]
 [FindByLabel]
 [IdXPathForLabel("[.//input[@id='{0}']]")]
-public class KendoAutoComplete<T, TOwner> : EditableTextField<T, TOwner>
+public class KendoAutoComplete<TValue, TOwner> : EditableTextField<TValue, TOwner>
     where TOwner : PageObject<TOwner>
 {
     [FindFirst]
@@ -21,13 +21,13 @@ public class KendoAutoComplete<T, TOwner> : EditableTextField<T, TOwner>
     [Name("Associated")]
     protected TextInput<TOwner> AssociatedInput { get; private set; } = null!;
 
-    protected override T GetValue()
+    protected override TValue GetValue()
     {
         string valueAsString = AssociatedInput.Value;
         return ConvertStringToValueUsingGetFormat(valueAsString)!;
     }
 
-    protected override void SetValue(T value)
+    protected override void SetValue(TValue value)
     {
         string? valueAsString = ConvertValueToStringUsingSetFormat(value);
         AssociatedInput.Set(valueAsString ?? string.Empty);

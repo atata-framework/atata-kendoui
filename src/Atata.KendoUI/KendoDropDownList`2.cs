@@ -5,7 +5,7 @@
     ComponentTypeName = "drop-down list")]
 [FindByLabel]
 [IdXPathForLabel("@aria-labelledby='{0}_label'")]
-public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
+public class KendoDropDownList<TValue, TOwner> : EditableField<TValue, TOwner>
     where TOwner : PageObject<TOwner>
 {
     private const string DropDownListItemXPath =
@@ -38,7 +38,7 @@ public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
     protected string? ItemValueXPath =>
         Metadata.Get<ItemValueXPathAttribute>(x => x.At(AttributeLevels.DeclaredAndComponent))?.XPath;
 
-    protected override T GetValue()
+    protected override TValue GetValue()
     {
         string value = Scope.GetWithLogging(
             By.XPath($".//span[contains(concat(' ', normalize-space(@class), ' '), ' k-input-value-text ') or contains(concat(' ', normalize-space(@class), ' '), ' k-input ')]{ValueXPath}")
@@ -48,7 +48,7 @@ public class KendoDropDownList<T, TOwner> : EditableField<T, TOwner>
         return ConvertStringToValueUsingGetFormat(value)!;
     }
 
-    protected override void SetValue(T value)
+    protected override void SetValue(TValue value)
     {
         string? valueAsString = ConvertValueToStringUsingSetFormat(value);
 
