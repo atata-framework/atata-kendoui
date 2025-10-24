@@ -7,13 +7,20 @@ internal static class IUIComponentExtensions
     {
         if (waitingOptions?.Timeout > TimeSpan.Zero)
         {
-            component.Session.Log.ExecuteSection(
-                new LogSection($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace),
-                () =>
-                {
-                    IWebElement element = searchOptions is null ? component.Scope : component.GetScope(searchOptions);
-                    element?.Try().Until(HasNoCssTransition, waitingOptions);
-                });
+            try
+            {
+                component.Session.Log.ExecuteSection(
+                    new LogSection($"Wait for {component.ComponentFullName} \"{transitionName}\" CSS transition completion", LogLevel.Trace),
+                    () =>
+                    {
+                        IWebElement element = searchOptions is null ? component.Scope : component.GetScope(searchOptions);
+                        element?.Try().Until(HasNoCssTransition, waitingOptions);
+                    });
+            }
+            catch (Exception exception)
+            {
+                component.Session.Log.Warn(exception, "Caught exception during waiting for CSS transition completion.");
+            }
         }
 
         return component.Owner;
