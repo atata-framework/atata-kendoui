@@ -2,9 +2,6 @@
 using Atata.Cli;
 using Atata.WebDriverSetup;
 
-[assembly: SetCulture("en-US")]
-[assembly: Parallelizable(ParallelScope.Fixtures)]
-
 namespace Atata.KendoUI.Tests;
 
 [SetUpFixture]
@@ -18,9 +15,6 @@ public class GlobalFixture : AtataGlobalFixture
 
     protected override void OnBeforeGlobalSetup() =>
         ThreadPool.SetMinThreads(Environment.ProcessorCount * 4, Environment.ProcessorCount);
-
-    protected override void ConfigureAtataContextGlobalProperties(AtataContextGlobalProperties globalProperties) =>
-        globalProperties.UseRootNamespaceOf<GlobalFixture>();
 
     protected override void ConfigureAtataContextBaseConfiguration(AtataContextBuilder builder)
     {
@@ -70,13 +64,8 @@ public class GlobalFixture : AtataGlobalFixture
 
         _dotnetRunCommand = dotnetCli.Start("run");
 
-        SafeWait<GlobalFixture> testAppWait = new(this)
-        {
-            Timeout = TimeSpan.FromSeconds(40),
-            PollingInterval = TimeSpan.FromSeconds(0.2)
-        };
-
-        testAppWait.Until(x => IsTestAppRunning());
+        RetryWait testAppWait = new(TimeSpan.FromSeconds(40), TimeSpan.FromSeconds(0.2));
+        testAppWait.Until(IsTestAppRunning);
     }
 
     [OneTimeTearDown]
