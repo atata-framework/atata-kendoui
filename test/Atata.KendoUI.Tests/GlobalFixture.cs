@@ -41,7 +41,7 @@ public class GlobalFixture : AtataGlobalFixture
         bool headless = TestContext.Parameters.Get("headless", false);
 
         if (headless)
-            yield return "headless";
+            yield return "headless=new";
     }
 
     [OneTimeSetUp]
