@@ -16,6 +16,9 @@ public class GlobalFixture : AtataGlobalFixture
 
     private CliCommand? _dotnetRunCommand;
 
+    protected override void OnBeforeGlobalSetup() =>
+        ThreadPool.SetMinThreads(Environment.ProcessorCount * 4, Environment.ProcessorCount);
+
     protected override void ConfigureAtataContextGlobalProperties(AtataContextGlobalProperties globalProperties) =>
         globalProperties.UseRootNamespaceOf<GlobalFixture>();
 
