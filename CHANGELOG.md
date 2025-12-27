@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Change package target frameworks from .NET Standard 2.0 to .NET 8.0 and .NET Framework 4.6.2.
 - Upgrade Atata package to v3.6.0.
 - Enable nullable reference types.
 

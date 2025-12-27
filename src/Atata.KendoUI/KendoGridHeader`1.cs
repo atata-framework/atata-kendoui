@@ -25,7 +25,11 @@ public class KendoGridHeader<TOwner> : TableHeader<TOwner>
         string? sortValue = DomAttributes["aria-sort"];
 
         return sortValue?.Length > 0
+#if NET8_0_OR_GREATER
+            ? Enum.Parse<KendoGridHeaderSortOrder>(sortValue, ignoreCase: true)
+#else
             ? (KendoGridHeaderSortOrder)Enum.Parse(typeof(KendoGridHeaderSortOrder), sortValue, ignoreCase: true)
+#endif
             : KendoGridHeaderSortOrder.None;
     }
 
