@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoAutoCompleteTests : UITestSuite
+public sealed class KendoAutoCompleteTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     [TestCaseSources.Vue]

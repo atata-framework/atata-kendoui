@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = TreeViewPage;
 
 [Url("treeview")]
-public class TreeViewPage : Page<_>
+public sealed class TreeViewPage : Page<_>
 {
     [FindByIndex(0)]
     public KendoTreeView<_> Regular { get; private set; }
@@ -21,7 +21,7 @@ public class TreeViewPage : Page<_>
 
     [Format("{0} !", TargetName = nameof(Text))]
     [ValueXPath("/span/strong")]
-    public class CustomKendoTreeViewItem : KendoTreeViewItem<CustomKendoTreeViewItem, _>
+    public sealed class CustomKendoTreeViewItem : KendoTreeViewItem<CustomKendoTreeViewItem, _>
     {
         [FindByClass("k-i-close-outline")]
         public Link<_> Remove { get; private set; }

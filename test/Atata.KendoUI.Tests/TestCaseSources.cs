@@ -2,7 +2,7 @@
 
 public static class TestCaseSources
 {
-    public class JQueryAttribute : PlainTestCaseSourceAttribute
+    public sealed class JQueryAttribute : PlainTestCaseSourceAttribute
     {
         public JQueryAttribute()
             : base([.. KendoLibraries.JQueryVersions.Select(x => $"{KendoLibraries.JQuery}/{x}")])
@@ -10,7 +10,7 @@ public static class TestCaseSources
         }
     }
 
-    public class AngularAttribute : PlainTestCaseSourceAttribute
+    public sealed class AngularAttribute : PlainTestCaseSourceAttribute
     {
         public AngularAttribute()
             : base(KendoLibraries.Angular)
@@ -18,7 +18,7 @@ public static class TestCaseSources
         }
     }
 
-    public class ReactAttribute : PlainTestCaseSourceAttribute
+    public sealed class ReactAttribute : PlainTestCaseSourceAttribute
     {
         public ReactAttribute()
             : base(KendoLibraries.React)
@@ -26,7 +26,7 @@ public static class TestCaseSources
         }
     }
 
-    public class VueAttribute : PlainTestCaseSourceAttribute
+    public sealed class VueAttribute : PlainTestCaseSourceAttribute
     {
         public VueAttribute()
             : base(KendoLibraries.Vue)
@@ -34,7 +34,7 @@ public static class TestCaseSources
         }
     }
 
-    public class AspNetMvcAttribute : PlainTestCaseSourceAttribute
+    public sealed class AspNetMvcAttribute : PlainTestCaseSourceAttribute
     {
         public AspNetMvcAttribute()
             : base(KendoLibraries.AspNetMvc)
@@ -42,7 +42,7 @@ public static class TestCaseSources
         }
     }
 
-    public class AspNetCoreAttribute : PlainTestCaseSourceAttribute
+    public sealed class AspNetCoreAttribute : PlainTestCaseSourceAttribute
     {
         public AspNetCoreAttribute()
             : base(KendoLibraries.AspNetCore)

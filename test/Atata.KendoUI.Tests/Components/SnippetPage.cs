@@ -2,7 +2,7 @@
 
 using _ = SnippetPage;
 
-public class SnippetPage : Page<_>
+public sealed class SnippetPage : Page<_>
 {
     public TControl Get<TControl>(params Attribute[] attributes)
         where TControl : Control<_>

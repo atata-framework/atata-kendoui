@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoEditorTests : UITestSuite
+public sealed class KendoEditorTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)

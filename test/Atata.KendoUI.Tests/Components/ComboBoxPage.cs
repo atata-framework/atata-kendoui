@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = ComboBoxPage;
 
 [Url("combobox")]
-public class ComboBoxPage : Page<_>
+public sealed class ComboBoxPage : Page<_>
 {
     public enum ItemValue
     {

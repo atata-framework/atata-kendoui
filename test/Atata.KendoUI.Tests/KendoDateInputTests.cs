@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoDateInputTests : UITestSuite
+public sealed class KendoDateInputTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     [TestCaseSources.React]

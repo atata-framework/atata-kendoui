@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = DropDownListPage;
 
 [Url("dropdownlist")]
-public class DropDownListPage : Page<_>
+public sealed class DropDownListPage : Page<_>
 {
     public enum ItemValue
     {

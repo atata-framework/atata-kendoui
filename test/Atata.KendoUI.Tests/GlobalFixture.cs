@@ -5,7 +5,7 @@ using Atata.WebDriverSetup;
 namespace Atata.KendoUI.Tests;
 
 [SetUpFixture]
-public class GlobalFixture : AtataGlobalFixture
+public sealed class GlobalFixture : AtataGlobalFixture
 {
     private const int TestAppPort = 56828;
 

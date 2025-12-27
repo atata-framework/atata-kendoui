@@ -5,11 +5,11 @@ namespace Atata.KendoUI.Tests;
 using _ = GridPage;
 
 [Url("grid")]
-public class GridPage : Page<_>
+public sealed class GridPage : Page<_>
 {
     public KendoGrid<CarRow, _> Cars { get; private set; }
 
-    public class CarRow : KendoGridRow<_>
+    public sealed class CarRow : KendoGridRow<_>
     {
         public Text<_> CarMake { get; private set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoTimePickerTests : UITestSuite
+public sealed class KendoTimePickerTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     public void Interact(string library)

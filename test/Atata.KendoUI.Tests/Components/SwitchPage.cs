@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = SwitchPage;
 
 [Url("switch")]
-public class SwitchPage : Page<_>
+public sealed class SwitchPage : Page<_>
 {
     public KendoSwitch<_> Regular { get; private set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Atata.KendoUI.Tests;
 
-public class KendoNumericTextBoxTests : UITestSuite
+public sealed class KendoNumericTextBoxTests : UITestSuite
 {
     [TestCaseSources.JQuery]
     [TestCaseSources.React]

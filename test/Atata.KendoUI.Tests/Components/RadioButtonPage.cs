@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = RadioButtonPage;
 
 [Url("radiobutton")]
-public class RadioButtonPage : Page<_>
+public sealed class RadioButtonPage : Page<_>
 {
     [FindById]
     public KendoRadioButton<_> Regular { get; private set; }

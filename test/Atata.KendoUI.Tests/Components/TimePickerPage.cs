@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = TimePickerPage;
 
 [Url("timepicker")]
-public class TimePickerPage : Page<_>
+public sealed class TimePickerPage : Page<_>
 {
     public KendoTimePicker<_> Regular { get; private set; }
 

@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = DatePickerPage;
 
 [Url("datepicker")]
-public class DatePickerPage : Page<_>
+public sealed class DatePickerPage : Page<_>
 {
     public KendoDatePicker<_> Regular { get; private set; }
 

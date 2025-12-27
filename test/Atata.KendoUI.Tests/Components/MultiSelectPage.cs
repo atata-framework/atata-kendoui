@@ -5,7 +5,7 @@ namespace Atata.KendoUI.Tests;
 using _ = MultiSelectPage;
 
 [Url("multiselect")]
-public class MultiSelectPage : Page<_>
+public sealed class MultiSelectPage : Page<_>
 {
     public KendoMultiSelect<_> SlowAnimating { get; private set; }
 
