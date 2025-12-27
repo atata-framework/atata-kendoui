@@ -16,6 +16,7 @@
     ComponentTypeName = "date input")]
 [Format("d")]
 [ClearsValueUsingShiftHomeDeleteKeys]
+[SuppressMessage("Major Code Smell", "S103:Lines should not be too long")]
 public class KendoDateInput<TOwner> : DateInput<TOwner>
     where TOwner : PageObject<TOwner>
 {

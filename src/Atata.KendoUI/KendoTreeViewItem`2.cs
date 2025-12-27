@@ -13,7 +13,9 @@ public class KendoTreeViewItem<TItem, TOwner> : HierarchicalItem<TItem, TOwner>
     /// Timeout is 5 seconds.
     /// Interval is 0.1 seconds.
     /// </summary>
-    public static RetryOptions DefaultAnimationWaitingOptions { get; } = new RetryOptions
+    // TODO: Review DefaultAnimationWaitingOptions property whether it should be in generic type.
+    [SuppressMessage("Design", "CA1000:Do not declare static members on generic types")]
+    public static RetryOptions DefaultAnimationWaitingOptions { get; } = new()
     {
         Interval = TimeSpan.FromSeconds(.1),
         Timeout = TimeSpan.FromSeconds(5)

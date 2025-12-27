@@ -1,1 +1,2 @@
-﻿global using OpenQA.Selenium;
+﻿global using System.Diagnostics.CodeAnalysis;
+global using OpenQA.Selenium;

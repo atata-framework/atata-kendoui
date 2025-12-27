@@ -10,4 +10,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapRazorPages();
 
+#pragma warning disable S6966 // Awaitable method should be used
 app.Run();
+#pragma warning restore S6966 // Awaitable method should be used

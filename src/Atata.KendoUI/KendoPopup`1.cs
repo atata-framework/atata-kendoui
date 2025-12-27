@@ -9,6 +9,8 @@ public class KendoPopup<TOwner> : Control<TOwner>
     /// Timeout is 5 seconds.
     /// Interval is 0.1 seconds.
     /// </summary>
+    // TODO: Review DefaultAnimationWaitingOptions property whether it should be in generic type.
+    [SuppressMessage("Design", "CA1000:Do not declare static members on generic types")]
     public static RetryOptions DefaultAnimationWaitingOptions { get; } = new()
     {
         Interval = TimeSpan.FromSeconds(.1),
