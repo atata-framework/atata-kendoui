@@ -8,10 +8,10 @@ C#/.NET package containing a set of Atata components for automated web testing i
 
 Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
-The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.
-
 Atata.KendoUI on GitHub: https://github.com/atata-framework/atata-kendoui
 Atata Framework documentation: https://atata.io
+
+The package targets .NET 8.0 and .NET Framework 4.6.2.
     </Description>
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
     <PackageId>Atata.KendoUI</PackageId>
