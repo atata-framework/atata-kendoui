@@ -22,6 +22,7 @@ Atata Framework documentation: https://atata.io
 
   <ItemGroup>
     <PackageReference Include="Atata" Version="4.0.0-beta.10" />
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
