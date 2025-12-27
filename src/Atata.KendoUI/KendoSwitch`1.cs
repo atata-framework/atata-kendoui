@@ -6,17 +6,6 @@
 public class KendoSwitch<TOwner> : EditableField<bool, TOwner>, ICheckable<TOwner>
     where TOwner : PageObject<TOwner>
 {
-    /// <summary>
-    /// Gets the default animation waiting options.
-    /// Timeout is 5 seconds.
-    /// Interval is 0.1 seconds.
-    /// </summary>
-    public static RetryOptions DefaultAnimationWaitingOptions { get; } = new()
-    {
-        Interval = TimeSpan.FromSeconds(.1),
-        Timeout = TimeSpan.FromSeconds(5)
-    };
-
     [Name("Handle")]
     [FindByClass("k-switch-handle")]
     [TraceLog]
