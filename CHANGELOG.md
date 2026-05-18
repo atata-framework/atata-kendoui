@@ -10,8 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Change package target frameworks from .NET Standard 2.0 to .NET 8.0 and .NET Framework 4.6.2.
+- Upgrade Atata package to v4.0.0-beta.14.
+
+## [3.1.0] - 2026-05-18
+
+### Changed
+
+- Upgrade Atata package reference to v3.11.0.
 - Enable nullable reference types.
-- Upgrade Atata package to v4.0.0-beta.11.
 
 ## [3.0.0] - 2024-04-16
 
@@ -46,3 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix `KendoDatePicker<TOwner>` for the latest version of Kendo UI for Vue.
 - Fix `KendoNumericTextBox<T, TOwner>` for the latest version of Kendo UI for Vue.
+
+[Unreleased]: https://github.com/atata-framework/atata-kendoui/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/atata-framework/atata-kendoui/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/atata-framework/atata-kendoui/compare/v2.3.0...v3.0.0
