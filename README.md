@@ -3,6 +3,7 @@
 [![NuGet](http://img.shields.io/nuget/v/Atata.KendoUI.svg)](https://www.nuget.org/packages/Atata.KendoUI/)
 [![GitHub release](https://img.shields.io/github/release/atata-framework/atata-kendoui.svg)](https://github.com/atata-framework/atata-kendoui/releases)
 [![Build status](https://dev.azure.com/atata-framework/atata-kendoui/_apis/build/status/atata-kendoui-ci?branchName=main)](https://dev.azure.com/atata-framework/atata-kendoui/_build/latest?definitionId=16&branchName=main)
+[![Atata Templates](https://img.shields.io/badge/get-Atata_Templates-green.svg?color=4BC21F)](https://marketplace.visualstudio.com/items?itemName=YevgeniyShunevych.AtataTemplates)\
 [![Slack](https://img.shields.io/badge/join-Slack-green.svg?colorB=4EB898)](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
 [![Atata docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata.io)
 [![X](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://x.com/AtataFramework)
@@ -11,9 +12,9 @@ C#/.NET package containing a set of [Atata](https://github.com/atata-framework/a
 
 Works with Kendo UI components for jQuery, Angular, React, Vue, ASP.NET MVC and ASP.NET Core.
 
-*The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.**
+*The package targets .NET 8.0 and .NET Framework 4.6.2.**
 
-**[What's new in v3.1.0](https://github.com/atata-framework/atata-kendoui/releases/tag/v3.1.0)**
+**[What's new in v4.0.0](https://github.com/atata-framework/atata-kendoui/releases/tag/v4.0.0)**
 
 ## Components
 
@@ -57,11 +58,20 @@ or use another [Atata Contact](https://atata.io/contact/) way.
 
 ## Contact author
 
-Contact me if you need a help in test automation using Atata Framework, or if you are looking for a quality test automation implementation for your project.
+Contact me, Yevhenii Shunevych, if you need help with test automation using the Atata Framework.
+You can [hire me for test automation development or consulting](https://atata.io/consulting/) if you are looking for a high-quality, maintainable automation solution for your project.
 
 - LinkedIn: https://www.linkedin.com/in/yevgeniy-shunevych
 - Email: yevgeniy.shunevych@gmail.com
 - Consulting: https://atata.io/consulting/
+
+## Sponsorship
+
+Many thanks to the sponsors that regularly support the development of Atata Framework through donations:
+
+- **[Lombiq Technologies](https://lombiq.com/)**
+
+If Atata Framework is useful to you or your company, consider supporting the framework development with a [donation](https://atata.io/donate/).
 
 ## Contributing
 
