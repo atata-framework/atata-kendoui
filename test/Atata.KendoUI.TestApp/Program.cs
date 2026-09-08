@@ -4,7 +4,10 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+#pragma warning disable S4507 // Debugging features should not be enabled in production
 app.UseDeveloperExceptionPage();
+#pragma warning restore S4507 // Debugging features should not be enabled in production
+
 app.UseStatusCodePages();
 app.UseStaticFiles();
 app.UseRouting();
