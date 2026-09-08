@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net462</TargetFrameworks>
-    <Version>4.0.0-beta.5</Version>
+    <Version>4.0.0</Version>
     <Description>
 C#/.NET package containing a set of Atata components for automated web testing integration with Kendo UI HTML Framework.
 
@@ -16,7 +16,7 @@ The package targets .NET 8.0 and .NET Framework 4.6.2.
     <RepositoryUrl>https://github.com/atata-framework/atata-kendoui</RepositoryUrl>
     <PackageId>Atata.KendoUI</PackageId>
     <PackageTags>atata automation testing test selenium webdriver browser kendo kendoui</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Changelog: https://github.com/atata-framework/atata-kendoui/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/atata-framework/atata-kendoui</PackageProjectUrl>
   </PropertyGroup>
 
